@@ -13,6 +13,7 @@ var projectile = 1
 
 var idleOn = true
 var is_jumping = false
+var is_GraviJump = false
 var dropped = false
 
 var gravigun
@@ -86,13 +87,13 @@ func animation():
 		$AnimationPlayer.play("downGravi")
 	if motion.y == -92:
 		$AnimationPlayer.play("downFast")
-	if is_jumping == false and motion.y > 7 and motion.y < 14:
+	if (is_jumping == false and is_GraviJump == false) and (motion.y > 7 and motion.y < 14):
 		$AnimationPlayer.play("downNoJump")
 	if dropped == true:
 		idleOn = false
 		$Timers/IdleOn.start()
 		$AnimationPlayer.play("downFloor")
-	if not is_on_floor() and motion.y > -12 and motion.y < 12:
+	if not is_on_floor() and motion.y > -12 and motion.y < 12 and is_GraviJump == true:
 		$AnimationPlayer.play("downMiddle")
 
 func turn(direction_of_view):
@@ -103,28 +104,28 @@ func turn(direction_of_view):
 
 #Вектор направления отталкивая от гравитационного выстрела
 func Vector():
-	is_jumping = true
-	graviMotion = 200 * ((global_position - gravigun.global_position).normalized())
+	is_GraviJump = true
+	graviMotion = 50 * ((global_position - gravigun.global_position).normalized())
 	if graviMotion.y > 0:
 		if motion.y < 0:
-			motion.y = graviMotion.y - motion.y
+			motion.y = 3*graviMotion.y
 		else:
-			motion.y += graviMotion.y
+			motion.y = 3*graviMotion.y
 	else:
 		if motion.y > 0:
-			motion.y = graviMotion.y - motion.y
+			motion.y = 3*graviMotion.y
 		else:
-			motion.y += graviMotion.y
+			motion.y = 3*graviMotion.y
 	if graviMotion.x > 0:
 		if motion.x < 0:
-			motion.x = graviMotion.x - motion.x
+			motion.x = 4*graviMotion.x
 		else:
-			motion.x += graviMotion.x
+			motion.x = 4*graviMotion.x
 	else:
 		if motion.x > 0:
-			motion.x = graviMotion.x - motion.x
+			motion.x = 4*graviMotion.x
 		else:
-			motion.x += graviMotion.x
+			motion.x = 4*graviMotion.x
 	Engine.time_scale = 0.7 #Небольшое замедление времени во время взрыва
 
 #Timers
