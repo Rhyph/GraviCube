@@ -75,7 +75,7 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_on_VisibilityNotifier2D_screen_exited"
+"method": "queue_free"
 } ]
 }
 tracks/5/type = "value"

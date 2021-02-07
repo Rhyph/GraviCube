@@ -19,9 +19,9 @@ config/name="GraviCube"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
-[autoload]
+[debug]
 
-G="*res://scripts/GlobalVariables.gd"
+gdscript/warnings/integer_division=false
 
 [display]
 
