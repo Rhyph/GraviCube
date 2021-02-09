@@ -3,10 +3,10 @@ extends KinematicBody2D
 const GRAVIGUN = preload("res://scenes/GraviGun.tscn")
 
 const AIR_RESISTANCE = 0.02
-const MAX_SPEED = 128
-const GRAVITY = 400
+const MAX_SPEED = 96
 const JUMP_FORCE = 92
 
+var gravity = 400
 var acceleration = 512
 var friction = 0.2
 var projectile = 1
@@ -18,7 +18,6 @@ var dropped = false
 
 var gravigun
 
-var graviMotion = Vector2()
 var motion = Vector2.ZERO
 
 #Считывает, двигается ли мышка в данный момент, чтобы флипнуть спрайт
@@ -34,7 +33,7 @@ func _physics_process(delta):
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		$player.flip_h = x_input < 0
 	
-	motion.y += GRAVITY * delta
+	motion.y += gravity * delta
 	
 	if $IceCast.is_colliding() or $IceCast2.is_colliding():
 		friction = 0.02
@@ -105,27 +104,9 @@ func turn(direction_of_view):
 #Вектор направления отталкивая от гравитационного выстрела
 func Vector():
 	is_GraviJump = true
-	graviMotion = 50 * ((global_position - gravigun.global_position).normalized())
-	if graviMotion.y > 0:
-		if motion.y < 0:
-			motion.y = 3*graviMotion.y
-		else:
-			motion.y = 3*graviMotion.y
-	else:
-		if motion.y > 0:
-			motion.y = 3*graviMotion.y
-		else:
-			motion.y = 3*graviMotion.y
-	if graviMotion.x > 0:
-		if motion.x < 0:
-			motion.x = 4*graviMotion.x
-		else:
-			motion.x = 4*graviMotion.x
-	else:
-		if motion.x > 0:
-			motion.x = 4*graviMotion.x
-		else:
-			motion.x = 4*graviMotion.x
+	var graviMotion = 50 * ((global_position - gravigun.global_position).normalized())
+	motion.y = 3 * graviMotion.y
+	motion.x = 4 * graviMotion.x
 	Engine.time_scale = 0.7 #Небольшое замедление времени во время взрыва
 
 #Timers

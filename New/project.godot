@@ -68,6 +68,7 @@ ui_lmb={
 2d_physics/layer_2="GraviPlats"
 2d_physics/layer_3="PlayerPlats"
 2d_physics/layer_4="IcePlats"
+2d_physics/layer_5="Player"
 
 [rendering]
 
