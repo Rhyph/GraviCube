@@ -11,11 +11,12 @@ var acceleration = 512
 var friction = 0.2
 var projectile = 1
 
-var idleOn = true
+var idleSwitch = true
 var is_jumping = false
 var is_GraviJump = false
 var dropped = false
 
+var mousePos
 var gravigun
 
 var motion = Vector2.ZERO
@@ -44,7 +45,7 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		is_jumping = false
-		if idleOn == true:
+		if idleSwitch == true:
 			$AnimationPlayer.play("idle")
 		
 		if x_input == 0:
@@ -65,11 +66,13 @@ func _physics_process(delta):
 		$Timers/Dropped.start()
 	
 	#Вызывает гравитационный выстрел
-	if Input.is_action_just_pressed("ui_lmb") and projectile > 0:
-		projectile -= 1
-		gravigun = GRAVIGUN.instance()
-		get_parent().add_child(gravigun)
-		gravigun.position = $Position2D.global_position
+	if G.GraviSwitch == true:
+		if Input.is_action_just_pressed("ui_lmb") and projectile > 0:
+			mousePos = get_global_mouse_position()
+			projectile -= 1
+			gravigun = GRAVIGUN.instance()
+			get_parent().add_child(gravigun)
+			gravigun.position = $Position2D.global_position
 	
 	#Плавно возвращает время на единицу
 	if Engine.time_scale < 0.975:
@@ -89,8 +92,8 @@ func animation():
 	if (is_jumping == false and is_GraviJump == false) and (motion.y > 7 and motion.y < 14):
 		$AnimationPlayer.play("downNoJump")
 	if dropped == true:
-		idleOn = false
-		$Timers/IdleOn.start()
+		idleSwitch = false
+		$Timers/idleSwitch.start()
 		$AnimationPlayer.play("downFloor")
 	if not is_on_floor() and motion.y > -12 and motion.y < 12 and is_GraviJump == true:
 		$AnimationPlayer.play("downMiddle")
@@ -110,8 +113,8 @@ func Vector():
 	Engine.time_scale = 0.7 #Небольшое замедление времени во время взрыва
 
 #Timers
-func _on_IdleOn_timeout():
-	idleOn = true
+func _on_idleSwitch_timeout():
+	idleSwitch = true
 func _on_Dropped_timeout():
 	if is_on_floor():
 		dropped = true

@@ -18,12 +18,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="Cursor" type="CanvasLayer"]
+pause_mode = 2
+layer = 2
+
+[node name="CursorSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 0, -264 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 5
 frames = SubResource( 1 )
 animation = "Default"
-frame = 5
+frame = 3
 playing = true
 script = ExtResource( 1 )

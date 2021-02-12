@@ -19,6 +19,10 @@ config/name="GraviCube"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+G="*res://scripts/GlobalVariables.gd"
+
 [debug]
 
 gdscript/warnings/integer_division=false
@@ -69,6 +73,7 @@ ui_lmb={
 2d_physics/layer_3="PlayerPlats"
 2d_physics/layer_4="IcePlats"
 2d_physics/layer_5="Player"
+2d_physics/layer_6="Oner"
 
 [rendering]
 

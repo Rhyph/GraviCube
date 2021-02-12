@@ -1,6 +1,6 @@
 extends RayCast2D
 
-var is_casting = false setget set_is_casting
+var Switch = false setget set_is_casting
 
 func _ready():
 	set_physics_process(false)
@@ -24,21 +24,18 @@ func _physics_process(delta):
 	$RayCastPlayer.cast_to.x = cast_point.length()
 	if $RayCastPlayer.is_colliding():
 		get_tree().reload_current_scene()
-	$RayCastIce.cast_to.x = cast_point.length()
-	if $RayCastIce.is_colliding():
-		$"/root/World/Tiles/Ice/TileMapIce"._Laser()
 
 func set_is_casting(cast):
-	is_casting = cast
+	Switch = cast
 	
-	$BeamParticles.emitting = is_casting
-	$CastingParticles.emitting = is_casting
-	if is_casting:
+	$BeamParticles.emitting = Switch
+	$CastingParticles.emitting = Switch
+	if Switch:
 		appear()
 	else:
 		$CollisionParticles.emitting = false
 		disappear()
-	set_physics_process(is_casting)
+	set_physics_process(Switch)
 
 func appear():
 	$appear.start()
@@ -48,17 +45,9 @@ func appear():
 
 func disappear():
 	$RayCastPlayer.enabled = false
-	$RayCastIce.enabled = false
 	$Tween.stop_all()
 	$Tween.interpolate_property($Line2D, "width", 1.0, 0, 0.1)
 	$Tween.start()
 
-func _on_TimerLaser_timeout():
-	self.is_casting = false
-	$TimerRelax.start()
-func _on_TimerRelax_timeout():
-	self.is_casting = true
-	$TimerLaser.start()
 func _on_appear_timeout():
 	$RayCastPlayer.enabled = true
-	$RayCastIce.enabled = true

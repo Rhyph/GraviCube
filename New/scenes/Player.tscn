@@ -242,7 +242,7 @@ collision_mask = 8
 
 [node name="Timers" type="Node2D" parent="."]
 
-[node name="IdleOn" type="Timer" parent="Timers"]
+[node name="idleSwitch" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
 
@@ -250,5 +250,5 @@ one_shot = true
 wait_time = 0.02
 one_shot = true
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="timeout" from="Timers/IdleOn" to="." method="_on_IdleOn_timeout"]
+[connection signal="timeout" from="Timers/idleSwitch" to="." method="_on_idleSwitch_timeout"]
 [connection signal="timeout" from="Timers/Dropped" to="." method="_on_Dropped_timeout"]

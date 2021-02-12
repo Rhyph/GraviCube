@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/effect_4.png-d004f084592610b5a8163c8a5987481b.stex"
+path="res://.import/laser.png-f4ce210a174cac85145e35b68cb78881.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Particles/effect_4.png"
-dest_files=[ "res://.import/effect_4.png-d004f084592610b5a8163c8a5987481b.stex" ]
+source_file="res://sprites/laser.png"
+dest_files=[ "res://.import/laser.png-f4ce210a174cac85145e35b68cb78881.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
