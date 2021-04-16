@@ -3,31 +3,48 @@ extends KinematicBody2D
 const GRAVIGUN = preload("res://scenes/GraviGun.tscn")
 
 const AIR_RESISTANCE = 0.02
-const MAX_SPEED = 96
+const MAX_SPEED = 64
 const JUMP_FORCE = 92
 
 var gravity = 400
 var acceleration = 512
 var friction = 0.2
 var projectile = 1
+#var touch = 1
 
 var idleSwitch = true
 var is_jumping = false
 var is_GraviJump = false
 var dropped = false
+#var touched = false
+var GraviShot = false
 
-var mousePos
+#var touch_position = Vector2()
+#var cameraLeftTop = Vector2()
 var gravigun
+#var mousePos
+var LinePos = Vector2()
 
 var motion = Vector2.ZERO
 
+#func _input(event):
+#	if event is InputEventScreenTouch:
+#		touch *= -1
+#		if touch == -1:
+#			touched = true
+#			touch_position = cameraLeftTop + event.position
+#			$Timers/Touched.start()
+#			if motion.x < 3 and motion.y < 7: 
+#				var direction_of_view = (global_position - touch_position).normalized()
+#				turn(direction_of_view.x)
 #Считывает, двигается ли мышка в данный момент, чтобы флипнуть спрайт
-func _input(event):
-	if event is InputEventMouseMotion and motion.x < 3 and motion.y < 7:
-		var direction_of_view = (global_position - get_global_mouse_position()).normalized()
-		turn(direction_of_view.x)
+#	if event is InputEventMouseMotion and motion.x < 3 and motion.y < 7:
+#		var direction_of_view = (global_position - get_global_mouse_position()).normalized()
+#		turn(direction_of_view.x)
 
 func _physics_process(delta):
+	#cameraLeftTop = $Camera2D.get_camera_screen_center() - get_viewport_rect().size / 2
+	
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if x_input != 0:
 		motion.x += x_input * acceleration * delta
@@ -51,7 +68,7 @@ func _physics_process(delta):
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, friction)
 		
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_pressed("ui_up"):
 			is_jumping = true
 			motion.y = -JUMP_FORCE
 	else:
@@ -61,24 +78,29 @@ func _physics_process(delta):
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
 	
+	print(global_position)
+	
 	if not is_on_floor():
 		dropped = false
 		$Timers/Dropped.start()
 	
 	#Вызывает гравитационный выстрел
 	if G.GraviSwitch == true:
-		if Input.is_action_just_pressed("ui_lmb") and projectile > 0:
-			mousePos = get_global_mouse_position()
+		if GraviShot == true and projectile > 0:
+			#mousePos = get_global_mouse_position()
+			LinePos = $"/root/World/Player/RayCast2D/Line2D/Node2D".global_position
+			GraviShot = false
 			projectile -= 1
 			gravigun = GRAVIGUN.instance()
 			get_parent().add_child(gravigun)
 			gravigun.position = $Position2D.global_position
 	
 	#Плавно возвращает время на единицу
-	if Engine.time_scale < 0.975:
-		Engine.time_scale += 0.025
-	else:
-		Engine.time_scale = 1
+	if Engine.time_scale >= 0.6:
+		if Engine.time_scale < 0.975:
+			Engine.time_scale += 0.025
+		else:
+			Engine.time_scale = 1
 	
 	animation()
 	
@@ -118,6 +140,8 @@ func _on_idleSwitch_timeout():
 func _on_Dropped_timeout():
 	if is_on_floor():
 		dropped = true
+#func _on_Touched_timeout():
+#	touched = false
 
 func _return_drop():
 	dropped = false

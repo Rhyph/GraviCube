@@ -17,4 +17,3 @@ func _Switch_On():
 		$"/root/World/Lasers/SwitchLaserStatic".Switch = false
 	
 	$"/root/World/Tiles/Locals/Local2TileMapSwitching"._Switching()
-	$"/root/World/Tiles/Locals/Local2TileMapSwitching2"._Switching()

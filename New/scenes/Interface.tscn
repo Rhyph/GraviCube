@@ -1,10 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sprites/Buttons/up.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Buttons/leftupgrey.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Buttons/left.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Buttons/upgrey.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Buttons/leftgrey.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Buttons/righgrey.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Buttons/right.png" type="Texture" id=9]
+[ext_resource path="res://sprites/Buttons/rightupgrey.png" type="Texture" id=10]
+[ext_resource path="res://scripts/Buttons.gd" type="Script" id=11]
+[ext_resource path="res://sprites/Buttons/rightup.png" type="Texture" id=12]
+[ext_resource path="res://sprites/Buttons/leftup.png" type="Texture" id=13]
+[ext_resource path="res://sprites/Buttons/circle.png" type="Texture" id=14]
+[ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
+[ext_resource path="res://sprites/Buttons/circlegrey.png" type="Texture" id=16]
+[ext_resource path="res://scripts/JoyStick.gd" type="Script" id=17]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
@@ -28,3 +46,74 @@ You're free to experiment."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Buttons" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.588235 )
+script = ExtResource( 11 )
+
+[node name="Up" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 38, 110 )
+scale = Vector2( 2, 2 )
+z_index = 2
+normal = ExtResource( 3 )
+pressed = ExtResource( 6 )
+
+[node name="Right" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 68, 140 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 8 )
+
+[node name="Left" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 8, 140 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 7 )
+
+[node name="RightUp" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 68, 110 )
+scale = Vector2( 2, 2 )
+z_index = 1
+normal = ExtResource( 12 )
+pressed = ExtResource( 10 )
+
+[node name="LeftUp" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 8, 110 )
+scale = Vector2( 2, 2 )
+z_index = 1
+normal = ExtResource( 13 )
+pressed = ExtResource( 4 )
+
+[node name="circlebig" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+self_modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 272, 132 )
+texture = ExtResource( 15 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="circlebig"]
+z_index = 1
+normal = ExtResource( 14 )
+pressed = ExtResource( 16 )
+shape = SubResource( 2 )
+script = ExtResource( 17 )
+
+[node name="Node2D" type="Node2D" parent="circlebig/TouchScreenButton"]
+position = Vector2( 16, 16 )
+
+[node name="Line2D" type="Line2D" parent="circlebig"]
+visible = false
+points = PoolVector2Array( 0, 0, 32, 0 )
+width = 1.0
+default_color = Color( 1, 0.00392157, 0.00392157, 1 )
+[connection signal="pressed" from="Buttons/Up" to="Buttons" method="_on_Up_pressed"]
+[connection signal="released" from="Buttons/Up" to="Buttons" method="_on_Up_released"]
+[connection signal="pressed" from="Buttons/Right" to="Buttons" method="_on_Right_pressed"]
+[connection signal="released" from="Buttons/Right" to="Buttons" method="_on_Right_released"]
+[connection signal="pressed" from="Buttons/Left" to="Buttons" method="_on_Left_pressed"]
+[connection signal="released" from="Buttons/Left" to="Buttons" method="_on_Left_released"]
+[connection signal="pressed" from="Buttons/RightUp" to="Buttons" method="_on_RightUp_pressed"]
+[connection signal="released" from="Buttons/RightUp" to="Buttons" method="_on_RightUp_released"]
+[connection signal="pressed" from="Buttons/LeftUp" to="Buttons" method="_on_LeftUp_pressed"]
+[connection signal="released" from="Buttons/LeftUp" to="Buttons" method="_on_LeftUp_released"]
+[connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
+[connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]

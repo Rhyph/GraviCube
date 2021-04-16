@@ -31,10 +31,11 @@ gdscript/warnings/integer_division=false
 
 window/size/width=320
 window/size/height=180
-window/size/test_width=1920
-window/size/test_height=1080
+window/size/test_width=1600
+window/size/test_height=900
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
+window/intended_usage/framebuffer_allocation.mobile=3
 
 [input]
 
@@ -65,6 +66,16 @@ ui_lmb={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+ui_rmb={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
@@ -77,5 +88,7 @@ ui_lmb={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation.mobile=0
 environment/default_clear_color=Color( 0.0976563, 0.0976563, 0.0976563, 1 )
+quality/depth/hdr.mobile=true
 environment/default_environment="res://default_env.tres"

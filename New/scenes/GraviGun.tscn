@@ -92,6 +92,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=5]
+resource_local_to_scene = true
 radius = 16.0
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -133,7 +134,7 @@ position = Vector2( -5.21541e-08, 5.4948e-08 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.01
 one_shot = true
 autostart = true
 
