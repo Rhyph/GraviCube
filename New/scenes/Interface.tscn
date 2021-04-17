@@ -85,6 +85,7 @@ normal = ExtResource( 13 )
 pressed = ExtResource( 4 )
 
 [node name="circlebig" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 272, 132 )
@@ -99,6 +100,27 @@ script = ExtResource( 17 )
 
 [node name="Node2D" type="Node2D" parent="circlebig/TouchScreenButton"]
 position = Vector2( 16, 16 )
+
+[node name="Label" type="Label" parent="circlebig/TouchScreenButton"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -4.0
+margin_top = 8.0
+margin_right = 36.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 0
+text = "30"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="circlebig/TouchScreenButton"]
+wait_time = 0.01
+one_shot = true
 
 [node name="Line2D" type="Line2D" parent="circlebig"]
 visible = false
@@ -117,3 +139,4 @@ default_color = Color( 1, 0.00392157, 0.00392157, 1 )
 [connection signal="released" from="Buttons/LeftUp" to="Buttons" method="_on_LeftUp_released"]
 [connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
+[connection signal="timeout" from="circlebig/TouchScreenButton/Timer" to="circlebig/TouchScreenButton" method="_on_Timer_timeout"]

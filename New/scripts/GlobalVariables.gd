@@ -3,4 +3,4 @@ extends Node2D
 
 
 
-var GraviSwitch = true #false
+var GraviSwitch = false #false

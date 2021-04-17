@@ -7,6 +7,7 @@ var speed = 200
 var motion = Vector2()
 var ice = false
 var sig = true
+var fast = true
 
 func _physics_process(delta):
 	if sig == true:
@@ -18,8 +19,10 @@ func _physics_process(delta):
 
 #Удаляет узел, если пуля вышла за камеру
 func _on_VisibilityNotifier2D_screen_exited():
-	$"/root/World/Player".projectile += 1
 	queue_free()
+	if fast == true:
+		$"/root/World/Player".projectile = 1
+		fast = false
 
 func _on_GraviGun_body_entered(body):
 	sig = true
@@ -38,3 +41,8 @@ func _on_Timer_timeout():
 
 func _on_Area2D2_body_entered(body):
 	ice = true
+
+func _on_Timer2_timeout():
+	if fast == true:
+		$"/root/World/Player".projectile = 1
+		fast = false

@@ -3,6 +3,11 @@ extends CanvasLayer
 
 
 
+func _input(event):
+	if event is InputEventScreenTouch:
+		$AcceptDialog.hide()
+		$"/root/World/Interface/circlebig".visible = true
+
 func _Popup():
 	$AcceptDialog.popup()
 
