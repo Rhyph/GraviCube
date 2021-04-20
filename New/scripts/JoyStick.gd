@@ -25,6 +25,9 @@ func _process(delta):
 	if ongoing_drag == -1:
 		var pos_difference = (Vector2(0,0) - radius) - position
 		position += pos_difference * return_accel * delta
+	
+	if inArea == true and $"/root/World/Player".projectile == 1:
+		Touched()
 
 func _button_pos():
 	return position + radius
@@ -51,11 +54,7 @@ func _input(event):
 			$"/root/World/Player/".GraviShot = true
 
 func _on_TouchScreenButton_pressed():
-	if $"/root/World/Player".projectile == 1:
-		$Timer.stop()
-		ms = 300
-		Engine.time_scale = 0.2
-		inArea = true
+	inArea = true
 func _on_TouchScreenButton_released():
 	$Timer.start()
 	Engine.time_scale = 1
@@ -65,3 +64,9 @@ func _on_Timer_timeout():
 	$Timer.start()
 	if ms != 0:
 		ms -= 10
+
+func Touched():
+	$Timer.stop()
+	ms = 300
+	Engine.time_scale = 0.1
+	$"/root/World/Player".Slow = true

@@ -22,6 +22,10 @@ func _physics_process(delta):
 	$RayCastIce.cast_to.x = cast_point.length()
 	$RayCastPlayer.cast_to.x = cast_point.length()
 	if $RayCastPlayer.is_colliding():
-		get_tree().reload_current_scene()
+		$"/root/World/Player".die()
 	if $RayCastIce.is_colliding():
 		$"/root/World/Tiles/Ice/TileMapIce"._Laser()
+
+func _on_Area2D2_body_entered(body):
+	if "Player" in body.name:
+		$AnimationPlayer.play("rotate")

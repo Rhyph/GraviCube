@@ -23,7 +23,7 @@ func _physics_process(delta):
 	$BeamParticles.process_material.emission_box_extents.x = cast_point.length() * 2.3
 	$RayCastPlayer.cast_to.x = cast_point.length()
 	if $RayCastPlayer.is_colliding():
-		get_tree().reload_current_scene()
+		$"/root/World/Player".die()
 	$RayCastIce.cast_to.x = cast_point.length()
 	if $RayCastIce.is_colliding():
 		$"/root/World/Tiles/Ice/TileMapIce"._Laser()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player.png" type="Texture" id=2]
@@ -187,8 +187,10 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 2.5, 3.5 )
+
 [node name="Player" type="KinematicBody2D"]
-modulate = Color( 1.6, 1.6, 1.6, 1 )
 collision_layer = 16
 collision_mask = 13
 script = ExtResource( 1 )
@@ -204,6 +206,10 @@ texture = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+limit_left = -112
+limit_top = -24
+limit_right = 1024
+limit_bottom = 304
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -251,6 +257,10 @@ one_shot = true
 wait_time = 0.02
 one_shot = true
 
+[node name="SlowMo" type="Timer" parent="Timers"]
+wait_time = 0.075
+one_shot = true
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 cast_to = Vector2( 0, 100 )
 collision_mask = 11
@@ -264,6 +274,15 @@ default_color = Color( 1, 1, 1, 1 )
 
 [node name="Node2D" type="Node2D" parent="RayCast2D/Line2D"]
 position = Vector2( 0, 16 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2147483661
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 8 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timers/idleSwitch" to="." method="_on_idleSwitch_timeout"]
 [connection signal="timeout" from="Timers/Dropped" to="." method="_on_Dropped_timeout"]
+[connection signal="timeout" from="Timers/SlowMo" to="." method="_on_SlowMo_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -3,10 +3,15 @@ extends CanvasLayer
 
 
 
-func _input(event):
-	if event is InputEventScreenTouch:
-		$AcceptDialog.hide()
+func _ready():
+	if G.GraviSwitch == true:
 		$"/root/World/Interface/circlebig".visible = true
+
+func _input(event):
+	if G.GraviSwitch == true:
+		if event is InputEventScreenTouch:
+			$AcceptDialog.hide()
+			$"/root/World/Interface/circlebig".visible = true
 
 func _Popup():
 	$AcceptDialog.popup()

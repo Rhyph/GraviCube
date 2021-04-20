@@ -59,7 +59,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1.1, 1.4, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ice:frame")
@@ -86,17 +86,17 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.538835, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 32, 1, 1 )
 flag_disable_z = true
@@ -105,10 +105,9 @@ gravity = Vector3( 0, -98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 200.0
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 6 )
 
 [node name="TileMapIce" type="StaticBody2D"]
-modulate = Color( 1, 1.1, 1.4, 1 )
 collision_layer = 8
 collision_mask = 17
 script = ExtResource( 2 )
@@ -123,15 +122,15 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 anims/Laser = SubResource( 2 )
-anims/idle = SubResource( 9 )
+anims/idle = SubResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 modulate = Color( 0.695313, 0.695313, 0.695313, 1 )
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( -1.78814e-06, -4 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 2
 emitting = false
 amount = 36
-process_material = SubResource( 8 )
+process_material = SubResource( 7 )
 texture = ExtResource( 3 )

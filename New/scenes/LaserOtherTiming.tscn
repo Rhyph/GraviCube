@@ -30,7 +30,7 @@ func _physics_process(delta):
 	$BeamParticles.process_material.emission_box_extents.x = cast_point.length() * 2.3
 	$RayCastPlayer.cast_to.x = cast_point.length()
 	if $RayCastPlayer.is_colliding():
-		get_tree().reload_current_scene()
+		$\"/root/World/Player\".die()
 	$RayCastIce.cast_to.x = cast_point.length()
 	if $RayCastIce.is_colliding():
 		$\"/root/World/Tiles/Ice/TileMapIce\"._Laser()
@@ -155,7 +155,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2.5, 2.6, 3, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 2, 2, 2, 0 ), Color( 2, 2, 2, 0 ), Color( 2, 2, 2, 1 ), Color( 2, 2, 2, 1 ), Color( 2, 2, 2, 0 ) ]
+"values": [ Color( 1, 1, 2, 0 ), Color( 1, 1, 2, 0 ), Color( 1, 1, 2, 1 ), Color( 1, 1, 2, 1 ), Color( 1, 1, 2, 0 ) ]
 }
 
 [node name="LaserOtherTiming" type="RayCast2D"]
@@ -167,7 +167,6 @@ collision_mask = 13
 script = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
-modulate = Color( 2, 1.4, 1, 1 )
 points = PoolVector2Array( 0, 0, 32, 0 )
 width = 1.0
 default_color = Color( 1, 0.282353, 0, 1 )
@@ -175,7 +174,6 @@ default_color = Color( 1, 0.282353, 0, 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="CastingParticles" type="Particles2D" parent="."]
-modulate = Color( 2, 1.4, 1, 1 )
 material = SubResource( 2 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 1
@@ -185,7 +183,6 @@ process_material = SubResource( 7 )
 texture = ExtResource( 3 )
 
 [node name="CollisionParticles" type="Particles2D" parent="."]
-modulate = Color( 2, 1.4, 1, 1 )
 material = SubResource( 2 )
 scale = Vector2( 0.15, 0.15 )
 z_index = 1
@@ -195,7 +192,6 @@ process_material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [node name="BeamParticles" type="Particles2D" parent="."]
-modulate = Color( 2, 1.4, 1, 1 )
 material = SubResource( 2 )
 scale = Vector2( 0.2, 0.2 )
 emitting = false
@@ -233,7 +229,7 @@ rotation = 4.71239
 texture = ExtResource( 1 )
 
 [node name="!!!" type="Sprite" parent="."]
-modulate = Color( 2, 2, 2, 0 )
+modulate = Color( 1, 1, 2, 0 )
 position = Vector2( 12, -0.5 )
 rotation = 4.71239
 texture = ExtResource( 2 )

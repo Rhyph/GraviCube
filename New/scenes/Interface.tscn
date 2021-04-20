@@ -20,6 +20,7 @@
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
+/constants/ = 0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 16.0
@@ -86,8 +87,6 @@ pressed = ExtResource( 4 )
 
 [node name="circlebig" type="Sprite" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.784314 )
-self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 272, 132 )
 texture = ExtResource( 15 )
 
