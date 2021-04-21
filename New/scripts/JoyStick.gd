@@ -3,6 +3,7 @@ extends TouchScreenButton
 var radius = Vector2(16,16)
 
 var inArea = false
+var once = false
 
 var boundary = 32
 var ongoing_drag = -1
@@ -27,7 +28,8 @@ func _process(delta):
 		position += pos_difference * return_accel * delta
 	
 	if inArea == true and $"/root/World/Player".projectile == 1:
-		Touched()
+		if once == true:
+			Touched()
 
 func _button_pos():
 	return position + radius
@@ -55,7 +57,9 @@ func _input(event):
 
 func _on_TouchScreenButton_pressed():
 	inArea = true
+	once = true
 func _on_TouchScreenButton_released():
+	once = false
 	$Timer.start()
 	Engine.time_scale = 1
 	inArea = false
@@ -66,6 +70,7 @@ func _on_Timer_timeout():
 		ms -= 10
 
 func Touched():
+	once = false
 	$Timer.stop()
 	ms = 300
 	Engine.time_scale = 0.1
