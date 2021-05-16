@@ -49,6 +49,7 @@ __meta__ = {
 }
 
 [node name="Buttons" type="Node2D" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.588235 )
 script = ExtResource( 11 )
 
@@ -126,6 +127,7 @@ visible = false
 points = PoolVector2Array( 0, 0, 32, 0 )
 width = 1.0
 default_color = Color( 1, 0.00392157, 0.00392157, 1 )
+
 [connection signal="pressed" from="Buttons/Up" to="Buttons" method="_on_Up_pressed"]
 [connection signal="released" from="Buttons/Up" to="Buttons" method="_on_Up_released"]
 [connection signal="pressed" from="Buttons/Right" to="Buttons" method="_on_Right_pressed"]

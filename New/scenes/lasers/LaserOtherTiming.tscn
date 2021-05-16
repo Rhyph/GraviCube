@@ -1,0 +1,248 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://sprites/laser.png" type="Texture" id=1]
+[ext_resource path="res://sprites/!!!.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Particles/spotlight_1.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends RayCast2D
+
+var is_casting = false setget set_is_casting
+
+func _ready():
+	set_physics_process(false)
+	$Line2D.points[1] = Vector2.ZERO
+
+func _physics_process(delta):
+	var cast_point = cast_to
+	
+	force_raycast_update()
+	
+	$CollisionParticles.emitting = is_colliding()
+	
+	if is_colliding():
+		cast_point = to_local(get_collision_point())
+		$CollisionParticles.global_rotation = get_collision_normal().angle()
+		$CollisionParticles.position = cast_point
+	
+	$Line2D.points[1] = cast_point
+	$BeamParticles.position = cast_point * 0.5
+	$BeamParticles.process_material.emission_box_extents.x = cast_point.length() * 2.3
+	$RayCastPlayer.cast_to.x = cast_point.length()
+	if $RayCastPlayer.is_colliding():
+		$\"/root/World/Player\".die()
+	$RayCastIce.cast_to.x = cast_point.length()
+	if $RayCastIce.is_colliding():
+		$\"/root/World/Tiles/Ice/TileMapIce\"._Laser()
+
+func set_is_casting(cast):
+	is_casting = cast
+	
+	$BeamParticles.emitting = is_casting
+	$CastingParticles.emitting = is_casting
+	if is_casting:
+		appear()
+	else:
+		$CollisionParticles.emitting = false
+		disappear()
+	set_physics_process(is_casting)
+
+func appear():
+	$appear.start()
+	$Tween.stop_all()
+	$Tween.interpolate_property($Line2D, \"width\", 0, 1.0, 0.2)
+	$Tween.start()
+
+func disappear():
+	$RayCastPlayer.enabled = false
+	$RayCastIce.enabled = false
+	$Tween.stop_all()
+	$Tween.interpolate_property($Line2D, \"width\", 1.0, 0, 0.1)
+	$Tween.start()
+
+func _on_TimerLaser_timeout():
+	self.is_casting = false
+	$TimerRelax.start()
+func _on_TimerRelax_timeout():
+	self.is_casting = true
+	$TimerLaser.start()
+func _on_appear_timeout():
+	$RayCastPlayer.enabled = true
+	$RayCastIce.enabled = true
+
+func _on_Timer_timeout():
+	$TimerRelax.start()
+"
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.748428, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.620087, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+hue_variation = 0.1
+hue_variation_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 250.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+hue_variation = 0.1
+hue_variation_random = 0.1
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.00384615, 0.742718, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 0.1 ), 0.0, -0.101552, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+linear_accel_random = 1.0
+tangential_accel = 100.0
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+hue_variation = 0.1
+hue_variation_random = 0.1
+
+[sub_resource type="Animation" id=14]
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 2.6, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 2, 0 ), Color( 1, 1, 2, 0 ), Color( 1, 1, 2, 1 ), Color( 1, 1, 2, 1 ), Color( 1, 1, 2, 0 ) ]
+}
+
+[node name="LaserOtherTiming" type="RayCast2D"]
+rotation = 4.71239
+enabled = true
+cast_to = Vector2( 320, 0 )
+collision_mask = 13
+script = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color( 2, 1, 1, 1 )
+points = PoolVector2Array( 0, 0, 32, 0 )
+width = 1.0
+default_color = Color( 1, 0.282353, 0, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CastingParticles" type="Particles2D" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.1, 0.1 )
+z_index = 1
+emitting = false
+lifetime = 0.5
+process_material = SubResource( 7 )
+texture = ExtResource( 3 )
+
+[node name="CollisionParticles" type="Particles2D" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.15, 0.15 )
+z_index = 1
+emitting = false
+lifetime = 0.5
+process_material = SubResource( 8 )
+texture = ExtResource( 3 )
+
+[node name="BeamParticles" type="Particles2D" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.2, 0.2 )
+emitting = false
+amount = 18
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 13 )
+texture = ExtResource( 3 )
+
+[node name="TimerLaser" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="TimerRelax" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="RayCastPlayer" type="RayCast2D" parent="."]
+z_index = -1
+cast_to = Vector2( 320, 0 )
+collision_mask = 16
+
+[node name="RayCastIce" type="RayCast2D" parent="."]
+z_index = -1
+cast_to = Vector2( 320, 0 )
+collision_mask = 8
+
+[node name="appear" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="laser" type="Sprite" parent="."]
+position = Vector2( 2, 0 )
+rotation = 4.71239
+texture = ExtResource( 1 )
+
+[node name="!!!" type="Sprite" parent="."]
+modulate = Color( 1, 1, 2, 0 )
+position = Vector2( 12, -0.5 )
+rotation = 4.71239
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="!!!"]
+autoplay = "!!!"
+anims/!!! = SubResource( 14 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimerLaser" to="." method="_on_TimerLaser_timeout"]
+[connection signal="timeout" from="TimerRelax" to="." method="_on_TimerRelax_timeout"]
+[connection signal="timeout" from="appear" to="." method="_on_appear_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

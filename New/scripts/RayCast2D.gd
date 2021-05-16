@@ -7,7 +7,8 @@ func _ready():
 	$Line2D.points[1] = Vector2.ZERO
 
 func _physics_process(delta):
-	rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees - 90
+	if $"/root/World/Interface/circlebig/TouchScreenButton".inArea == true:
+		rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees - 90
 	
 	var cast_point = cast_to
 	

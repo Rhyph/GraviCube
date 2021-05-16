@@ -25,6 +25,7 @@ var LinePos = Vector2()
 var motion = Vector2.ZERO
 
 func _ready():
+	G.can = true
 	position = G.PlayerPos
 	Engine.time_scale = 1
 
@@ -127,7 +128,8 @@ func _return_drop():
 
 #Рестартает сцену, если игрок вышел за лимит камеры
 func _on_VisibilityNotifier2D_screen_exited():
-	get_tree().reload_current_scene()
+	if G.can == true:
+		get_tree().reload_current_scene()
 func _on_Area2D_body_entered(body):
 	die()
 
