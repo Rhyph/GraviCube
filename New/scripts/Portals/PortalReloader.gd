@@ -8,4 +8,5 @@ func _on_Area2D_body_entered(body):
 		G.can = false
 		$AnimationPlayer.play("Fade_in")
 		yield($AnimationPlayer,"animation_finished")
+		G.PlayerPos = Vector2(4, -4)
 		get_tree().reload_current_scene()

@@ -149,10 +149,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5, 1.6, 2, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 1.6, 1.7, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 2, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 2, 1 ), Color( 1, 1, 2, 1 ), Color( 1, 1, 2, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="RayCast2D" type="RayCast2D"]
@@ -225,7 +225,7 @@ rotation = 4.71239
 texture = ExtResource( 3 )
 
 [node name="!!!" type="Sprite" parent="."]
-modulate = Color( 2, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 12, -0.5 )
 rotation = 4.71239
 texture = ExtResource( 4 )

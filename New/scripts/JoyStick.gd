@@ -5,9 +5,9 @@ var radius = Vector2(16,16)
 var inArea = false
 var once = false
 
-var boundary = 32
+var boundary = 46
 var ongoing_drag = -1
-var return_accel = 15
+var return_accel = 20
 var ms = 300
 
 func _process(delta):
