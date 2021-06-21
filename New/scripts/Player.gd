@@ -4,10 +4,10 @@ const GRAVIGUN = preload("res://scenes/GraviGun.tscn")
 
 const AIR_RESISTANCE = .02
 const MAX_SPEED = 64
-const JUMP_FORCE = 92
+const JUMP_FORCE = 72
 const GRAVITY = 400
 
-var acceleration = 512
+var acceleration = 384
 var friction = .4
 var projectile = 1
 
@@ -18,6 +18,7 @@ var is_jumping = false
 var is_GraviJump = false
 var dropped = false
 var GraviShot = false
+var Kayotte = true
 
 var gravigun
 
@@ -26,6 +27,9 @@ var LinePos = Vector2()
 var motion = Vector2.ZERO
 
 func _ready():
+	Input.action_release("ui_left")
+	Input.action_release("ui_right")
+	Input.action_release("ui_up")
 	G.can = true
 	position = G.PlayerPos
 	Engine.time_scale = 1
@@ -47,9 +51,11 @@ func _physics_process(delta):
 		acceleration = 256
 	else:
 		friction = .4
-		acceleration = 512
+		acceleration = 384
 	
 	if is_on_floor():
+		$Timers/Kayotte.start()
+		Kayotte = true
 		is_jumping = false
 		if idleSwitch:
 			if x_input == 0:
@@ -63,16 +69,17 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_up"):
 			is_jumping = true
 			motion.y = -JUMP_FORCE
-	elif is_jumping == false:
-		if Input.is_action_just_released("ui_up") and motion.y < -JUMP_FORCE/2:
-			motion.y = -JUMP_FORCE/2
+	else:
+		dropped = false
+		$Timers/Dropped.start()
 		
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
-	
-	if not is_on_floor():
-		dropped = false
-		$Timers/Dropped.start()
+		
+		if Kayotte == true:
+			if Input.is_action_pressed("ui_up"):
+				is_jumping = true
+				motion.y = -JUMP_FORCE
 	
 	#Вызывает гравитационный выстрел
 	if G.GraviSwitch:
@@ -94,16 +101,10 @@ func _physics_process(delta):
 		else:
 			SlowMo = false
 	
-	if is_GraviJump and x_input == 0:
-		if motion.x > 0:
-			motion.x -= .5
-		else:
-			motion.x += .5
-	
 	if $"/root/World/Interface/circlebig/TouchScreenButton".inArea:
-		if $RayCast2D/Line2D/Node2D.global_position.x - global_position.x >= 0:
+		if $RayCast2D/Line2D/Node2D.global_position.x - global_position.x > 0:
 			$player.set_flip_h(false)
-		else:
+		elif $RayCast2D/Line2D/Node2D.global_position.x - global_position.x != 0:
 			$player.set_flip_h(true)
 	
 	animation()
@@ -111,12 +112,10 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP)
 
 func animation():
-	if motion.y < -92:
+	if motion.y < -72:
 		$AnimationPlayer.play("downGravi")
-	if motion.y == -92:
+	if motion.y == -72 or (is_jumping == false and is_GraviJump == false and motion.y > 7 and motion.y < 14):
 		$AnimationPlayer.play("downFast")
-	if (is_jumping == false and is_GraviJump == false) and (motion.y > 7 and motion.y < 14):
-		$AnimationPlayer.play("downNoJump")
 	if dropped:
 		idleSwitch = false
 		$Timers/idleSwitch.start()
@@ -135,11 +134,6 @@ func Vector():
 	else:
 		motion.y = 3 * graviMotion.y - abs(GraviBoost / 2)
 
-func die():
-	$"/root/World/Interface/circlebig".visible = false
-	$"/root/World/Interface/Buttons".visible = false
-	get_tree().reload_current_scene()
-
 func _return_drop():
 	dropped = false
 
@@ -147,8 +141,14 @@ func _return_drop():
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.can:
 		get_tree().reload_current_scene()
+#Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
-	die()
+	if not "1wayblock" in body.name:
+		die()
+
+func die():
+	$"/root/World/Interface/circlebig".visible = false
+	get_tree().reload_current_scene()
 
 #Timers
 func _on_idleSwitch_timeout():
@@ -160,3 +160,7 @@ func _on_SlowMo_timeout():
 	if Slow == false:
 		SlowMo = true
 		Slow = true
+
+func _on_Kayotte_timeout():
+	if not is_on_floor():
+		Kayotte = false

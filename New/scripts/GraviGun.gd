@@ -3,24 +3,24 @@ extends Area2D
 
 
 
-var speed = 200
+var speed = 400
 var motion = Vector2()
 var ice = false
 var sig = true
 var fast = true
 
 func _physics_process(delta):
-	if sig == true:
+	if sig:
 		motion = ($"/root/World/Player".LinePos - $"/root/World/Player".global_position).normalized() * speed * delta
 		sig = false
-	if ice == true:
+	if ice:
 		motion.y *= -1
 	translate(motion)
 
 #Удаляет узел, если пуля вышла за камеру
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	if fast == true:
+	if fast:
 		$"/root/World/Player".projectile = 1
 		fast = false
 
@@ -43,6 +43,6 @@ func _on_Area2D2_body_entered(body):
 	ice = true
 
 func _on_Timer2_timeout():
-	if fast == true:
+	if fast:
 		$"/root/World/Player".projectile = 1
 		fast = false

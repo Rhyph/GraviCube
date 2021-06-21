@@ -4,11 +4,12 @@ var radius = Vector2(16,16)
 
 var inArea = false
 var once = false
+var down = false
 
 var boundary = 46
 var ongoing_drag = -1
 var return_accel = 20
-var ms = 300
+var ms = 400
 
 func _process(delta):
 	$Label.set_text(str(ms))
@@ -16,9 +17,9 @@ func _process(delta):
 	$"/root/World/Interface/circlebig/Line2D".look_at($Node2D.global_position)
 	
 	if $"/root/World/Player".projectile == 1:
-		ms = 300
+		ms = 400
 	
-	if ms == 300:
+	if ms == 400:
 		$Label.visible = false
 	else:
 		$Label.visible = true
@@ -37,6 +38,7 @@ func _button_pos():
 func _input(event):
 	if inArea == true and $"/root/World/Player".projectile == 1:
 		if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
+			down = false
 			$"/root/World/Player/RayCast2D".enabled = true
 			$"/root/World/Player/RayCast2D/Line2D".visible = true
 			
@@ -48,7 +50,8 @@ func _input(event):
 				
 				if _button_pos().length() > boundary:
 					set_position(_button_pos().normalized() * boundary - radius)
-		
+		elif ongoing_drag == -1:
+			down = true
 		if event is InputEventScreenTouch and not event.is_pressed() and event.get_index() == ongoing_drag:
 			ongoing_drag = -1
 			$"/root/World/Player/RayCast2D".enabled = false
@@ -59,6 +62,11 @@ func _on_TouchScreenButton_pressed():
 	inArea = true
 	once = true
 func _on_TouchScreenButton_released():
+	if down == true and $"/root/World/Player".projectile == 1:
+		$"/root/World/Player/".GraviShot = true
+		$"/root/World/Player/RayCast2D".down = true
+		$"/root/World/Player/RayCast2D".enabled = false
+		$"/root/World/Player/RayCast2D/Line2D".visible = false
 	once = false
 	$Timer.start()
 	Engine.time_scale = 1
@@ -72,6 +80,6 @@ func _on_Timer_timeout():
 func Touched():
 	once = false
 	$Timer.stop()
-	ms = 300
+	ms = 400
 	Engine.time_scale = 0.1
 	$"/root/World/Player".Slow = true

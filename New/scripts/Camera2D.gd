@@ -8,7 +8,7 @@ func _process(delta):
 		limit_top = -64
 	
 	if G.level == "Tutorial":
-		limit_bottom = 88
+		limit_bottom = 96
 		limit_left = -8
 		limit_right = 936
 		limit_top = -40
@@ -22,5 +22,5 @@ func _process(delta):
 	if G.level == "Level1":
 		limit_bottom = 8
 		limit_left = -48
-		limit_right = 344
+		limit_right = 364
 		limit_top = -536
