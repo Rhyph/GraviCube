@@ -5,15 +5,15 @@
 [ext_resource path="res://scenes/Portals/PortalHomie.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/G.level/Arena.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/!!!.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Tiles/!!!.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/lasers/Laser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/lasers/LaserOtherTiming.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/1wayblock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Tiles/1wayblock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/marks/mark4.png" type="Texture" id=11]
 [ext_resource path="res://sprites/marks/mark1.png" type="Texture" id=12]
-[ext_resource path="res://scripts/Switchings/TileMapSwitching.gd" type="Script" id=13]
-[ext_resource path="res://scripts/Switchings/TileMapSwitching2.gd" type="Script" id=14]
+[ext_resource path="res://scripts/Tiles/TileMapSwitching.gd" type="Script" id=13]
+[ext_resource path="res://scripts/Tiles/TileMapSwitching2.gd" type="Script" id=14]
 [ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=15]
 [ext_resource path="res://scripts/Tiles/TileMapChanging.gd" type="Script" id=17]
 [ext_resource path="res://scripts/Tiles/TileMapChanging2.gd" type="Script" id=18]
@@ -674,6 +674,9 @@ collision_mask = 2147483648
 format = 1
 script = ExtResource( 14 )
 
+[node name="1wayblock" parent="Tiles" instance=ExtResource( 10 )]
+position = Vector2( 260, -252 )
+
 [node name="Lasers" type="Node2D" parent="."]
 
 [node name="Laser" parent="Lasers" instance=ExtResource( 8 )]
@@ -706,9 +709,6 @@ script = ExtResource( 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 33 )
-
-[node name="StaticBody2D" parent="." instance=ExtResource( 10 )]
-position = Vector2( 260, -252 )
 
 [node name="marks" type="Node2D" parent="."]
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Gravigun.gd" type="Script" id=1]
+[ext_resource path="res://scenes/PlayerObjects/GraviGun.tscn" type="PackedScene" id=2]
+
+[node name="RayCast2D" type="RayCast2D"]
+enabled = true
+cast_to = Vector2( 0, 5 )
+script = ExtResource( 1 )
+
+[node name="Gravigun" parent="." instance=ExtResource( 2 )]
+rotation = 1.5708

@@ -6,13 +6,13 @@
 [ext_resource path="res://scripts/G.level/Tutorial.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Switchings/Switcher.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/1wayblock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Tiles/1wayblock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scripts/SkillGiver.gd" type="Script" id=12]
-[ext_resource path="res://scripts/Switchings/TileMapSwitching.gd" type="Script" id=13]
-[ext_resource path="res://scripts/Switchings/TileMapSwitching2.gd" type="Script" id=14]
-[ext_resource path="res://sprites/bullet.png" type="Texture" id=21]
+[ext_resource path="res://scripts/Objects/SkillGiver.gd" type="Script" id=12]
+[ext_resource path="res://scripts/Tiles/TileMapSwitching.gd" type="Script" id=13]
+[ext_resource path="res://scripts/Tiles/TileMapSwitching2.gd" type="Script" id=14]
+[ext_resource path="res://sprites/PlayerObjects/bullet.png" type="Texture" id=21]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=22]
 [ext_resource path="res://sprites/Particles/random_selection.png" type="Texture" id=23]
 [ext_resource path="res://sprites/Tiles/switchblock.png" type="Texture" id=25]
@@ -578,7 +578,7 @@ glow_blend_mode = 0
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 5, -4 )
+position = Vector2( 4, -4 )
 
 [node name="Tiles" type="Node2D" parent="."]
 position = Vector2( 160, 0 )

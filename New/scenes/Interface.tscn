@@ -1,14 +1,14 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://scripts/Interface.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
 [ext_resource path="res://sprites/Buttons/circlegrey2.png" type="Texture" id=14]
 [ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
 [ext_resource path="res://sprites/Buttons/circle2.png" type="Texture" id=16]
-[ext_resource path="res://scripts/TouchScreenButton2.gd" type="Script" id=17]
+[ext_resource path="res://scripts/Interface/TouchScreenButton2.gd" type="Script" id=17]
 [ext_resource path="res://sprites/Buttons/halfstick.png" type="Texture" id=18]
-[ext_resource path="res://scripts/TouchScreenButton.gd" type="Script" id=19]
-[ext_resource path="res://scripts/halfstick.gd" type="Script" id=20]
+[ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
+[ext_resource path="res://scripts/Interface/halfstick.gd" type="Script" id=20]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
@@ -34,9 +34,6 @@ extents = Vector2( 104, 90 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 56, 34 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 56, 56 )
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
@@ -119,7 +116,7 @@ script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
-position = Vector2( 75, 90 )
+position = Vector2( 77, 90 )
 shape = SubResource( 6 )
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -135,14 +132,6 @@ visible = false
 position = Vector2( 248, 29 )
 shape = SubResource( 8 )
 
-[node name="Area2D3" type="Area2D" parent="."]
-position = Vector2( 16, 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-visible = false
-position = Vector2( 248, 119 )
-shape = SubResource( 9 )
-
 [connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
 [connection signal="timeout" from="circlebig/TouchScreenButton/Timer" to="circlebig/TouchScreenButton" method="_on_Timer_timeout"]
@@ -150,4 +139,3 @@ shape = SubResource( 9 )
 [connection signal="released" from="halfstick/TouchScreenButton2" to="halfstick/TouchScreenButton2" method="_on_TouchScreenButton_released"]
 [connection signal="input_event" from="Area2D" to="halfstick" method="_on_Area2D_input_event"]
 [connection signal="input_event" from="Area2D2" to="halfstick" method="_on_Area2D2_input_event"]
-[connection signal="input_event" from="Area2D3" to="halfstick" method="_on_Area2D3_input_event"]
