@@ -1,11 +1,11 @@
 extends TouchScreenButton
 
-var radius = Vector2(12,12)
+var radius = Vector2(10,10)
 
 var inArea = false
 var down = false
 
-var boundary = 32
+var boundary = 28
 var ongoing_drag = -1
 var return_accel = 20
 
@@ -16,8 +16,8 @@ func _ready():
 
 func _process(delta):
 	pos_zero = (Vector2(0,0) - radius) - position
-	position.x = clamp(position.x, -48, 32)
-	position.y = clamp(position.y, -48, -16)
+	position.x = clamp(position.x, -48, 28)
+	position.y = clamp(position.y, -48, -10)
 	
 	if ongoing_drag == -1:
 		var pos_difference = (Vector2(0,0) - radius) - position
@@ -31,39 +31,38 @@ func _input(event):
 		if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 			var event_dist_from_center = (event.position - get_parent().global_position).length()
 			
-			if sqrt(pos_zero.x * pos_zero.x + pos_zero.y * pos_zero.y) > 30:
-				if position.x <= -45 and position.y >= -29.5:
+			if sqrt(pos_zero.x * pos_zero.x + pos_zero.y * pos_zero.y) > 25:
+				if pos_zero.x >= 25 and pos_zero.y < 11:
 					Input.action_release("ui_up")
 					Input.action_release("ui_right")
 					Input.action_press("ui_left")
-				elif position.x < -28 and position.y > -45.5:
-					if position.y < -29.5:
-						Input.action_release("ui_right")
-						Input.action_press("ui_left")
-						Input.action_press("ui_up")
-						Input.action_release("ui_right")
-				elif position.x <= -4 and position.y <= -45.5:
+				elif pos_zero.x < 25 and pos_zero.y >= 11 and pos_zero.x > 10.5 and pos_zero.y < 25.5:
+					Input.action_release("ui_right")
+					Input.action_press("ui_left")
+					Input.action_press("ui_up")
+					Input.action_release("ui_right")
+				elif pos_zero.x >= -10.5 and pos_zero.x <= 10.5 and pos_zero.y >= 25.5:
 					Input.action_release("ui_left")
 					Input.action_release("ui_right")
 					Input.action_press("ui_up")
-				elif position.x < 13 and position.y <= -29.5:
+				elif pos_zero.x > -25 and pos_zero.x < -10.5 and pos_zero.y < 25.5 and pos_zero.y >= 11:
 					Input.action_release("ui_left")
 					Input.action_press("ui_right")
 					Input.action_press("ui_up")
-				else:
+				elif pos_zero.x <= -25 and pos_zero.y < 11:
 					Input.action_release("ui_up")
 					Input.action_release("ui_left")
 					Input.action_press("ui_right")
 			else:
-				if position.x < -30 and position.y > -20:
+				if pos_zero.x > 14 and pos_zero.y < 8:
 					Input.action_press("ui_left")
 				else:
 					Input.action_release("ui_left")
-				if position.x > -2 and position.y > -20:
+				if pos_zero.x < -14 and pos_zero.y < 8:
 					Input.action_press("ui_right")
 				else:
 					Input.action_release("ui_right")
-				if position.x > -22 and position.x < -10 and position.y < -32:
+				if pos_zero.y > 14 and pos_zero.x > -7 and pos_zero.x < 7:
 					Input.action_press("ui_up")
 				else:
 					Input.action_release("ui_up")

@@ -1,14 +1,20 @@
 extends Area2D
 
-
-
+const PARTICLES = preload("res://scenes/PlayerObjects/BulletParticles.tscn")
 
 var speed = 400
 var motion = Vector2()
 var sig = true
 var fast = true
+var part = true
+
+var particles
 
 func _physics_process(delta):
+	if part:
+		particles = PARTICLES.instance()
+		get_parent().add_child(particles)
+		particles.position = $Position2D.global_position
 	if sig:
 		motion = ($"/root/World/Player".LinePos - $"/root/World/Player".global_position).normalized() * speed * delta
 		sig = false
@@ -18,18 +24,21 @@ func _physics_process(delta):
 	
 	if $RayCast2D.is_colliding():
 		sig = true
+		part = false
 		speed = 0
 		$AnimationPlayer.play('shot')
 
 #Удаляет узел, если пуля вышла за камеру
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+	part = false
 	if fast:
 		$"/root/World/Player".projectile = 1
 		fast = false
+	queue_free()
 
 func _on_GraviGun_body_entered(body):
 	sig = true
+	part = false
 	speed = 0
 	$AnimationPlayer.play('shot')
 

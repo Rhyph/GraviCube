@@ -90,7 +90,7 @@ func _physics_process(delta):
 			gravigun = GRAVIGUN.instance()
 			get_parent().add_child(gravigun)
 			if $RayCast2D.rotation_degrees == 0:
-				gravigun.rotation_degrees = 90
+				gravigun.rotation_degrees = 270
 			else:
 				gravigun.rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees
 			gravigun.position = $Position2D.global_position

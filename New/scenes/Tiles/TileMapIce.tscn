@@ -108,6 +108,7 @@ linear_accel = 200.0
 color_ramp = SubResource( 6 )
 
 [node name="TileMapIce" type="StaticBody2D"]
+modulate = Color( 1, 1.1, 1.4, 1 )
 collision_layer = 8
 collision_mask = 17
 script = ExtResource( 3 )
@@ -115,6 +116,7 @@ script = ExtResource( 3 )
 [node name="ice" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -125,12 +127,11 @@ anims/Laser = SubResource( 2 )
 anims/idle = SubResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-modulate = Color( 0.695313, 0.695313, 0.695313, 1 )
+modulate = Color( 0.695193, 0.695193, 0.695193, 0.9 )
 material = SubResource( 4 )
 position = Vector2( -1.78814e-06, -4 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 2
-emitting = false
 amount = 36
 process_material = SubResource( 7 )
 texture = ExtResource( 1 )

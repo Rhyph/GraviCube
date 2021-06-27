@@ -21,10 +21,10 @@ load_path = "res://.import/circle.png-917a9bdc8b13880bb59c8f9707e123fb.stex"
 load_path = "res://.import/circlegrey.png-60d35f55e7ee28a2c25f25b7df9d7335.stex"
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 12.0
+radius = 13.0
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 9.0
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 48, 90 )
@@ -105,7 +105,6 @@ texture = ExtResource( 18 )
 script = ExtResource( 20 )
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="halfstick"]
-position = Vector2( 0, -1 )
 z_index = 1
 normal = ExtResource( 16 )
 pressed = ExtResource( 14 )
