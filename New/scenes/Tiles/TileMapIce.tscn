@@ -109,7 +109,7 @@ color_ramp = SubResource( 6 )
 
 [node name="TileMapIce" type="StaticBody2D"]
 modulate = Color( 1, 1.1, 1.4, 1 )
-collision_layer = 8
+collision_layer = 9
 collision_mask = 17
 script = ExtResource( 3 )
 

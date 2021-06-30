@@ -46,12 +46,17 @@ func _physics_process(delta):
 	GraviBoost = motion.y
 	GraviBoost = clamp(GraviBoost, -128, 128)
 	
-	if $IceCast.is_colliding() or $IceCast2.is_colliding():
+	if $Rays/IceCast.is_colliding() or $Rays/IceCast2.is_colliding():
 		friction = .02
 		acceleration = 256
 	else:
 		friction = .4
 		acceleration = 384
+	
+	if $Rays/LavaCast.is_colliding() or $Rays/LavaCast2.is_colliding():
+		G.Laved = true
+	else:
+		G.Laved = false
 	
 	if is_on_floor():
 		$Timers/Kayotte.start()
@@ -66,9 +71,9 @@ func _physics_process(delta):
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, friction)
 		
-		if Input.is_action_pressed("ui_up"):
+		"""if Input.is_action_pressed("ui_up"):
 			is_jumping = true
-			motion.y = -JUMP_FORCE
+			motion.y = -JUMP_FORCE"""
 	else:
 		dropped = false
 		$Timers/Dropped.start()
@@ -76,10 +81,10 @@ func _physics_process(delta):
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
 		
-		if Kayotte == true:
+		"""if Kayotte == true:
 			if Input.is_action_pressed("ui_up"):
 				is_jumping = true
-				motion.y = -JUMP_FORCE
+				motion.y = -JUMP_FORCE"""
 	
 	#Вызывает гравитационный выстрел
 	if G.GraviSwitch:
@@ -129,16 +134,16 @@ func animation():
 		$AnimationPlayer.play("downMiddle")
 
 #Вектор направления отталкивая от гравитационного выстрела
-func Vector():
+func Vector(k):
 	is_GraviJump = true
-	var graviMotion = 40 * ((global_position - gravigun.global_position).normalized())
+	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
 	motion.x = 4 * graviMotion.x
-	if graviMotion.y >= 0:
+	if (graviMotion.y >= 0 and k >= 0) or (graviMotion.y < 0 and k < 0):
 		motion.y = 3 * graviMotion.y + abs(GraviBoost / 2)
 	else:
 		motion.y = 3 * graviMotion.y - abs(GraviBoost / 2)
 
-func _return_drop():
+func return_drop():
 	dropped = false
 
 #Рестартает сцену, если игрок вышел за лимит камеры
@@ -147,7 +152,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 		get_tree().reload_current_scene()
 #Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
-	if not "1wayblock" in body.name:
+	if "TileMapChanging" in body.name:
 		die()
 
 func die():
@@ -164,7 +169,41 @@ func _on_SlowMo_timeout():
 	if Slow == false:
 		SlowMo = true
 		Slow = true
-
 func _on_Kayotte_timeout():
 	if not is_on_floor():
 		Kayotte = false
+
+#Star inscancing
+const STAR1 = preload("res://scenes/Space/Star1.tscn")
+const STAR2 = preload("res://scenes/Space/Star2.tscn")
+const STAR3 = preload("res://scenes/Space/Star3.tscn")
+
+var star1
+var star2
+var star3
+
+var rng = RandomNumberGenerator.new()
+var rand
+
+func _on_Star2Sec_timeout():
+	$Timers/Star.start()
+	rng.randomize()
+	rand = rng.randi_range(1, 3)
+	instance_star()
+
+func instance_star():
+	star1 = STAR1.instance()
+	get_parent().add_child(star1)
+	star1.position = $Position2D.global_position
+	if rand == 1:
+		star1 = STAR1.instance()
+		get_parent().add_child(star1)
+		star1.position = $Position2D.global_position
+	elif rand == 2:
+		star2 = STAR2.instance()
+		get_parent().add_child(star2)
+		star2.position = $Position2D.global_position
+	else:
+		star3 = STAR3.instance()
+		get_parent().add_child(star3)
+		star3.position = $Position2D.global_position

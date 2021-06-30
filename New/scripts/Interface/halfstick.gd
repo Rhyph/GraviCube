@@ -3,7 +3,7 @@ extends Sprite
 
 
 
-var k = 0
+"""var k = 0
 
 func _physics_process(delta):
 	if $TouchScreenButton2.modulate == Color(0, 0, 0, 0):
@@ -21,4 +21,4 @@ func _on_Area2D2_input_event(viewport, event, shape_idx):
 		k += 1
 	
 	if k % 2 == 0 and k != 0:
-		$TouchScreenButton2._on_TouchScreenButton_released()
+		$TouchScreenButton2._on_TouchScreenButton_released()"""

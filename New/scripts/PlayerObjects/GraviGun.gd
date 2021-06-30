@@ -3,6 +3,7 @@ extends Area2D
 const PARTICLES = preload("res://scenes/PlayerObjects/BulletParticles.tscn")
 
 var speed = 400
+var k = 40
 var motion = Vector2()
 var sig = true
 var fast = true
@@ -42,12 +43,19 @@ func _on_GraviGun_body_entered(body):
 	speed = 0
 	$AnimationPlayer.play('shot')
 
+func _on_Area2D3_body_entered(body):
+	k = 40
+	if "Red" in body.name:
+		k *= 1.5
+	if "Inverted" in body.name:
+		k *= -1.5
+
 #Тело находится в радиусе взрыва
 func _on_Area2D_body_entered(body):
 	if "Switcher" in body.name:
 		body._Switch_On()
 	if "Player" in body.name:
-		body.Vector()
+		body.Vector(k)
 
 func _on_Timer_timeout():
 	set_collision_mask(3)

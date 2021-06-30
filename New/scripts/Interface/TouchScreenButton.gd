@@ -70,7 +70,7 @@ func _on_TouchScreenButton_pressed():
 	once = true
 func _on_TouchScreenButton_released():
 	if down == true and $"/root/World/Player".projectile == 1:
-		$"/root/World/Player/RayCast2D"._under()
+		$"/root/World/Player/RayCast2D".under()
 		$"/root/World/Player/".GraviShot = true
 		$"/root/World/Player/RayCast2D".down = true
 		$"/root/World/Player/RayCast2D".enabled = false

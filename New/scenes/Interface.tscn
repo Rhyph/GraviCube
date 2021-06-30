@@ -1,7 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sprites/Buttons/ButtonRight.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Buttons/ButtonLeft.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Buttons/ButtonRight2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
+[ext_resource path="res://sprites/Objects/coin.png" type="Texture" id=8]
 [ext_resource path="res://sprites/Buttons/circlegrey2.png" type="Texture" id=14]
 [ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
 [ext_resource path="res://sprites/Buttons/circle2.png" type="Texture" id=16]
@@ -100,7 +106,7 @@ width = 1.0
 default_color = Color( 1, 0.00392157, 0.00392157, 1 )
 
 [node name="halfstick" type="Sprite" parent="."]
-position = Vector2( 62, 148 )
+position = Vector2( 62, 212 )
 texture = ExtResource( 18 )
 script = ExtResource( 20 )
 
@@ -131,10 +137,30 @@ visible = false
 position = Vector2( 248, 29 )
 shape = SubResource( 8 )
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 16, 132 )
+script = ExtResource( 7 )
+
+[node name="TouchScreenButtonLeft" type="TouchScreenButton" parent="Node2D"]
+normal = ExtResource( 4 )
+pressed = ExtResource( 6 )
+
+[node name="TouchScreenButtonRight" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( 48, 0 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 5 )
+
+[node name="coin" type="Sprite" parent="."]
+visible = false
+position = Vector2( 4, 176 )
+texture = ExtResource( 8 )
+
 [connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
 [connection signal="timeout" from="circlebig/TouchScreenButton/Timer" to="circlebig/TouchScreenButton" method="_on_Timer_timeout"]
 [connection signal="pressed" from="halfstick/TouchScreenButton2" to="halfstick/TouchScreenButton2" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="halfstick/TouchScreenButton2" to="halfstick/TouchScreenButton2" method="_on_TouchScreenButton_released"]
-[connection signal="input_event" from="Area2D" to="halfstick" method="_on_Area2D_input_event"]
-[connection signal="input_event" from="Area2D2" to="halfstick" method="_on_Area2D2_input_event"]
+[connection signal="pressed" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_pressed"]
+[connection signal="released" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_released"]
+[connection signal="pressed" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_pressed"]
+[connection signal="released" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_released"]

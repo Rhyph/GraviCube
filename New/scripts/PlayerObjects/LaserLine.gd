@@ -36,7 +36,7 @@ func _physics_process(delta):
 	
 	$Line2D.points[1] = cast_point
 
-func _under():
+func under():
 	rotation_degrees = 0
 	if down == true:
 		$shoot/AnimationPlayer.play("auto")

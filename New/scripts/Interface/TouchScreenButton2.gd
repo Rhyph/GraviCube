@@ -1,6 +1,6 @@
 extends TouchScreenButton
 
-var radius = Vector2(10,10)
+"""var radius = Vector2(10,10)
 
 var inArea = false
 var down = false
@@ -84,4 +84,4 @@ func _on_TouchScreenButton_released():
 	inArea = false
 	Input.action_release("ui_left")
 	Input.action_release("ui_right")
-	Input.action_release("ui_up")
+	Input.action_release("ui_up")"""

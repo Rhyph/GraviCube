@@ -9,4 +9,4 @@ func _on_Area2D_body_entered(body):
 		$AnimationPlayer.play("Fade_in")
 		yield($AnimationPlayer,"animation_finished")
 		G.PlayerPos = Vector2(4, -4)
-		get_tree().change_scene("res://scenes/levels/World.tscn")
+		G.scene("World")
