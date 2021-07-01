@@ -44,7 +44,7 @@ func _physics_process(delta):
 	motion.y += GRAVITY * delta
 	
 	GraviBoost = motion.y
-	GraviBoost = clamp(GraviBoost, -128, 128)
+	GraviBoost = clamp(GraviBoost, -64, 64)
 	
 	if $Rays/IceCast.is_colliding() or $Rays/IceCast2.is_colliding():
 		friction = .02
@@ -174,13 +174,10 @@ func _on_Kayotte_timeout():
 		Kayotte = false
 
 #Star inscancing
-const STAR1 = preload("res://scenes/Space/Star1.tscn")
-const STAR2 = preload("res://scenes/Space/Star2.tscn")
-const STAR3 = preload("res://scenes/Space/Star3.tscn")
+const STAR = [preload("res://scenes/Space/Star1.tscn"), \
+preload("res://scenes/Space/Star2.tscn"), preload("res://scenes/Space/Star3.tscn")]
 
-var star1
-var star2
-var star3
+var star = [0, 1, 2]
 
 var rng = RandomNumberGenerator.new()
 var rand
@@ -188,22 +185,10 @@ var rand
 func _on_Star2Sec_timeout():
 	$Timers/Star.start()
 	rng.randomize()
-	rand = rng.randi_range(1, 3)
+	rand = rng.randi_range(0, 2)
 	instance_star()
 
 func instance_star():
-	star1 = STAR1.instance()
-	get_parent().add_child(star1)
-	star1.position = $Position2D.global_position
-	if rand == 1:
-		star1 = STAR1.instance()
-		get_parent().add_child(star1)
-		star1.position = $Position2D.global_position
-	elif rand == 2:
-		star2 = STAR2.instance()
-		get_parent().add_child(star2)
-		star2.position = $Position2D.global_position
-	else:
-		star3 = STAR3.instance()
-		get_parent().add_child(star3)
-		star3.position = $Position2D.global_position
+	star[rand] = STAR[rand].instance()
+	get_parent().add_child(star[rand])
+	star[rand].position = $Position2D.global_position

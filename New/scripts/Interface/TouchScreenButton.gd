@@ -13,7 +13,7 @@ var ms = 400
 
 var pos_zero
 
-func _process(delta):
+func _physics_process(delta):
 	pos_zero = (Vector2(0,0) - radius) - position
 	
 	$Label.set_text(str(ms))

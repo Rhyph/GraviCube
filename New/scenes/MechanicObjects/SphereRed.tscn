@@ -1,11 +1,25 @@
-[gd_scene load_steps=4 format=2]
-
-[ext_resource path="res://sprites/MechanicObjects/sphereRed.png" type="Texture" id=1]
+[gd_scene load_steps=8 format=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="StreamTexture" id=7]
+load_path = "res://.import/sphereRed.png-74ef9f2baeb3585f5e34658baa64561a.stex"
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0.372881, 0.838046 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=10]
 flag_disable_z = true
 spread = 180.0
 flatness = 1.0
@@ -16,17 +30,32 @@ angular_velocity = 20.0
 angular_velocity_random = 1.0
 orbit_velocity = 1.0
 orbit_velocity_random = 0.0
-color = Color( 0.701961, 0.0470588, 0.0470588, 1 )
+linear_accel = 15.0
+linear_accel_random = 1.0
+radial_accel = 15.0
+radial_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 12 )
 
 [node name="SphereRed" type="StaticBody2D"]
+z_index = 1
 collision_layer = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
-amount = 15
-process_material = SubResource( 2 )
-
 [node name="sphereRed" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+modulate = Color( 2, 0, 0, 1 )
+z_index = 1
+texture = SubResource( 7 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 30
+process_material = SubResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}

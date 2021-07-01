@@ -9,7 +9,7 @@ func _ready():
 	else:
 		$checkpoint/AnimationPlayer.play("nonactivated")
 
-func _process(delta):
+func _physics_process(delta):
 	if G.PlayerPos != global_position:
 		$checkpoint/AnimationPlayer.play("nonactivated")
 
