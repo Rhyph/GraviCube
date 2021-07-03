@@ -35,10 +35,10 @@ func _ready():
 	Engine.time_scale = 1
 
 func _physics_process(delta):
+	print(motion.x)
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if x_input != 0:
 		motion.x += x_input * acceleration * delta
-		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		$player.flip_h = x_input < 0
 	
 	motion.y += GRAVITY * delta
@@ -52,11 +52,16 @@ func _physics_process(delta):
 	else:
 		friction = .4
 		acceleration = 384
-	
 	if $Rays/LavaCast.is_colliding() or $Rays/LavaCast2.is_colliding():
 		G.Laved = true
 	else:
 		G.Laved = false
+	if $Rays/ConvCast.is_colliding() or $Rays/ConvCast2.is_colliding():
+		motion.x = clamp(motion.x, -MAX_SPEED + 32, MAX_SPEED + 32)
+		if x_input == 0:
+			motion.x = 32
+	elif x_input != 0:
+		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 	
 	if is_on_floor():
 		$Timers/Kayotte.start()
@@ -99,6 +104,7 @@ func _physics_process(delta):
 			else:
 				gravigun.rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees
 			gravigun.position = $Position2D.global_position
+			$AudioStreamPlayer.play()
 	
 	#Плавно возвращает время на единицу
 	if Slow:

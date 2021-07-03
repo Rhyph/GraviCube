@@ -1,25 +1,25 @@
 [gd_scene load_steps=8 format=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+radius = 4.0
 
-[sub_resource type="StreamTexture" id=7]
+[sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/sphereRed.png-74ef9f2baeb3585f5e34658baa64561a.stex"
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0.372881, 0.838046 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
 spread = 180.0
 flatness = 1.0
@@ -38,8 +38,8 @@ angle = 360.0
 angle_random = 1.0
 scale = 2.0
 scale_random = 1.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 12 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [node name="SphereRed" type="StaticBody2D"]
 z_index = 1
@@ -51,11 +51,11 @@ shape = SubResource( 1 )
 [node name="sphereRed" type="Sprite" parent="."]
 modulate = Color( 2, 0, 0, 1 )
 z_index = 1
-texture = SubResource( 7 )
+texture = SubResource( 2 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 30
-process_material = SubResource( 10 )
+process_material = SubResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }

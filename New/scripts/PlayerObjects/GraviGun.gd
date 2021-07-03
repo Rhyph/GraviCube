@@ -52,6 +52,7 @@ func _on_Area2D3_body_entered(body):
 
 #Тело находится в радиусе взрыва
 func _on_Area2D_body_entered(body):
+	$AudioStreamPlayer.play()
 	if "Switcher" in body.name:
 		body._Switch_On()
 	if "Player" in body.name:

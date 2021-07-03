@@ -1,19 +1,16 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scripts/G.level/Level2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/MechanicObjects/SphereInverted.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Portals/PortalHomie.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/lasers/Laser.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/lasers/LaserOtherTiming.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/Tiles/TileMapSwitching.gd" type="Script" id=13]
 [ext_resource path="res://scripts/Tiles/TileMapSwitching2.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Tiles/TileMapChanging.gd" type="Script" id=17]
 [ext_resource path="res://scripts/Tiles/TileMapChanging2.gd" type="Script" id=18]
-[ext_resource path="res://scenes/Tiles/1wayblock.tscn" type="PackedScene" id=19]
-[ext_resource path="res://sprites/marks/mark2.png" type="Texture" id=21]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=22]
 [ext_resource path="res://Tiles/World.tres" type="TileSet" id=23]
 [ext_resource path="res://sprites/Tiles/poliblock.png" type="Texture" id=24]
@@ -657,9 +654,6 @@ script = ExtResource( 14 )
 
 [node name="1ways" type="Node2D" parent="Tiles"]
 
-[node name="1wayblock" parent="Tiles/1ways" instance=ExtResource( 19 )]
-position = Vector2( 21, 28 )
-
 [node name="mechanicObjects" type="Node2D" parent="."]
 
 [node name="spheresInv" type="Node2D" parent="mechanicObjects"]
@@ -679,13 +673,6 @@ position = Vector2( 44, -152 )
 position = Vector2( -100, -200 )
 
 [node name="Lasers" type="Node2D" parent="."]
-
-[node name="Laser" parent="Lasers" instance=ExtResource( 8 )]
-position = Vector2( -52, 15 )
-
-[node name="LaserOtherTiming" parent="Lasers" instance=ExtResource( 9 )]
-position = Vector2( -41, 27 )
-rotation = 1.5708
 
 [node name="Switchers" type="Node2D" parent="."]
 
@@ -717,9 +704,10 @@ environment = SubResource( 31 )
 
 [node name="marks" type="Node2D" parent="."]
 
-[node name="mark2" type="Sprite" parent="marks"]
-position = Vector2( 112, 51 )
-texture = ExtResource( 21 )
+[node name="mark3" type="Sprite" parent="marks"]
+position = Vector2( 57, -134 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 4 )
 
 [connection signal="timeout" from="Tiles/TileMapChanging/Timer" to="Tiles/TileMapChanging" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Tiles/TileMapChanging/Timer2" to="Tiles/TileMapChanging" method="_on_Timer2_timeout"]
