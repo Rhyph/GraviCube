@@ -1,7 +1,6 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scripts/G.level/Level1.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Portals/PortalHomie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=3]
 [ext_resource path="res://sprites/marks/mark5.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
@@ -12,8 +11,6 @@
 [ext_resource path="res://scenes/Portals/Portal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/MechanicObjects/Sphere.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scripts/Tiles/TileMapSwitching.gd" type="Script" id=13]
-[ext_resource path="res://scripts/Tiles/TileMapSwitching2.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Tiles/TileMapChanging.gd" type="Script" id=17]
 [ext_resource path="res://scripts/Tiles/TileMapChanging2.gd" type="Script" id=18]
 [ext_resource path="res://scenes/Tiles/1wayblock.tscn" type="PackedScene" id=19]
@@ -21,7 +18,6 @@
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=22]
 [ext_resource path="res://Tiles/World.tres" type="TileSet" id=23]
 [ext_resource path="res://sprites/Tiles/poliblock.png" type="Texture" id=24]
-[ext_resource path="res://sprites/Tiles/switchblock.png" type="Texture" id=25]
 [ext_resource path="res://sprites/Tiles/halfblock.png" type="Texture" id=27]
 
 [sub_resource type="OccluderPolygon2D" id=1]
@@ -342,215 +338,11 @@ points = PoolVector2Array( 4, 0, 4, 0, 8, 0, 8, 8, 4, 8, 4, 0, 4, 0 )
 } ]
 3/z_index = 0
 
-[sub_resource type="OccluderPolygon2D" id=20]
-polygon = PoolVector2Array( 4, 0, 4, 0, 4, 8, 0, 8, 0, 0, 4, 0, 4, 0, 4, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=21]
-points = PoolVector2Array( 0, 0, 0, 0, 4, 0, 4, 8, 0, 8, 0, 0, 0, 0 )
-
-[sub_resource type="OccluderPolygon2D" id=22]
-polygon = PoolVector2Array( 0, 0, 0, 0, 8, 0, 8, 4, 0, 4 )
-
-[sub_resource type="ConvexPolygonShape2D" id=23]
-points = PoolVector2Array( 0, 0, 0, 0, 8, 0, 8, 4, 0, 4, 0, 0, 0, 0 )
-
-[sub_resource type="OccluderPolygon2D" id=24]
-polygon = PoolVector2Array( 4, 0, 4, 0, 8, 0, 8, 8, 4, 8, 4, 0, 4, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=25]
-points = PoolVector2Array( 4, 0, 4, 0, 8, 0, 8, 8, 4, 8 )
-
-[sub_resource type="OccluderPolygon2D" id=26]
-polygon = PoolVector2Array( 0, 4, 0, 4, 8, 4, 8, 8, 0, 8, 0, 4, 0, 4 )
-
-[sub_resource type="ConvexPolygonShape2D" id=27]
-points = PoolVector2Array( 0, 4, 0, 4, 8, 4, 8, 8, 0, 8 )
-
-[sub_resource type="TileSet" id=28]
-0/name = "switchblock.png 0"
-0/texture = ExtResource( 25 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 8, 8 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/occluder = SubResource( 20 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 21 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 21 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "switchblock.png 1"
-1/texture = ExtResource( 25 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 8, 0, 8, 8 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/occluder = SubResource( 22 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 23 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 23 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
-2/name = "switchblock.png 2"
-2/texture = ExtResource( 25 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 8, 8, 8, 8 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/occluder = SubResource( 24 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 25 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 25 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-2/z_index = 0
-3/name = "switchblock.png 3"
-3/texture = ExtResource( 25 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 8, 8, 8 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/occluder = SubResource( 26 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 27 )
-3/shape_one_way = false
-3/shape_one_way_margin = 1.0
-3/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 27 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-3/z_index = 0
-
-[sub_resource type="TileSet" id=29]
-0/name = "switchblock.png 0"
-0/texture = ExtResource( 25 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 8, 8 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/occluder = SubResource( 20 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 21 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 21 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "switchblock.png 1"
-1/texture = ExtResource( 25 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 8, 0, 8, 8 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/occluder = SubResource( 22 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 23 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 23 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
-2/name = "switchblock.png 2"
-2/texture = ExtResource( 25 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 8, 8, 8, 8 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/occluder = SubResource( 24 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 25 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 25 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-2/z_index = 0
-3/name = "switchblock.png 3"
-3/texture = ExtResource( 25 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 8, 8, 8 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/occluder = SubResource( 26 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 27 )
-3/shape_one_way = false
-3/shape_one_way_margin = 1.0
-3/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 27 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-3/z_index = 0
-
-[sub_resource type="Theme" id=30]
+[sub_resource type="Theme" id=20]
 resource_local_to_scene = true
 default_font = ExtResource( 22 )
 
-[sub_resource type="Environment" id=31]
+[sub_resource type="Environment" id=21]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 0.05
@@ -558,6 +350,10 @@ glow_strength = 0.8
 glow_blend_mode = 0
 
 [node name="World" type="Node2D"]
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2( 24, -48 )
+script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4, -4 )
@@ -640,28 +436,6 @@ autostart = true
 [node name="Timer3" type="Timer" parent="Tiles/TileMapChanging2"]
 wait_time = 0.1
 
-[node name="Locals" type="Node2D" parent="Tiles"]
-
-[node name="TileMapSwitching" type="TileMap" parent="Tiles/Locals"]
-modulate = Color( 1, 2, 4, 1 )
-tile_set = SubResource( 28 )
-cell_size = Vector2( 8, 8 )
-cell_quadrant_size = 8
-collision_layer = 4
-collision_mask = 17
-format = 1
-script = ExtResource( 13 )
-
-[node name="TileMapSwitching2" type="TileMap" parent="Tiles/Locals"]
-modulate = Color( 2, 2, 2, 1 )
-tile_set = SubResource( 29 )
-cell_size = Vector2( 8, 8 )
-cell_quadrant_size = 8
-collision_layer = 2
-collision_mask = 2147483648
-format = 1
-script = ExtResource( 14 )
-
 [node name="1ways" type="Node2D" parent="Tiles"]
 
 [node name="1wayblock" parent="Tiles/1ways" instance=ExtResource( 19 )]
@@ -688,11 +462,6 @@ rotation = 1.5708
 position = Vector2( -24, -134 )
 rotation = 1.5708
 
-[node name="Switchers" type="Node2D" parent="."]
-position = Vector2( 24, -48 )
-
-[node name="Interface" parent="." instance=ExtResource( 5 )]
-
 [node name="Texts" type="Node2D" parent="."]
 position = Vector2( 24, -48 )
 
@@ -702,7 +471,7 @@ margin_top = -34.0
 margin_right = 84.0
 margin_bottom = -6.0
 rect_scale = Vector2( 0.8, 0.8 )
-theme = SubResource( 30 )
+theme = SubResource( 20 )
 text = "spheres interact 
 with orbs"
 __meta__ = {
@@ -715,7 +484,7 @@ margin_top = 14.0
 margin_right = 29.0
 margin_bottom = 42.0
 rect_scale = Vector2( 0.8, 0.8 )
-theme = SubResource( 30 )
+theme = SubResource( 20 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
@@ -739,16 +508,6 @@ position = Vector2( 124, -128 )
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 11 )]
 position = Vector2( 252, -248 )
-
-[node name="Level" type="Node2D" parent="."]
-position = Vector2( 24, -48 )
-script = ExtResource( 1 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 31 )
-
-[node name="PortalHomie" parent="." instance=ExtResource( 2 )]
-position = Vector2( 44, -9 )
 
 [node name="PortalLevel2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 252, -537 )
@@ -818,6 +577,11 @@ position = Vector2( 278, -426 )
 
 [node name="Sphere5" parent="mechanicObjects/spheres" instance=ExtResource( 12 )]
 position = Vector2( -24, -110 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 21 )
+
+[node name="Interface" parent="." instance=ExtResource( 5 )]
 
 [connection signal="timeout" from="Tiles/TileMapChanging/Timer" to="Tiles/TileMapChanging" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Tiles/TileMapChanging/Timer2" to="Tiles/TileMapChanging" method="_on_Timer2_timeout"]

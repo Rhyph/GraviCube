@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/Interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -8,13 +8,8 @@
 [ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
 [ext_resource path="res://sprites/Objects/coin.png" type="Texture" id=8]
-[ext_resource path="res://sprites/Buttons/circlegrey2.png" type="Texture" id=14]
 [ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
-[ext_resource path="res://sprites/Buttons/circle2.png" type="Texture" id=16]
-[ext_resource path="res://scripts/Interface/TouchScreenButton2.gd" type="Script" id=17]
-[ext_resource path="res://sprites/Buttons/halfstick.png" type="Texture" id=18]
 [ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
-[ext_resource path="res://scripts/Interface/halfstick.gd" type="Script" id=20]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
@@ -29,17 +24,17 @@ load_path = "res://.import/circlegrey.png-60d35f55e7ee28a2c25f25b7df9d7335.stex"
 [sub_resource type="CircleShape2D" id=4]
 radius = 13.0
 
-[sub_resource type="CircleShape2D" id=5]
-radius = 8.0
-
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 90 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 104, 90 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 56, 34 )
+
+[sub_resource type="Theme" id=8]
+default_font = ExtResource( 2 )
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
@@ -65,7 +60,7 @@ __meta__ = {
 }
 
 [node name="circlebig" type="Sprite" parent="."]
-position = Vector2( 272, 250 )
+position = Vector2( 272, 234 )
 texture = ExtResource( 15 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="circlebig"]
@@ -105,24 +100,12 @@ points = PoolVector2Array( 0, 0, 32, 0 )
 width = 1.0
 default_color = Color( 1, 0.00392157, 0.00392157, 1 )
 
-[node name="halfstick" type="Sprite" parent="."]
-position = Vector2( 62, 212 )
-texture = ExtResource( 18 )
-script = ExtResource( 20 )
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="halfstick"]
-z_index = 1
-normal = ExtResource( 16 )
-pressed = ExtResource( 14 )
-shape = SubResource( 5 )
-script = ExtResource( 17 )
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 position = Vector2( 77, 90 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2( 16, 5 )
@@ -130,12 +113,12 @@ position = Vector2( 16, 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 visible = false
 position = Vector2( 88, 85 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
 visible = false
 position = Vector2( 248, 29 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 16, 132 )
@@ -155,12 +138,36 @@ visible = false
 position = Vector2( 4, 176 )
 texture = ExtResource( 8 )
 
+[node name="Time" type="Label" parent="."]
+margin_top = 166.0
+margin_right = 70.0
+margin_bottom = 180.0
+theme = SubResource( 8 )
+text = "Timer: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Death_count" type="Label" parent="."]
+margin_left = 82.0
+margin_top = 166.0
+margin_right = 152.0
+margin_bottom = 180.0
+theme = SubResource( 8 )
+text = "Death count: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
 [connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
 [connection signal="timeout" from="circlebig/TouchScreenButton/Timer" to="circlebig/TouchScreenButton" method="_on_Timer_timeout"]
-[connection signal="pressed" from="halfstick/TouchScreenButton2" to="halfstick/TouchScreenButton2" method="_on_TouchScreenButton_pressed"]
-[connection signal="released" from="halfstick/TouchScreenButton2" to="halfstick/TouchScreenButton2" method="_on_TouchScreenButton_released"]
 [connection signal="pressed" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_pressed"]
 [connection signal="released" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_released"]
 [connection signal="pressed" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_pressed"]
 [connection signal="released" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_released"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

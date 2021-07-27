@@ -10,15 +10,14 @@ const GRAVITY = 400
 var acceleration = 384
 var friction = .4
 var projectile = 1
+var keys = 2
 
 var Slow = false
 var SlowMo = false
 var idleSwitch = true
-var is_jumping = false
 var is_GraviJump = false
 var dropped = false
 var GraviShot = false
-var Kayotte = true
 
 var gravigun
 
@@ -27,6 +26,7 @@ var LinePos = Vector2()
 var motion = Vector2.ZERO
 
 func _ready():
+	keys = 2
 	Input.action_release("ui_left")
 	Input.action_release("ui_right")
 	Input.action_release("ui_up")
@@ -35,7 +35,6 @@ func _ready():
 	Engine.time_scale = 1
 
 func _physics_process(delta):
-	print(motion.x)
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if x_input != 0:
 		motion.x += x_input * acceleration * delta
@@ -64,9 +63,6 @@ func _physics_process(delta):
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 	
 	if is_on_floor():
-		$Timers/Kayotte.start()
-		Kayotte = true
-		is_jumping = false
 		if idleSwitch:
 			if x_input == 0:
 				$AnimationPlayer.play("idle")
@@ -76,20 +72,12 @@ func _physics_process(delta):
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, friction)
 		
-		"""if Input.is_action_pressed("ui_up"):
-			is_jumping = true
-			motion.y = -JUMP_FORCE"""
 	else:
 		dropped = false
 		$Timers/Dropped.start()
 		
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
-		
-		"""if Kayotte == true:
-			if Input.is_action_pressed("ui_up"):
-				is_jumping = true
-				motion.y = -JUMP_FORCE"""
 	
 	#Вызывает гравитационный выстрел
 	if G.GraviSwitch:
@@ -129,7 +117,7 @@ func _physics_process(delta):
 func animation():
 	if motion.y < -72:
 		$AnimationPlayer.play("downGravi")
-	if motion.y == -72 or (is_jumping == false and is_GraviJump == false and motion.y > 7 and motion.y < 14):
+	if motion.y == -72 or (is_GraviJump == false and motion.y > 7 and motion.y < 14):
 		$AnimationPlayer.play("downFast")
 	if dropped:
 		idleSwitch = false
@@ -155,10 +143,11 @@ func return_drop():
 #Рестартает сцену, если игрок вышел за лимит камеры
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.can:
+		G.Deaths += 1
 		get_tree().reload_current_scene()
 #Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
-	if "TileMapChanging" in body.name:
+	if "TileMapChanging" in body.name || "Door" in body.name && motion.y == 0:
 		die()
 
 func die():
@@ -175,9 +164,6 @@ func _on_SlowMo_timeout():
 	if Slow == false:
 		SlowMo = true
 		Slow = true
-func _on_Kayotte_timeout():
-	if not is_on_floor():
-		Kayotte = false
 
 #Star inscancing
 const STAR = [preload("res://scenes/Space/Star1.tscn"), \

@@ -423,10 +423,6 @@ one_shot = true
 wait_time = 0.075
 one_shot = true
 
-[node name="Kayotte" type="Timer" parent="Timers"]
-wait_time = 0.05
-one_shot = true
-
 [node name="Star" type="Timer" parent="Timers"]
 wait_time = 0.2
 autostart = true
@@ -520,12 +516,11 @@ collision_mask = 64
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -10.0
+volume_db = -15.0
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timers/idleSwitch" to="." method="_on_idleSwitch_timeout"]
 [connection signal="timeout" from="Timers/Dropped" to="." method="_on_Dropped_timeout"]
 [connection signal="timeout" from="Timers/SlowMo" to="." method="_on_SlowMo_timeout"]
-[connection signal="timeout" from="Timers/Kayotte" to="." method="_on_Kayotte_timeout"]
 [connection signal="timeout" from="Timers/Star" to="." method="_on_Star2Sec_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

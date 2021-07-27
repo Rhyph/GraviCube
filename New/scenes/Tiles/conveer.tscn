@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/Tiles/conv.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Objects/arrow.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -22,6 +23,23 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 4 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 67
 collision_mask = 17
@@ -37,3 +55,13 @@ anims/idle = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = -1
 shape = SubResource( 2 )
+
+[node name="arrow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="arrow"]
+autoplay = "idle"
+anims/idle = SubResource( 3 )

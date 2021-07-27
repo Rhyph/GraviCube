@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tramplineRed.png-61e98cb578c8e8c33ea570c523adcf60.stex"
+path="res://.import/door.png-44eb608ea145b0da5aa030847f3f4499.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/MechanicObjects/tramplineRed.png"
-dest_files=[ "res://.import/tramplineRed.png-61e98cb578c8e8c33ea570c523adcf60.stex" ]
+source_file="res://sprites/Objects/door.png"
+dest_files=[ "res://.import/door.png-44eb608ea145b0da5aa030847f3f4499.stex" ]
 
 [params]
 

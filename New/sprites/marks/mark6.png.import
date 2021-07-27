@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tramplineInverted.png-e3b08f76ca6da30fbdada1e7f4065518.stex"
+path="res://.import/mark6.png-9d0a2194db01a65a24f45f3c14db39f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/MechanicObjects/tramplineInverted.png"
-dest_files=[ "res://.import/tramplineInverted.png-e3b08f76ca6da30fbdada1e7f4065518.stex" ]
+source_file="res://sprites/marks/mark6.png"
+dest_files=[ "res://.import/mark6.png-9d0a2194db01a65a24f45f3c14db39f1.stex" ]
 
 [params]
 

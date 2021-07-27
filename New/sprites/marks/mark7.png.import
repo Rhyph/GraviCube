@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/halfstick.png-cf23f8c22301fa29ba10edbf922c7a1f.stex"
+path="res://.import/mark7.png-1498aecc473c919c1a5acbb6f51e2b98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Buttons/halfstick.png"
-dest_files=[ "res://.import/halfstick.png-cf23f8c22301fa29ba10edbf922c7a1f.stex" ]
+source_file="res://sprites/marks/mark7.png"
+dest_files=[ "res://.import/mark7.png-1498aecc473c919c1a5acbb6f51e2b98.stex" ]
 
 [params]
 
