@@ -6,8 +6,7 @@ var once = 0
 func _physics_process(delta):
 	if once == 0 && $"/root/World/Player".keys == 0:
 		once = 1
-		$AnimationPlayer.play("opening")
-		$Timer.start()
+		$ToOpen.start()
 	if once == 2 && $"/root/World/Player".keys == 2:
 		once = 0
 		$AnimationPlayer.play("closing")
@@ -16,5 +15,9 @@ func _on_Area2D_body_entered(body):
 	if "Player" in body.name:
 		$"/root/World/Player".keys = 2
 
-func _on_Timer_timeout():
+func _on_ToOpen_timeout():
+	$AnimationPlayer.play("opening")
+	$ToClose.start()
+
+func _on_ToClose_timeout():
 	once = 2

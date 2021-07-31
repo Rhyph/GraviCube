@@ -6,7 +6,7 @@
 [ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Objects/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/Tiles/TileMapSwitching.gd" type="Script" id=13]
 [ext_resource path="res://scripts/Tiles/TileMapSwitching2.gd" type="Script" id=14]
 [ext_resource path="res://scripts/Tiles/TileMapChanging.gd" type="Script" id=17]
@@ -16,6 +16,7 @@
 [ext_resource path="res://sprites/Tiles/poliblock.png" type="Texture" id=24]
 [ext_resource path="res://sprites/Tiles/switchblock.png" type="Texture" id=25]
 [ext_resource path="res://sprites/Tiles/halfblock.png" type="Texture" id=27]
+
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 0, 0, 0, 8, 4, 8, 4, 0 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/Interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://sprites/Buttons/ButtonRight2.png" type="Texture" id=5]
 [ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
-[ext_resource path="res://sprites/Objects/coin.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Objects/key.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Buttons/player.png" type="Texture" id=9]
 [ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
 [ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
 
@@ -35,6 +36,10 @@ extents = Vector2( 56, 34 )
 
 [sub_resource type="Theme" id=8]
 default_font = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 32, 10 )
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
@@ -133,12 +138,14 @@ position = Vector2( 48, 0 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 5 )
 
-[node name="coin" type="Sprite" parent="."]
-visible = false
-position = Vector2( 4, 176 )
+[node name="key" type="Sprite" parent="."]
+position = Vector2( 299, 17 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Time" type="Label" parent="."]
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Timer" type="Label" parent="Labels"]
 margin_top = 166.0
 margin_right = 70.0
 margin_bottom = 180.0
@@ -148,7 +155,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Death_count" type="Label" parent="."]
+[node name="Death_count" type="Label" parent="Labels"]
 margin_left = 82.0
 margin_top = 166.0
 margin_right = 152.0
@@ -159,9 +166,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.01
-autostart = true
+[node name="Keys_count" type="Label" parent="Labels"]
+margin_left = 303.0
+margin_top = 8.0
+margin_right = 320.0
+margin_bottom = 22.0
+theme = SubResource( 8 )
+text = "2/2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 64.0
+margin_bottom = 20.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "lol"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
@@ -170,4 +201,3 @@ autostart = true
 [connection signal="released" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_released"]
 [connection signal="pressed" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_pressed"]
 [connection signal="released" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_released"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
