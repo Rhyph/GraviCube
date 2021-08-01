@@ -10,11 +10,11 @@ func _ready():
 	$Line2D.points[1] = Vector2.ZERO
 
 func _physics_process(delta):
-	if $"/root/World/Interface/circlebig/TouchScreenButton".down == false:
-		if $"/root/World/Interface/circlebig/TouchScreenButton".inArea == true:
+	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".down == false:
+		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea == true:
 			$shoot/AnimationPlayer.play("visible")
 			switch = true
-			rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees - 90
+			rotation_degrees = $"/root/World/Interface/Control/circlebig/Line2D".rotation_degrees - 90
 		else:
 			if switch == true:
 				$shoot/AnimationPlayer.play("auto")

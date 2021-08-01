@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -8,13 +8,8 @@
 [ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
 [ext_resource path="res://sprites/Objects/key.png" type="Texture" id=8]
-[ext_resource path="res://sprites/Buttons/player.png" type="Texture" id=9]
 [ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
 [ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
-
-[sub_resource type="Theme" id=1]
-default_font = ExtResource( 2 )
-/constants/ = 0
 
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/circle.png-917a9bdc8b13880bb59c8f9707e123fb.stex"
@@ -25,60 +20,37 @@ load_path = "res://.import/circlegrey.png-60d35f55e7ee28a2c25f25b7df9d7335.stex"
 [sub_resource type="CircleShape2D" id=4]
 radius = 13.0
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 48, 90 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 104, 90 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 56, 34 )
-
 [sub_resource type="Theme" id=8]
 default_font = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 32, 10 )
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -90.0
-margin_top = -52.0
-margin_right = 90.0
-margin_bottom = 52.0
-theme = SubResource( 1 )
-window_title = ""
-dialog_text = "You have taken the magic orb!
-Now you can use it by clicking 
-the left mouse button! 
-You're free to experiment."
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="circlebig" type="Sprite" parent="."]
-position = Vector2( 272, 234 )
+[node name="circlebig" type="Sprite" parent="Control"]
+pause_mode = 1
+position = Vector2( 272, 132 )
 texture = ExtResource( 15 )
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="circlebig"]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control/circlebig"]
 z_index = 1
 normal = SubResource( 2 )
 pressed = SubResource( 3 )
 shape = SubResource( 4 )
 script = ExtResource( 19 )
 
-[node name="Node2D" type="Node2D" parent="circlebig/TouchScreenButton"]
+[node name="Node2D" type="Node2D" parent="Control/circlebig/TouchScreenButton"]
 position = Vector2( 16, 16 )
 
-[node name="Label" type="Label" parent="circlebig/TouchScreenButton"]
+[node name="Label" type="Label" parent="Control/circlebig/TouchScreenButton"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -4.0
 margin_top = 8.0
@@ -95,57 +67,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="circlebig/TouchScreenButton"]
+[node name="Timer" type="Timer" parent="Control/circlebig/TouchScreenButton"]
 wait_time = 0.01
 one_shot = true
 
-[node name="Line2D" type="Line2D" parent="circlebig"]
+[node name="Line2D" type="Line2D" parent="Control/circlebig"]
 visible = false
 points = PoolVector2Array( 0, 0, 32, 0 )
 width = 1.0
 default_color = Color( 1, 0.00392157, 0.00392157, 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2( 77, 90 )
-shape = SubResource( 5 )
-
-[node name="Area2D2" type="Area2D" parent="."]
-position = Vector2( 16, 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-visible = false
-position = Vector2( 88, 85 )
-shape = SubResource( 6 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
-visible = false
-position = Vector2( 248, 29 )
-shape = SubResource( 7 )
-
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="Control"]
+pause_mode = 1
 position = Vector2( 16, 132 )
 script = ExtResource( 7 )
 
-[node name="TouchScreenButtonLeft" type="TouchScreenButton" parent="Node2D"]
+[node name="TouchScreenButtonLeft" type="TouchScreenButton" parent="Control/Node2D"]
 normal = ExtResource( 4 )
 pressed = ExtResource( 6 )
 
-[node name="TouchScreenButtonRight" type="TouchScreenButton" parent="Node2D"]
+[node name="TouchScreenButtonRight" type="TouchScreenButton" parent="Control/Node2D"]
 position = Vector2( 48, 0 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 5 )
 
-[node name="key" type="Sprite" parent="."]
+[node name="key" type="Sprite" parent="Control"]
 position = Vector2( 299, 17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="Labels" type="Node2D" parent="Control"]
 
-[node name="Timer" type="Label" parent="Labels"]
+[node name="Timer" type="Label" parent="Control/Labels"]
 margin_top = 166.0
 margin_right = 70.0
 margin_bottom = 180.0
@@ -155,7 +108,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Death_count" type="Label" parent="Labels"]
+[node name="Death_count" type="Label" parent="Control/Labels"]
 margin_left = 82.0
 margin_top = 166.0
 margin_right = 152.0
@@ -166,7 +119,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Keys_count" type="Label" parent="Labels"]
+[node name="Keys_count" type="Label" parent="Control/Labels"]
 margin_left = 303.0
 margin_top = 8.0
 margin_right = 320.0
@@ -177,27 +130,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_right = 64.0
-margin_bottom = 20.0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-text = "lol"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
-[connection signal="released" from="circlebig/TouchScreenButton" to="circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
-[connection signal="timeout" from="circlebig/TouchScreenButton/Timer" to="circlebig/TouchScreenButton" method="_on_Timer_timeout"]
-[connection signal="pressed" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_pressed"]
-[connection signal="released" from="Node2D/TouchScreenButtonLeft" to="Node2D" method="_on_TouchScreenButtonLeft_released"]
-[connection signal="pressed" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_pressed"]
-[connection signal="released" from="Node2D/TouchScreenButtonRight" to="Node2D" method="_on_TouchScreenButtonRight_released"]
+[connection signal="pressed" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
+[connection signal="released" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
+[connection signal="timeout" from="Control/circlebig/TouchScreenButton/Timer" to="Control/circlebig/TouchScreenButton" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Control/Node2D/TouchScreenButtonLeft" to="Control/Node2D" method="_on_TouchScreenButtonLeft_pressed"]
+[connection signal="released" from="Control/Node2D/TouchScreenButtonLeft" to="Control/Node2D" method="_on_TouchScreenButtonLeft_released"]
+[connection signal="pressed" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_pressed"]
+[connection signal="released" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_released"]

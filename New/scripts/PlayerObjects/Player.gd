@@ -12,7 +12,7 @@ var friction = .4
 var projectile = 1
 var keys = 2
 
-var Slow = false
+var slow = false
 var SlowMo = false
 var idleSwitch = true
 var is_GraviJump = false
@@ -30,11 +30,12 @@ func _ready():
 	Input.action_release("ui_left")
 	Input.action_release("ui_right")
 	Input.action_release("ui_up")
-	G.can = true
+	G.Can = true
 	position = G.PlayerPos
 	Engine.time_scale = 1
 
 func _physics_process(delta):
+	print(G.Level)
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if x_input != 0:
 		motion.x += x_input * acceleration * delta
@@ -45,17 +46,17 @@ func _physics_process(delta):
 	GraviBoost = motion.y
 	GraviBoost = clamp(GraviBoost, -64, 64)
 	
-	if $Rays/IceCast.is_colliding() or $Rays/IceCast2.is_colliding():
+	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
 		acceleration = 256
 	else:
 		friction = .4
 		acceleration = 384
-	if $Rays/LavaCast.is_colliding() or $Rays/LavaCast2.is_colliding():
+	if $Rays/LavaCast.is_colliding() || $Rays/LavaCast2.is_colliding():
 		G.Laved = true
 	else:
 		G.Laved = false
-	if $Rays/ConvCast.is_colliding() or $Rays/ConvCast2.is_colliding():
+	if $Rays/ConvCast.is_colliding() || $Rays/ConvCast2.is_colliding():
 		motion.x = clamp(motion.x, -MAX_SPEED + 32, MAX_SPEED + 32)
 		if x_input == 0:
 			motion.x = 32
@@ -80,31 +81,30 @@ func _physics_process(delta):
 			motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
 	
 	#Вызывает гравитационный выстрел
-	if G.GraviSwitch:
-		if GraviShot and projectile > 0:
-			LinePos = $RayCast2D/Line2D/Node2D.global_position
-			GraviShot = false
-			projectile -= 1
-			gravigun = GRAVIGUN.instance()
-			get_parent().add_child(gravigun)
-			if $RayCast2D.rotation_degrees == 0:
-				gravigun.rotation_degrees = 270
-			else:
-				gravigun.rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees
-			gravigun.position = $Position2D.global_position
-			$AudioStreamPlayer.play()
+	if GraviShot && projectile > 0:
+		LinePos = $RayCast2D/Line2D/Node2D.global_position
+		GraviShot = false
+		projectile -= 1
+		gravigun = GRAVIGUN.instance()
+		get_parent().add_child(gravigun)
+		if $RayCast2D.rotation_degrees == 0:
+			gravigun.rotation_degrees = 270
+		else:
+			gravigun.rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees
+		gravigun.position = $Position2D.global_position
+		$AudioStreamPlayer.play()
 	
 	#Плавно возвращает время на единицу
-	if Slow:
+	if slow:
 		$Timers/SlowMo.start()
-		Slow = false
+		slow = false
 	if SlowMo:
 		if Engine.time_scale <= .975:
 			Engine.time_scale += .025
 		else:
 			SlowMo = false
 	
-	if $"/root/World/Interface/circlebig/TouchScreenButton".inArea:
+	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
 		if $RayCast2D/Line2D/Node2D.global_position.x - global_position.x > 0:
 			$player.set_flip_h(false)
 		elif $RayCast2D/Line2D/Node2D.global_position.x - global_position.x != 0:
@@ -117,14 +117,14 @@ func _physics_process(delta):
 func animation():
 	if motion.y < -72:
 		$AnimationPlayer.play("downGravi")
-	if motion.y == -72 or (is_GraviJump == false and motion.y > 7 and motion.y < 14):
+	if motion.y == -72 || (is_GraviJump == false && motion.y > 7 && motion.y < 14):
 		$AnimationPlayer.play("downFast")
 	if dropped:
 		idleSwitch = false
 		$Timers/idleSwitch.start()
 		$AnimationPlayer.play("downFloor")
 		is_GraviJump = false
-	if not is_on_floor() and motion.y > -12 and motion.y < 12 and is_GraviJump:
+	if not is_on_floor() && motion.y > -12 && motion.y < 12 && is_GraviJump:
 		$AnimationPlayer.play("downMiddle")
 
 #Вектор направления отталкивая от гравитационного выстрела
@@ -132,7 +132,7 @@ func Vector(k):
 	is_GraviJump = true
 	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
 	motion.x = 4 * graviMotion.x
-	if (graviMotion.y >= 0 and k >= 0) or (graviMotion.y < 0 and k < 0):
+	if (graviMotion.y >= 0 && k >= 0) || (graviMotion.y < 0 && k < 0):
 		motion.y = 3 * graviMotion.y + abs(GraviBoost / 2)
 	else:
 		motion.y = 3 * graviMotion.y - abs(GraviBoost / 2)
@@ -142,7 +142,7 @@ func return_drop():
 
 #Рестартает сцену, если игрок вышел за лимит камеры
 func _on_VisibilityNotifier2D_screen_exited():
-	if G.can:
+	if G.Can:
 		G.Deaths += 1
 		get_tree().reload_current_scene()
 #Убивает игрока, если в нём есть колайдер
@@ -161,9 +161,9 @@ func _on_Dropped_timeout():
 	if is_on_floor():
 		dropped = true
 func _on_SlowMo_timeout():
-	if Slow == false:
+	if slow == false:
 		SlowMo = true
-		Slow = true
+		slow = true
 
 #Star inscancing
 const STAR = [preload("res://scenes/Space/Star1.tscn"), \
