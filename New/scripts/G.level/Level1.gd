@@ -1,4 +1,5 @@
 extends Node2D
 
 func _ready():
-	G.level = "Level1"
+	G.Level = "Level1"
+	G.ready()

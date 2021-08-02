@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 8 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "closing"
 tracks/0/type = "value"
 tracks/0/path = NodePath("door:position")
@@ -65,6 +65,7 @@ tracks/1/keys = {
 extents = Vector2( 4, 8 )
 
 [node name="Door" type="StaticBody2D"]
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="door" type="Sprite" parent="."]
@@ -77,7 +78,7 @@ position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/closing = SubResource( 5 )
+anims/closing = SubResource( 2 )
 anims/opening = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]

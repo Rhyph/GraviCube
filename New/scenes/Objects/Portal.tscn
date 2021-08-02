@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scripts/Portals/PortalHomie.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Objects/Portal.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Objects/portal.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -27,7 +27,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=3]
 resource_name = "Fade_in"
 tracks/0/type = "value"
-tracks/0/path = NodePath("../PortalHomie/CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../PortalHomie/CanvasLayer/ColorRect:visible")
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -55,7 +55,7 @@ tracks/1/keys = {
 resource_name = "Start"
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("../PortalHomie/CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -67,7 +67,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../PortalHomie/CanvasLayer/ColorRect:visible")
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -79,7 +79,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="PortalHomie" type="Area2D"]
+[node name="Portal" type="Area2D"]
 position = Vector2( 0, -8 )
 monitorable = false
 collision_layer = 0
@@ -101,7 +101,6 @@ anims/idle = SubResource( 2 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )

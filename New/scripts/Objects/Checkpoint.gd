@@ -18,4 +18,4 @@ func _on_Checkpoint_body_entered(body):
 		if G.PlayerPos != global_position:
 			$checkpoint/AnimationPlayer.play("pick")
 		G.PlayerPos = global_position
-		G.saved = true
+		G.Saved = true

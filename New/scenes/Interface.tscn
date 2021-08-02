@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Interface/Interface.gd" type="Script" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -8,20 +8,29 @@
 [ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
 [ext_resource path="res://sprites/Objects/key.png" type="Texture" id=8]
+[ext_resource path="res://scripts/Interface/Game Menu.gd" type="Script" id=9]
 [ext_resource path="res://sprites/Buttons/circlebig.png" type="Texture" id=15]
 [ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/circle.png-917a9bdc8b13880bb59c8f9707e123fb.stex"
 
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/circlegrey.png-60d35f55e7ee28a2c25f25b7df9d7335.stex"
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=3]
 radius = 13.0
 
-[sub_resource type="Theme" id=8]
+[sub_resource type="Theme" id=4]
 default_font = ExtResource( 2 )
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 1, 1, 1, 1 )
+grow_begin = -1.0
+grow_end = -1.0
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
@@ -31,6 +40,7 @@ script = ExtResource( 1 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -41,10 +51,10 @@ position = Vector2( 272, 132 )
 texture = ExtResource( 15 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control/circlebig"]
-z_index = 1
-normal = SubResource( 2 )
-pressed = SubResource( 3 )
-shape = SubResource( 4 )
+pause_mode = 1
+normal = SubResource( 1 )
+pressed = SubResource( 2 )
+shape = SubResource( 3 )
 script = ExtResource( 19 )
 
 [node name="Node2D" type="Node2D" parent="Control/circlebig/TouchScreenButton"]
@@ -102,7 +112,7 @@ texture = ExtResource( 8 )
 margin_top = 166.0
 margin_right = 70.0
 margin_bottom = 180.0
-theme = SubResource( 8 )
+theme = SubResource( 4 )
 text = "Timer: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,7 +123,7 @@ margin_left = 82.0
 margin_top = 166.0
 margin_right = 152.0
 margin_bottom = 180.0
-theme = SubResource( 8 )
+theme = SubResource( 4 )
 text = "Death count: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,10 +134,146 @@ margin_left = 303.0
 margin_top = 8.0
 margin_right = 320.0
 margin_bottom = 22.0
-theme = SubResource( 8 )
+theme = SubResource( 4 )
 text = "2/2"
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="Control"]
+margin_top = -1.0
+margin_right = 15.0
+margin_bottom = 12.0
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "|||"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.392157 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect"]
+self_modulate = Color( 1, 1, 1, 0.607843 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -90.0
+margin_right = 44.0
+margin_bottom = 90.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/ColorRect"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.5
+margin_top = -32.0
+margin_right = 44.5
+margin_bottom = 32.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="Control/ColorRect/ColorRect/VBoxContainer"]
+margin_right = 89.0
+margin_bottom = 13.0
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "Resume"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Checkpoint" type="Button" parent="Control/ColorRect/ColorRect/VBoxContainer"]
+margin_top = 17.0
+margin_right = 89.0
+margin_bottom = 30.0
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "To checkpoint"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Restart" type="Button" parent="Control/ColorRect/ColorRect/VBoxContainer"]
+margin_top = 34.0
+margin_right = 89.0
+margin_bottom = 47.0
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "Restart"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Menu" type="Button" parent="Control/ColorRect/ColorRect/VBoxContainer"]
+margin_top = 51.0
+margin_right = 89.0
+margin_bottom = 64.0
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "To menu"
+__meta__ = {
+"_editor_description_": ""
 }
 
 [connection signal="pressed" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
@@ -137,3 +283,8 @@ __meta__ = {
 [connection signal="released" from="Control/Node2D/TouchScreenButtonLeft" to="Control/Node2D" method="_on_TouchScreenButtonLeft_released"]
 [connection signal="pressed" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_pressed"]
 [connection signal="released" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_released"]
+[connection signal="pressed" from="Control/Pause" to="Control" method="_on_Pause_pressed"]
+[connection signal="pressed" from="Control/ColorRect/ColorRect/VBoxContainer/Resume" to="Control" method="_on_Resume_pressed"]
+[connection signal="pressed" from="Control/ColorRect/ColorRect/VBoxContainer/Checkpoint" to="Control" method="_on_Checkpoint_pressed"]
+[connection signal="pressed" from="Control/ColorRect/ColorRect/VBoxContainer/Restart" to="Control" method="_on_Restart_pressed"]
+[connection signal="pressed" from="Control/ColorRect/ColorRect/VBoxContainer/Menu" to="Control" method="_on_Menu_pressed"]

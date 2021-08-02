@@ -15,15 +15,15 @@ var Level
 var timer
 
 func _ready():
-	if Level != "Main Menu":
-		timer = Timer.new()
-		timer.connect("timeout",self,"_on_timer_timeout") 
-		add_child(timer)
+	timer = Timer.new()
+	timer.connect("timeout",self,"_on_timer_timeout") 
+	add_child(timer)
+
+func ready():
+	if timer.is_stopped():
 		timer.start(.01)
-		if Saved == false:
-			PlayerPos = $"/root/World/Player".global_position
-	else:
-		timer.stop()
+	if Saved == false:
+		PlayerPos = $"/root/World/Player".global_position
 
 func _on_timer_timeout():
 	Secs += .01
@@ -33,8 +33,13 @@ func _on_timer_timeout():
 		Secs = 0
 		Mins += 1
 
-func scene(name):
+func zero():
+	if timer:
+		timer.stop()
 	Deaths = 0
 	Secs = 0
 	Mins = 0
+
+func scene(name):
+	G.Can = false
 	get_tree().change_scene("res://scenes/levels/"+name+".tscn")

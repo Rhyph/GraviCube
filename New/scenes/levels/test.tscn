@@ -1,8 +1,7 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scripts/G.level/Level2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Tiles/conveer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Portals/PortalHomie.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/Tiles/TileMapSwitching.gd" type="Script" id=13]
@@ -655,9 +654,6 @@ script = ExtResource( 14 )
 [node name="Switchers" type="Node2D" parent="."]
 
 [node name="Interface" parent="." instance=ExtResource( 5 )]
-
-[node name="PortalHomie" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2, 56 )
 
 [node name="Texts" type="Node2D" parent="."]
 

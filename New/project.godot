@@ -16,7 +16,6 @@ _global_script_class_icons={
 
 config/name="GraviCube"
 run/main_scene="res://scenes/levels/Tutorial.tscn"
-boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [autoload]

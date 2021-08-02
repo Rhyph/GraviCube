@@ -35,7 +35,6 @@ func _ready():
 	Engine.time_scale = 1
 
 func _physics_process(delta):
-	print(G.Level)
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if x_input != 0:
 		motion.x += x_input * acceleration * delta
@@ -90,7 +89,7 @@ func _physics_process(delta):
 		if $RayCast2D.rotation_degrees == 0:
 			gravigun.rotation_degrees = 270
 		else:
-			gravigun.rotation_degrees = $"/root/World/Interface/circlebig/Line2D".rotation_degrees
+			gravigun.rotation_degrees = $"/root/World/Interface/Control/circlebig/Line2D".rotation_degrees
 		gravigun.position = $Position2D.global_position
 		$AudioStreamPlayer.play()
 	
@@ -151,7 +150,7 @@ func _on_Area2D_body_entered(body):
 		die()
 
 func die():
-	$"/root/World/Interface/circlebig".visible = false
+	$"/root/World/Interface/Control/circlebig".visible = false
 	get_tree().reload_current_scene()
 
 #Timers
