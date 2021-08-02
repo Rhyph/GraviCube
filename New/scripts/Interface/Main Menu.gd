@@ -15,9 +15,9 @@ func _on_Tutorial_pressed():
 func _on_Level0_pressed():
 	G.scene("Level0")
 func _on_Level1_pressed():
-	G.scene("Level0")
+	G.scene("Level1")
 func _on_Level2_pressed():
-	G.scene("Level0")
+	G.scene("Level2")
 
 func _on_Back_pressed():
 	$ColorRect.visible = false
