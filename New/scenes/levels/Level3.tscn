@@ -1,6 +1,6 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://scripts/G.level/Level1.gd" type="Script" id=1]
+[ext_resource path="res://scripts/G.level/Level3.gd" type="Script" id=1]
 [ext_resource path="res://sprites/marks/mark2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=4]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/lasers/LaserOtherTiming.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/levels/Level4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/MechanicObjects/Sphere.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Tiles/1wayblock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Objects/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/lasers/Laser.tscn" type="PackedScene" id=12]
@@ -350,7 +351,7 @@ glow_blend_mode = 0
 
 [node name="World" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level3" type="Node2D" parent="."]
 position = Vector2( 24, -48 )
 script = ExtResource( 1 )
 
@@ -541,6 +542,41 @@ position = Vector2( 233, -330 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 4 )
+
+[node name="mechanicObjects" type="Node2D" parent="."]
+position = Vector2( 24, -48 )
+
+[node name="spheres" type="Node2D" parent="mechanicObjects"]
+
+[node name="Sphere" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 26, -14 )
+
+[node name="Sphere2" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 42, -38 )
+
+[node name="Sphere3" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 58, -62 )
+
+[node name="Sphere4" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 79, -86 )
+
+[node name="Sphere6" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 134, -134 )
+
+[node name="Sphere7" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 186, -166 )
+
+[node name="Sphere8" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 270, -304 )
+
+[node name="Sphere9" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 266, -366 )
+
+[node name="Sphere10" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( 278, -426 )
+
+[node name="Sphere5" parent="mechanicObjects/spheres" instance=ExtResource( 9 )]
+position = Vector2( -24, -110 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 21 )

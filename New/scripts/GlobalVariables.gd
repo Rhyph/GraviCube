@@ -6,6 +6,7 @@ var PlayerPos = Vector2()
 var Can = true
 var Laved = false
 var Saved = false
+var TP = false
 
 var Deaths = 0
 var Mins = 0
@@ -13,6 +14,9 @@ var Secs = 0.0
 
 var Level
 var timer
+
+var Scores_t = [600,600,600,600]
+var Scores_d = [99,99,99,99]
 
 func _ready():
 	timer = Timer.new()

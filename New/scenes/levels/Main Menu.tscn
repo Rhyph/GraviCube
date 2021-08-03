@@ -37,10 +37,14 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "Start game"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Levels" type="Button" parent="VBoxContainer"]
 margin_top = 17.0
@@ -53,10 +57,14 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "Levels"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 margin_top = 34.0
@@ -69,6 +77,7 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
@@ -85,9 +94,9 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="ColorRect"]
-margin_top = 49.5
+margin_top = 50.0
 margin_right = 89.0
-margin_bottom = 62.5
+margin_bottom = 63.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
@@ -95,12 +104,14 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
@@ -126,6 +137,7 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
@@ -145,6 +157,7 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
@@ -164,6 +177,7 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
@@ -183,6 +197,7 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0

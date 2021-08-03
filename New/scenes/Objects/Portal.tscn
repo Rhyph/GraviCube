@@ -80,6 +80,7 @@ tracks/1/keys = {
 }
 
 [node name="Portal" type="Area2D"]
+pause_mode = 1
 position = Vector2( 0, -8 )
 monitorable = false
 collision_layer = 0
