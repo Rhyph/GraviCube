@@ -5,6 +5,7 @@ const PARTICLES = preload("res://scenes/PlayerObjects/BulletParticles.tscn")
 
 var speed = 400
 var k = 40
+var i = 0
 
 var motion = Vector2()
 
@@ -15,6 +16,10 @@ var part = true
 var particles
 
 func _physics_process(delta):
+	if i == 2:
+		i = 0
+		motion.y *= -1
+	
 	if part:
 		particles = PARTICLES.instance()
 		get_parent().add_child(particles)
@@ -66,6 +71,7 @@ func _on_Timer_timeout():
 
 func _on_Area2D2_body_entered(body):
 	motion.y *= -1
+	i += 1
 
 func _on_Timer2_timeout():
 	if fast:
