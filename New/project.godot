@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GraviCube"
-run/main_scene="res://scenes/levels/Level2.tscn"
+run/main_scene="res://scenes/levels/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

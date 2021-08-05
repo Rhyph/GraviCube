@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var PlayerPos = Vector2()
+var PlayerPos = Vector2(4, -4)
 
 var Can = true
 var Laved = false
@@ -12,7 +12,7 @@ var Deaths = 0
 var Mins = 0
 var Secs = 0.0
 
-var Cur_level = 3
+var Cur_level = 0
 var Level
 var timer
 
@@ -21,9 +21,10 @@ var Scores_d = [99,99,99,99,99]
 
 func _ready():
 	var data = FS.load_data()
-	G.Cur_level = data["Current Level"]
-	G.Scores_t = data["Time scores"]
-	G.Scores_d = data["Death scores"]
+	if data:
+		G.Cur_level = data["Current Level"]
+		G.Scores_t = data["Time scores"]
+		G.Scores_d = data["Death scores"]
 	
 	timer = Timer.new()
 	timer.connect("timeout",self,"_on_timer_timeout") 
