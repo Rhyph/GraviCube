@@ -13,12 +13,6 @@ func _physics_process(delta):
 		limit_right = 488
 		limit_top = -216
 	
-	if G.Level == "Arena":
-		limit_bottom = 8
-		limit_left = -176
-		limit_right = 288
-		limit_top = -320
-	
 	if G.Level == "Level2":
 		limit_bottom = 8
 		limit_left = -64
@@ -32,6 +26,12 @@ func _physics_process(delta):
 		limit_top = -10000000
 	
 	if G.Level == "Level4":
+		limit_bottom = 10000000
+		limit_left = -10000000
+		limit_right = 10000000
+		limit_top = -10000000
+	
+	if G.Level == "Free":
 		limit_bottom = 10000000
 		limit_left = -10000000
 		limit_right = 10000000

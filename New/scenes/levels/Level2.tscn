@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=2]
 
-[ext_resource path="res://scripts/G.level/Level1.gd" type="Script" id=1]
+[ext_resource path="res://scripts/G.level/Level2.gd" type="Script" id=1]
 [ext_resource path="res://sprites/marks/mark2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=4]
@@ -350,7 +350,7 @@ glow_blend_mode = 0
 
 [node name="World" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level2" type="Node2D" parent="."]
 position = Vector2( 24, -48 )
 script = ExtResource( 1 )
 

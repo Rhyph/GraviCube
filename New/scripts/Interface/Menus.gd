@@ -37,13 +37,15 @@ func close():
 func open2():
 	get_tree().paused = true
 	
+	G.Cur_level = max(G.Cur_level, int(G.Level.substr(5)) + 1)
+	
 	$ColorRect2/ColorRect2/Time.text = "Time: " + str(G.Mins) + ":" + str(G.Secs)
 	var level_index = int(G.Level.substr(5))
 	var score = 60 * G.Mins + G.Secs
 	if score < G.Scores_t[level_index]:
 		G.Scores_t[level_index] = score
 		$ColorRect2/ColorRect2/Best_time.visible = true
-		
+	
 	$ColorRect2/ColorRect2/Deaths.text = "Deaths: " + str(G.Deaths)
 	if G.Deaths < G.Scores_d[level_index]:
 		G.Scores_d[level_index] = G.Deaths
