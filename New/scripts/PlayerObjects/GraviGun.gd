@@ -1,10 +1,13 @@
 extends Area2D
 
+
 const PARTICLES = preload("res://scenes/PlayerObjects/BulletParticles.tscn")
 
 var speed = 400
 var k = 40
+
 var motion = Vector2()
+
 var sig = true
 var fast = true
 var part = true

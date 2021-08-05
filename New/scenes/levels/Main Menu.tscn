@@ -209,33 +209,11 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Level4" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 68.0
-margin_right = 89.0
-margin_bottom = 81.0
-focus_mode = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-disabled = true
-enabled_focus_mode = 0
-text = "Level 4"
-__meta__ = {
-"_editor_description_": ""
-}
-
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="ColorRect/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level0" to="." method="_on_Tutorial_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level0_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level2_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level4" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level0" to="." method="_on_Level0_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level1_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level3_pressed"]

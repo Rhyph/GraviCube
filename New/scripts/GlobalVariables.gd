@@ -12,7 +12,7 @@ var Deaths = 0
 var Mins = 0
 var Secs = 0.0
 
-var Cur_level = 0
+var Cur_level = 3
 var Level
 var timer
 
@@ -52,6 +52,11 @@ func zero():
 	Secs = 0
 	Mins = 0
 
+func reload_scene():
+	zero()
+	get_tree().reload_current_scene()
+
 func scene(name):
-	G.Can = false
+	Can = false
+	zero()
 	get_tree().change_scene("res://scenes/levels/"+name+".tscn")

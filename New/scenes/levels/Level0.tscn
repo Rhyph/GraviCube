@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scenes/levels/Level1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/G.level/Level0.gd" type="Script" id=3]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/marks/mark7.png" type="Texture" id=6]
@@ -14,11 +13,19 @@
 [ext_resource path="res://scenes/Objects/Key.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Objects/Key2.tscn" type="PackedScene" id=17]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+func _ready():
+	G.Level = \"Level0\"
+	G.ready()
+"
+
+[sub_resource type="Theme" id=2]
 resource_local_to_scene = true
 default_font = ExtResource( 4 )
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=3]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 0.05
@@ -26,10 +33,7 @@ glow_strength = 0.8
 glow_blend_mode = 0
 
 [node name="World" type="Node2D"]
-
-[node name="Level0" type="Node2D" parent="."]
-position = Vector2( 248, -80 )
-script = ExtResource( 3 )
+script = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4, -4 )
@@ -56,7 +60,7 @@ margin_top = 53.0
 margin_right = -120.0
 margin_bottom = 87.0
 rect_scale = Vector2( 0.8, 0.8 )
-theme = SubResource( 1 )
+theme = SubResource( 2 )
 text = "Just tap
 the stick"
 __meta__ = {
@@ -97,6 +101,6 @@ next_scene = ExtResource( 1 )
 position = Vector2( 236, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 3 )
 
 [node name="Interface" parent="." instance=ExtResource( 5 )]

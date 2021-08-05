@@ -1,8 +1,6 @@
 extends Area2D
 
 
-
-
 export var next_scene: PackedScene
 
 func _on_Area2D_body_entered(body):

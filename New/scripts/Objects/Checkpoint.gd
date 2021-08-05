@@ -1,8 +1,6 @@
 extends Area2D
 
 
-
-
 func _ready():
 	if G.PlayerPos == global_position:
 		$checkpoint/AnimationPlayer.play("activated")

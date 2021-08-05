@@ -1,5 +1,6 @@
 extends TouchScreenButton
 
+
 var radius = Vector2(16,16)
 
 var inArea = false
@@ -32,15 +33,15 @@ func _physics_process(delta):
 		var pos_difference = (Vector2(0,0) - radius) - position
 		position += pos_difference * return_accel * delta
 	
-	if inArea == true && $"/root/World/Player".projectile == 1:
-		if once == true:
+	if inArea && $"/root/World/Player".projectile == 1:
+		if once:
 			Touched()
 
 func _button_pos():
 	return position + radius
 
 func _input(event):
-	if inArea == true && $"/root/World/Player".projectile == 1:
+	if inArea && $"/root/World/Player".projectile == 1:
 		if event is InputEventScreenDrag || (event is InputEventScreenTouch && event.is_pressed()):
 			down = false
 			$"/root/World/Player/RayCast2D".enabled = true

@@ -116,7 +116,6 @@ script = ExtResource( 3 )
 [node name="ice" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 2
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -132,6 +131,7 @@ material = SubResource( 4 )
 position = Vector2( -1.78814e-06, -4 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 2
+emitting = false
 amount = 36
 process_material = SubResource( 7 )
 texture = ExtResource( 1 )

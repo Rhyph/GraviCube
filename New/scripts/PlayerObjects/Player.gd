@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 const GRAVIGUN = preload("res://scenes/PlayerObjects/GraviGun.tscn")
 
 const AIR_RESISTANCE = .02
@@ -21,7 +22,6 @@ var GraviShot = false
 
 var gravigun
 
-var GraviBoost
 var LinePos = Vector2()
 var motion = Vector2.ZERO
 
@@ -36,14 +36,12 @@ func _ready():
 
 func _physics_process(delta):
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	
 	if x_input != 0:
 		motion.x += x_input * acceleration * delta
 		$player.flip_h = x_input < 0
 	
 	motion.y += GRAVITY * delta
-	
-	GraviBoost = motion.y
-	GraviBoost = clamp(GraviBoost, -64, 64)
 	
 	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
@@ -55,6 +53,7 @@ func _physics_process(delta):
 		G.Laved = true
 	else:
 		G.Laved = false
+	
 	if $Rays/ConvCast.is_colliding() || $Rays/ConvCast2.is_colliding():
 		motion.x = clamp(motion.x, -MAX_SPEED + 32, MAX_SPEED + 32)
 		if x_input == 0:
@@ -132,10 +131,11 @@ func Vector(k):
 	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
 	motion.x = 4 * graviMotion.x
 	if (graviMotion.y >= 0 && k >= 0) || (graviMotion.y < 0 && k < 0):
-		motion.y = 3 * graviMotion.y + abs(GraviBoost / 2)
+		motion.y = 3 * graviMotion.y
 	else:
-		motion.y = 3 * graviMotion.y - abs(GraviBoost / 2)
+		motion.y = 3 * graviMotion.y
 
+#Для анимации приземления
 func return_drop():
 	dropped = false
 
@@ -144,6 +144,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	if G.Can:
 		G.Deaths += 1
 		get_tree().reload_current_scene()
+
 #Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
 	if "TileMapChanging" in body.name || "Door" in body.name && motion.y == 0:

@@ -1,8 +1,6 @@
 extends RayCast2D
 
 
-
-
 func _ready():
 	$Line2D.points[1] = Vector2.ZERO
 

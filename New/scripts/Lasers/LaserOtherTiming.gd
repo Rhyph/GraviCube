@@ -1,5 +1,6 @@
 extends RayCast2D
 
+
 var is_casting = false setget set_is_casting
 
 func _ready():

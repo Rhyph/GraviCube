@@ -17,7 +17,3 @@ func _on_Area2D_body_entered(body):
 			$AnimationPlayer.play("picked")
 			$"/root/World/Player".keys -= 1
 		picked = true
-
-func deleting():
-	$Particles2D.process_material.gravity = Vector3(0, 0, 0)
-	queue_free()

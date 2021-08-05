@@ -1,7 +1,6 @@
 extends Node2D
 
 
-
 func _on_TouchScreenButtonLeft_pressed():
 	Input.action_press("ui_left")
 func _on_TouchScreenButtonLeft_released():
