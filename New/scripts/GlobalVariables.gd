@@ -29,6 +29,7 @@ func _ready():
 	timer = Timer.new()
 	timer.connect("timeout",self,"_on_timer_timeout") 
 	add_child(timer)
+	
 	if get_tree().current_scene.name != "Main Menu" && Saved == false:
 		PlayerPos = $"/root/World/Player".global_position
 

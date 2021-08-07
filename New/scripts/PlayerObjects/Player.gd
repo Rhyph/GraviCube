@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 const GRAVIGUN = preload("res://scenes/PlayerObjects/GraviGun.tscn")
 
-const AIR_RESISTANCE = .02
+const AIR_RESISTANCE = .04
 const MAX_SPEED = 64
 const JUMP_FORCE = 72
 const GRAVITY = 400
@@ -42,6 +42,7 @@ func _physics_process(delta):
 		$player.flip_h = x_input < 0
 	
 	motion.y += GRAVITY * delta
+	motion.y = clamp(motion.y, -116, 384)
 	
 	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
@@ -129,9 +130,9 @@ func animation():
 func Vector(k):
 	is_GraviJump = true
 	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
-	motion.x = 4 * graviMotion.x
-	if (graviMotion.y >= 0 && k >= 0) || (graviMotion.y < 0 && k < 0):
-		motion.y = 3 * graviMotion.y
+	motion.x = 4.5 * graviMotion.x
+	if motion.y == 0:
+		motion.y = 3.5 * graviMotion.y
 	else:
 		motion.y = 3 * graviMotion.y
 

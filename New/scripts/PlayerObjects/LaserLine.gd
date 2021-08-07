@@ -29,9 +29,6 @@ func _physics_process(delta):
 		y = clamp(y, 0, 92)
 		cast_point = Vector2(x, y)
 	
-	cast_point.x = clamp(cast_point.x, -16, 16)
-	cast_point.y = clamp(cast_point.y, -16, 16)
-	
 	$Line2D.points[1] = cast_point
 
 func under():
