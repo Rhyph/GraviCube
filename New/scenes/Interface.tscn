@@ -25,18 +25,6 @@ radius = 13.0
 [sub_resource type="Theme" id=4]
 default_font = ExtResource( 2 )
 
-[sub_resource type="StyleBoxLine" id=7]
-color = Color( 1, 1, 1, 1 )
-grow_begin = -1.0
-grow_end = -1.0
-vertical = true
-
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="DynamicFont" id=9]
-size = 32
-font_data = ExtResource( 1 )
-
 [sub_resource type="StyleBoxLine" id=5]
 color = Color( 1, 1, 1, 1 )
 grow_begin = -1.0
@@ -44,6 +32,18 @@ grow_end = -1.0
 vertical = true
 
 [sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxLine" id=8]
+color = Color( 1, 1, 1, 1 )
+grow_begin = -1.0
+grow_end = -1.0
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id=9]
 
 [node name="Interface" type="CanvasLayer"]
 pause_mode = 2
@@ -91,6 +91,10 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="Control/circlebig/TouchScreenButton"]
 wait_time = 0.01
+one_shot = true
+
+[node name="CheckGroundSlow" type="Timer" parent="Control/circlebig/TouchScreenButton"]
+wait_time = 0.2
 one_shot = true
 
 [node name="Line2D" type="Line2D" parent="Control/circlebig"]
@@ -166,11 +170,11 @@ margin_top = -1.0
 margin_right = 29.0
 margin_bottom = 25.0
 focus_mode = 0
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
@@ -228,10 +232,10 @@ __meta__ = {
 margin_right = 89.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -248,10 +252,10 @@ margin_top = 23.0
 margin_right = 89.0
 margin_bottom = 36.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -268,10 +272,10 @@ margin_top = 46.0
 margin_right = 89.0
 margin_bottom = 59.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -288,10 +292,10 @@ margin_top = 69.0
 margin_right = 89.0
 margin_bottom = 82.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -413,10 +417,10 @@ margin_left = 11.0
 margin_right = 65.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -433,10 +437,10 @@ margin_left = 90.0
 margin_right = 140.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -453,10 +457,10 @@ margin_left = 165.0
 margin_right = 228.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -471,6 +475,7 @@ __meta__ = {
 [connection signal="pressed" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
 [connection signal="timeout" from="Control/circlebig/TouchScreenButton/Timer" to="Control/circlebig/TouchScreenButton" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Control/circlebig/TouchScreenButton/CheckGroundSlow" to="Control/circlebig/TouchScreenButton" method="_on_CheckGroundSlow_timeout"]
 [connection signal="pressed" from="Control/Node2D/TouchScreenButtonLeft" to="Control/Node2D" method="_on_TouchScreenButtonLeft_pressed"]
 [connection signal="released" from="Control/Node2D/TouchScreenButtonLeft" to="Control/Node2D" method="_on_TouchScreenButtonLeft_released"]
 [connection signal="pressed" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_pressed"]

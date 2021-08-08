@@ -8,15 +8,25 @@ func _ready():
 	$Line2D.points[1] = Vector2.ZERO
 
 func _physics_process(delta):
-	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".down == false:
+	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".ongoing_drag == -1:
+		rotation_degrees = 0
 		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
 			$shoot/AnimationPlayer.play("visible")
-			switch = true
-			rotation_degrees = $"/root/World/Interface/Control/circlebig/Line2D".rotation_degrees - 90
+	
+	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".down == false:
+		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".hard_func >= 14:
+			if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
+				rotation_degrees = $"/root/World/Interface/Control/circlebig/Line2D".rotation_degrees - 90
+				$shoot/AnimationPlayer.play("visible")
+				switch = true
+			else:
+				if switch:
+					$shoot/AnimationPlayer.play("auto")
+				switch = false
 		else:
-			if switch == true:
-				$shoot/AnimationPlayer.play("auto")
-			switch = false
+			rotation_degrees = 0
+			if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
+				$shoot/AnimationPlayer.play("visible")
 	
 	var cast_point = cast_to
 	

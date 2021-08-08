@@ -49,6 +49,12 @@ func open2():
 		G.Scores_d[level_index] = G.Deaths
 		$ColorRect2/ColorRect2/Best_deaths.visible = true
 	
+	FS.save_data({
+		"Current Level" : G.Cur_level,
+		"Death scores" : G.Scores_d,
+		"Time scores" : G.Scores_t
+	})
+	
 	$"/root/World/Interface/Control".visible = false
 	$Pause.visible = false
 	$"/root/World/Interface/Menus/ColorRect2".visible = true

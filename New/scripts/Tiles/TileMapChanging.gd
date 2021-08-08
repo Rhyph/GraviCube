@@ -1,8 +1,6 @@
 extends TileMap
 
 
-
-
 var player = 1
 
 func _on_Timer_timeout():
@@ -24,7 +22,7 @@ func _on_Timer2_timeout():
 func _on_Timer3_timeout():
 	if modulate == Color(4,1,1,1) || modulate == Color(1,2,4,1):
 		modulate = Color(1,1,1,1)
-	elif player == -1:
+	elif player == 1:
 		modulate = Color(4,1,1,1)
 	else:
 		modulate = Color(1,2,4,1)

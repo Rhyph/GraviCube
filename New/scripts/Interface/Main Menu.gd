@@ -17,11 +17,6 @@ func _on_Start_pressed():
 func _on_Levels_pressed():
 	$ColorRect.visible = true
 func _on_Quit_pressed():
-	FS.save_data({
-		"Current Level" : G.Cur_level,
-		"Death scores" : G.Scores_d,
-		"Time scores" : G.Scores_t
-	})
 	get_tree().quit()
 
 func _on_Back_pressed():
