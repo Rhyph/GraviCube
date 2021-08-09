@@ -192,7 +192,7 @@ custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "|||"
 __meta__ = {
@@ -246,7 +246,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  Resume"
 align = 0
@@ -267,7 +267,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  To checkpoint"
 align = 0
@@ -288,7 +288,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  Restart"
 align = 0
@@ -309,7 +309,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  To menu"
 align = 0
@@ -453,7 +453,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  To menu  "
 align = 0
@@ -474,7 +474,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  Restart  "
 align = 0
@@ -495,7 +495,7 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  Next level  "
 align = 0
@@ -512,24 +512,10 @@ __meta__ = {
 [connection signal="pressed" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_pressed"]
 [connection signal="released" from="Control/Node2D/TouchScreenButtonRight" to="Control/Node2D" method="_on_TouchScreenButtonRight_released"]
 [connection signal="pressed" from="Menus/Pause" to="Menus" method="_on_Pause_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect/VBoxContainer/Resume" to="Menus" method="_on_Resume_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect/VBoxContainer/Resume" to="Menus" method="_on_Resume_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect/VBoxContainer/Resume" to="Menus" method="_on_Resume_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect/VBoxContainer/Checkpoint" to="Menus" method="_on_Checkpoint_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect/VBoxContainer/Checkpoint" to="Menus" method="_on_Checkpoint_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect/VBoxContainer/Checkpoint" to="Menus" method="_on_Checkpoint_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect/VBoxContainer/Restart" to="Menus" method="_on_Restart_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect/VBoxContainer/Restart" to="Menus" method="_on_Restart_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect/VBoxContainer/Restart" to="Menus" method="_on_Restart_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect/VBoxContainer/Menu" to="Menus" method="_on_Menu_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect/VBoxContainer/Menu" to="Menus" method="_on_Menu_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect/VBoxContainer/Menu" to="Menus" method="_on_Menu_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect2/HBoxContainer/Menu2" to="Menus" method="_on_Menu2_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect2/HBoxContainer/Menu2" to="Menus" method="_on_Menu2_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect2/HBoxContainer/Menu2" to="Menus" method="_on_Menu2_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect2/HBoxContainer/Restart2" to="Menus" method="_on_Restart2_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect2/HBoxContainer/Restart2" to="Menus" method="_on_Restart2_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect2/HBoxContainer/Restart2" to="Menus" method="_on_Restart2_pressed"]
-[connection signal="mouse_entered" from="Menus/ColorRect2/HBoxContainer/Next2" to="Menus" method="_on_Next2_mouse_entered"]
-[connection signal="mouse_exited" from="Menus/ColorRect2/HBoxContainer/Next2" to="Menus" method="_on_Next2_mouse_exited"]
 [connection signal="pressed" from="Menus/ColorRect2/HBoxContainer/Next2" to="Menus" method="_on_Next2_pressed"]
