@@ -59,6 +59,7 @@ func zero():
 
 func reload_scene():
 	zero()
+	PlayerPos = Vector2(4, -4)
 	get_tree().reload_current_scene()
 
 func scene(name):

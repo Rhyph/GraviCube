@@ -42,7 +42,7 @@ func _physics_process(delta):
 		$player.flip_h = x_input < 0
 	
 	motion.y += GRAVITY * delta
-	motion.y = clamp(motion.y, -112, 384)
+	motion.y = clamp(motion.y, -114, 384)
 	
 	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
