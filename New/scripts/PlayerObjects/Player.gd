@@ -42,7 +42,7 @@ func _physics_process(delta):
 		$player.flip_h = x_input < 0
 	
 	motion.y += GRAVITY * delta
-	motion.y = clamp(motion.y, -116, 384)
+	motion.y = clamp(motion.y, -112, 384)
 	
 	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
@@ -131,10 +131,7 @@ func Vector(k):
 	is_GraviJump = true
 	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
 	motion.x = 4.5 * graviMotion.x
-	if motion.y == 0:
-		motion.y = 3.5 * graviMotion.y
-	else:
-		motion.y = 3 * graviMotion.y
+	motion.y = 3.5 * graviMotion.y
 
 #Для анимации приземления
 func return_drop():

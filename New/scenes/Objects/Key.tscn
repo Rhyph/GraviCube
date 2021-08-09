@@ -4,8 +4,8 @@
 [ext_resource path="res://scripts/Objects/Key.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.0
-height = 2.0
+radius = 2.0
+height = 1.0
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0, 0.803711, 1, 1, 0, 0, 0, 0 )
@@ -35,7 +35,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 [sub_resource type="CurveTexture" id=9]
 curve = SubResource( 8 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 1
 emission_sphere_radius = 3.0
 flag_disable_z = true
@@ -109,12 +109,13 @@ z_index = -1
 shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
+self_modulate = Color( 1, 1, 1, 0.9 )
 show_behind_parent = true
 position = Vector2( 0, -2.5 )
 amount = 16
-process_material = SubResource( 10 )
+process_material = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/picked = SubResource( 11 )
 
-[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Key_body_entered"]
