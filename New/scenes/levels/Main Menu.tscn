@@ -1,13 +1,49 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Interface/Main Menu.gd" type="Script" id=2]
+[ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="StyleBoxLine" id=1]
-color = Color( 1, 1, 1, 1 )
-vertical = true
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0.552941, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0.552941, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0.552941, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.552941, 1, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
 
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
@@ -20,69 +56,77 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = -29.5
-margin_right = 89.0
-margin_bottom = 29.5
+margin_top = -40.5
+margin_right = 80.0
+margin_bottom = 40.5
 custom_constants/separation = 10
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start" type="Button" parent="VBoxContainer"]
-margin_right = 89.0
-margin_bottom = 13.0
+margin_top = 11.0
+margin_right = 80.0
+margin_bottom = 24.0
 focus_mode = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
-text = "Start game"
+text = "  Start game"
+align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Levels" type="Button" parent="VBoxContainer"]
-margin_top = 23.0
-margin_right = 89.0
-margin_bottom = 36.0
+margin_top = 34.0
+margin_right = 80.0
+margin_bottom = 47.0
 focus_mode = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
-text = "Levels"
+text = "  Levels"
+align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-margin_top = 46.0
-margin_right = 89.0
-margin_bottom = 59.0
+margin_top = 57.0
+margin_right = 80.0
+margin_bottom = 70.0
 focus_mode = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
-text = "Quit"
+text = "  Quit"
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -96,20 +140,21 @@ __meta__ = {
 
 [node name="Back" type="Button" parent="ColorRect"]
 margin_top = 38.0
-margin_right = 89.0
+margin_right = 80.0
 margin_bottom = 51.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
-text = "Back"
+text = "  Back"
+align = 0
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -120,102 +165,130 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.5
-margin_top = -41.0
-margin_right = 44.5
-margin_bottom = 41.0
+margin_left = -40.0
+margin_top = -54.0
+margin_right = 40.0
+margin_bottom = 54.0
 custom_constants/separation = 10
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Level0" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_right = 89.0
-margin_bottom = 13.0
+margin_top = 13.0
+margin_right = 80.0
+margin_bottom = 26.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
-text = "Level 0"
+text = "  level0"
+align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Level1" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 23.0
-margin_right = 89.0
-margin_bottom = 36.0
+margin_top = 36.0
+margin_right = 80.0
+margin_bottom = 49.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 disabled = true
 enabled_focus_mode = 0
-text = "Level 1"
+text = "  Level1"
+align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Level2" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 46.0
-margin_right = 89.0
-margin_bottom = 59.0
+margin_top = 59.0
+margin_right = 80.0
+margin_bottom = 72.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 disabled = true
 enabled_focus_mode = 0
-text = "Level 2"
+text = "  Level2"
+align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Level3" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 69.0
-margin_right = 89.0
-margin_bottom = 82.0
+margin_top = 82.0
+margin_right = 80.0
+margin_bottom = 95.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 disabled = true
 enabled_focus_mode = 0
-text = "Level 3"
+text = "  Level3"
+align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Star" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 160, 90 )
+
+[connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_Start_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Start" to="." method="_on_Start_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Levels" to="." method="_on_Levels_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Levels" to="." method="_on_Levels_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Quit" to="." method="_on_Quit_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Quit" to="." method="_on_Quit_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="mouse_entered" from="ColorRect/Back" to="." method="_on_Back_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/Back" to="." method="_on_Back_mouse_exited"]
 [connection signal="pressed" from="ColorRect/Back" to="." method="_on_Back_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/Level0" to="." method="_on_Level0_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/Level0" to="." method="_on_Level0_mouse_exited"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level0" to="." method="_on_Level0_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level1_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level1_mouse_exited"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level1_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level2_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level2_mouse_exited"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level2_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level3_pressed"]
+[connection signal="timeout" from="Star" to="." method="_on_Star_timeout"]

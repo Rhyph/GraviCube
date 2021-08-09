@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GraviCube"
-run/main_scene="res://scenes/levels/Level2.tscn"
+run/main_scene="res://scenes/levels/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -92,6 +92,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0117647, 0.0627451, 0.0392157, 1 )
+environment/default_clear_color=Color( 0.027451, 0.0862745, 0.152941, 1 )
 quality/depth/hdr.mobile=true
 environment/default_environment="res://default_env.tres"

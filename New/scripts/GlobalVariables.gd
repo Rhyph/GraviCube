@@ -7,24 +7,27 @@ var Can = true
 var Laved = false
 var Saved = false
 var TP = false
+var Fade_out = false
 
 var Deaths = 0
 var Mins = 0
 var Secs = 0.0
 
-var Cur_level = 0
+var Cur_level = 3
 var Level
 var timer
 
+var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
 var Scores_t = [600,600,600,600,600]
 var Scores_d = [99,99,99,99,99]
 
 func _ready():
 	var data = FS.load_data()
 	if data:
-		G.Cur_level = data["Current Level"]
-		G.Scores_t = data["Time scores"]
-		G.Scores_d = data["Death scores"]
+		Cur_level = data["Current Level"]
+		Scores_t = data["Time scores"]
+		Scores_d = data["Death scores"]
+		Records_t = data["Your best"]
 	
 	timer = Timer.new()
 	timer.connect("timeout",self,"_on_timer_timeout") 

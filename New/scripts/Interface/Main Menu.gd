@@ -3,14 +3,11 @@ extends Control
 
 func _ready():
 	if G.Cur_level != 0:
-		$VBoxContainer/Start.text = "Continue"
-	
+		$VBoxContainer/Start.text = "  Continue"
 	if G.Cur_level > 0:
 		$ColorRect/VBoxContainer2/Level1.disabled = false
 	if G.Cur_level > 1:
 		$ColorRect/VBoxContainer2/Level2.disabled = false
-	if G.Cur_level > 2:
-		$ColorRect/VBoxContainer2/Level3.disabled = false
 
 func _on_Start_pressed():
 	G.scene("Level" + str(G.Cur_level))
@@ -30,3 +27,72 @@ func _on_Level2_pressed():
 	G.scene("Level2")
 func _on_Level3_pressed():
 	G.scene("Level3")
+
+var Start_t
+var Level_t
+var Quit_t
+var Back_t
+var Level0_t
+var Level1_t
+var Level2_t
+func _on_Start_mouse_entered():
+	Start_t = $VBoxContainer/Start.text
+	$VBoxContainer/Start.text = " " + Start_t
+func _on_Start_mouse_exited():
+	$VBoxContainer/Start.text = Start_t
+func _on_Levels_mouse_entered():
+	Level_t = $VBoxContainer/Levels.text
+	$VBoxContainer/Levels.text = " " + Level_t
+func _on_Levels_mouse_exited():
+	$VBoxContainer/Levels.text = Level_t
+func _on_Quit_mouse_entered():
+	Quit_t = $VBoxContainer/Quit.text
+	$VBoxContainer/Quit.text = " " + Quit_t
+func _on_Quit_mouse_exited():
+	$VBoxContainer/Quit.text = Quit_t
+func _on_Back_mouse_entered():
+	Back_t = $ColorRect/Back.text
+	$ColorRect/Back.text = " " + Back_t
+func _on_Back_mouse_exited():
+	$ColorRect/Back.text = Back_t
+func _on_Level0_mouse_entered():
+	if $ColorRect/VBoxContainer2/Level0.disabled == false:
+		Level0_t = $ColorRect/VBoxContainer2/Level0.text
+		$ColorRect/VBoxContainer2/Level0.text = " " + Level0_t
+func _on_Level0_mouse_exited():
+	if $ColorRect/VBoxContainer2/Level0.disabled == false:
+		$ColorRect/VBoxContainer2/Level0.text = Level0_t
+func _on_Level1_mouse_entered():
+	if $ColorRect/VBoxContainer2/Level1.disabled == false:
+		Level1_t = $ColorRect/VBoxContainer2/Level1.text
+		$ColorRect/VBoxContainer2/Level1.text = " " + Level1_t
+func _on_Level1_mouse_exited():
+	if $ColorRect/VBoxContainer2/Level1.disabled == false:
+		$ColorRect/VBoxContainer2/Level1.text = Level1_t
+func _on_Level2_mouse_entered():
+	if $ColorRect/VBoxContainer2/Level2.disabled == false:
+		Level2_t = $ColorRect/VBoxContainer2/Level2.text
+		$ColorRect/VBoxContainer2/Level2.text = " " + Level2_t
+func _on_Level2_mouse_exited():
+	if $ColorRect/VBoxContainer2/Level2.disabled == false:
+		$ColorRect/VBoxContainer2/Level2.text = Level2_t
+
+#Star inscancing
+const STAR = [preload("res://scenes/Space/Star1.tscn"), \
+preload("res://scenes/Space/Star2.tscn"), preload("res://scenes/Space/Star3.tscn")]
+
+var star = [0, 1, 2]
+
+var rng = RandomNumberGenerator.new()
+var rand
+
+func _on_Star_timeout():
+	$Star.start()
+	rng.randomize()
+	rand = rng.randi_range(0, 2)
+	instance_star()
+
+func instance_star():
+	star[rand] = STAR[rand].instance()
+	get_parent().add_child(star[rand])
+	star[rand].position = $Position2D.global_position
