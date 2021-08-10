@@ -13,7 +13,7 @@ var Deaths = 0
 var Mins = 0
 var Secs = 0.0
 
-var Cur_level = 0
+var Cur_level = 3
 var Level
 var timer
 

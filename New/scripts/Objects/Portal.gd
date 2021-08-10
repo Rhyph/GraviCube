@@ -5,6 +5,10 @@ export var next_scene: PackedScene
 
 func _on_Area2D_body_entered(body):
 	if "Player" in body.name:
+		$"/root/World/Interface/Menus/ColorRect2".visible = true
+		$"/root/World/Interface/Menus/AnimationPlayer".play("idle")
+		$"/root/World/Interface/Control".visible = false
+		$"/root/World/Interface/Menus/Pause".visible = false
 		$Timer.start()
 
 func _on_Timer_timeout():

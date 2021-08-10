@@ -6,7 +6,7 @@
 particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
-particles_anim_loop = false
+particles_anim_loop = true
 
 [sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
@@ -17,16 +17,19 @@ spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity_random = 1.0
 angular_velocity_random = 1.0
-orbit_velocity = 0.05
+orbit_velocity = 0.03
 orbit_velocity_random = 1.0
 linear_accel_random = 1.0
 radial_accel_random = 1.0
 tangential_accel_random = 1.0
-damping = 100.0
 damping_random = 1.0
+angle_random = 1.0
 hue_variation = 1.0
 hue_variation_random = 1.0
 anim_speed = 1.0
+anim_speed_random = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"

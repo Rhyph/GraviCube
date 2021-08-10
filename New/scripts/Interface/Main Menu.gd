@@ -4,10 +4,13 @@ extends Control
 func _ready():
 	if G.Cur_level != 0:
 		$VBoxContainer/Start.text = "  Continue"
+		$VBoxContainer/Levels.disabled = false
 	if G.Cur_level > 0:
 		$ColorRect/VBoxContainer2/Level1.disabled = false
 	if G.Cur_level > 1:
 		$ColorRect/VBoxContainer2/Level2.disabled = false
+	if G.Cur_level > 2:
+		$ColorRect/VBoxContainer2/Level3.disabled = false
 
 func _on_Start_pressed():
 	G.scene("Level" + str(G.Cur_level))
