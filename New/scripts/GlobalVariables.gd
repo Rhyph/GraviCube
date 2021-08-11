@@ -9,6 +9,7 @@ var Saved = false
 var TP = false
 var Fade_out = false
 
+var Popups = 0
 var Deaths = 0
 var Mins = 0
 var Secs = 0.0

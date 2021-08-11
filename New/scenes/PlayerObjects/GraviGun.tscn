@@ -6,17 +6,17 @@
 [ext_resource path="res://sprites/PlayerObjects/demo.png" type="Texture" id=4]
 [ext_resource path="res://sounds/Explosion170.wav" type="AudioStream" id=5]
 
-[sub_resource type="Curve" id=1]
+[sub_resource type="Curve" id=14]
 min_value = 0.3
 _data = [ Vector2( 0, 0.3 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=15]
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=17]
 length = 0.3
 step = 0.025
 tracks/0/type = "value"
@@ -94,14 +94,14 @@ tracks/5/keys = {
 "values": [ Color( 1, 2, 4, 1 ), Color( 1, 2, 4, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=18]
 resource_local_to_scene = true
 radius = 21.0
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=20]
 resource_local_to_scene = true
 radius = 5.0
 
@@ -132,15 +132,15 @@ collision_mask = 227
 modulate = Color( 1, 2, 4, 1 )
 rotation = -1.5708
 width = 3.0
-width_curve = SubResource( 1 )
+width_curve = SubResource( 14 )
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 2 )
+gradient = SubResource( 15 )
 end_cap_mode = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 16 )
 
 [node name="bullet" type="Sprite" parent="."]
 modulate = Color( 1, 2, 4, 1 )
@@ -152,7 +152,7 @@ texture = ExtResource( 4 )
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/shot = SubResource( 4 )
+anims/shot = SubResource( 17 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -163,7 +163,7 @@ collision_layer = 0
 collision_mask = 48
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 18 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -171,7 +171,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource( 6 )
+shape = SubResource( 19 )
 
 [node name="Area2D3" type="Area2D" parent="."]
 collision_layer = 0
@@ -179,7 +179,7 @@ collision_mask = 128
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( 20 )
 
 [node name="Position2D" type="Position2D" parent="."]
 

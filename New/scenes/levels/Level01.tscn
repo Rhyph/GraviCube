@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Tiles/World.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Blocks/1wayblock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Objects/Checkpoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/PlayerObjects/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/levels/Level1.tscn" type="PackedScene" id=12]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+func _ready():
+	G.Level = \"Level0\"
+	G.ready()
+"
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.05
+glow_strength = 0.8
+glow_blend_mode = 0
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area2D
+
+
+func _on_1Popup_body_entered(body):
+	if \"Player\" in body.name:
+		G.Popups += 1
+		$\"/root/World/Interface/Popup\".popup()
+		$\"/root/World/Interface/Popup\".open()
+		get_tree().paused = true
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 20 )
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -100.0
+linear_accel_random = 1.0
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
+[node name="World" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4, -4 )
+
+[node name="Tiles" type="Node2D" parent="."]
+position = Vector2( 248, -80 )
+
+[node name="TileMap" type="TileMap" parent="Tiles"]
+position = Vector2( -160, 0 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 8, 8 )
+cell_quadrant_size = 8
+collision_layer = 3
+collision_mask = 17
+format = 1
+tile_data = PoolIntArray( 720885, 0, 196608, 720886, 0, 196609, 720887, 0, 196609, 720888, 0, 196609, 720889, 0, 196609, 720890, 0, 196609, 720891, 0, 196609, 720892, 0, 196609, 720893, 0, 196609, 720894, 0, 196609, 720895, 0, 196609, 655360, 0, 196609, 655361, 0, 196609, 655362, 0, 196609, 655363, 0, 196609, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196610 )
+
+[node name="1ways" type="Node2D" parent="Tiles"]
+
+[node name="1wayblock" parent="Tiles/1ways" instance=ExtResource( 7 )]
+position = Vector2( -120, 125 )
+
+[node name="Checkpoints" type="Node2D" parent="."]
+position = Vector2( 248, -80 )
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 8 )]
+position = Vector2( -99, 119 )
+
+[node name="Marks" type="Node2D" parent="."]
+
+[node name="PortalLevel02" parent="." instance=ExtResource( 10 )]
+position = Vector2( 165, 42 )
+next_scene = ExtResource( 12 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Interface" parent="." instance=ExtResource( 5 )]
+
+[node name="Popup" type="Area2D" parent="."]
+position = Vector2( 82, -10 )
+script = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popup"]
+position = Vector2( -2, -10 )
+shape = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="Popup"]
+position = Vector2( -2, 10 )
+amount = 16
+process_material = SubResource( 5 )
+
+[node name="Popup2" type="Area2D" parent="."]
+position = Vector2( 130, -10 )
+script = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popup2"]
+position = Vector2( -2, -10 )
+shape = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="Popup2"]
+position = Vector2( -2, 10 )
+amount = 16
+process_material = SubResource( 5 )
+
+[node name="Popup3" type="Area2D" parent="."]
+position = Vector2( 178, -10 )
+script = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Popup3"]
+position = Vector2( -2, -10 )
+shape = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="Popup3"]
+position = Vector2( -2, 10 )
+amount = 16
+process_material = SubResource( 5 )
+
+[connection signal="body_entered" from="Popup" to="Popup" method="_on_1Popup_body_entered"]
+[connection signal="body_entered" from="Popup2" to="Popup2" method="_on_1Popup_body_entered"]
+[connection signal="body_entered" from="Popup3" to="Popup3" method="_on_1Popup_body_entered"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circlegrey2.png-d29359233159fb0b9825a9df95916e05.stex"
+path="res://.import/popup4.png-ca630a0cac4c94148a8b6eaa5e79c077.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Buttons/circlegrey2.png"
-dest_files=[ "res://.import/circlegrey2.png-d29359233159fb0b9825a9df95916e05.stex" ]
+source_file="res://sprites/PopUps/popup4.png"
+dest_files=[ "res://.import/popup4.png-ca630a0cac4c94148a8b6eaa5e79c077.stex" ]
 
 [params]
 

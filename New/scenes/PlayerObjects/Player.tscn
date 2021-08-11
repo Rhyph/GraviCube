@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/PlayerObjects/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/PlayerObjects/player.png" type="Texture" id=2]
@@ -12,8 +12,39 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 3.6 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "downFast"
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+render_mode unshaded;
+ 
+uniform float width : hint_range(0.0, 16.0);
+uniform vec4 outline_color : hint_color;
+ 
+void fragment()
+{
+    vec2 size = vec2(width) / vec2(textureSize(TEXTURE, 0));
+   
+    vec4 sprite_color = texture(TEXTURE, UV);
+   
+    float alpha = sprite_color.a;
+    alpha += texture(TEXTURE, UV + vec2(0.0, -size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(0.0, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, 0.0)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+   
+    vec3 final_color = mix(outline_color.rgb, sprite_color.rgb, sprite_color.a);
+    COLOR = vec4(final_color, clamp(alpha, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/width = 0.2
+shader_param/outline_color = null
+
+[sub_resource type="Animation" id=4]
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -53,8 +84,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "downFloor"
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("player:position")
@@ -107,7 +137,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -147,7 +177,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("player:position")
@@ -186,7 +216,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 100.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("player:position")
@@ -225,8 +255,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "run"
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -266,8 +295,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "auto"
+[sub_resource type="Animation" id=10]
 length = 0.2
 step = 0.02
 tracks/0/type = "value"
@@ -307,8 +335,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "idle"
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -335,8 +362,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "visible"
+[sub_resource type="Animation" id=12]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -363,7 +389,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 2.5, 3.5 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -377,6 +403,7 @@ position = Vector2( 0, 0.4 )
 shape = SubResource( 1 )
 
 [node name="player" type="Sprite" parent="."]
+material = SubResource( 3 )
 position = Vector2( 0, -0.4 )
 scale = Vector2( 1, 1.1 )
 z_index = 1
@@ -398,12 +425,12 @@ script = ExtResource( 4 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/downFast = SubResource( 2 )
-anims/downFloor = SubResource( 3 )
-anims/downGravi = SubResource( 4 )
-anims/downMiddle = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/run = SubResource( 7 )
+anims/downFast = SubResource( 4 )
+anims/downFloor = SubResource( 5 )
+anims/downGravi = SubResource( 6 )
+anims/downMiddle = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/run = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -460,16 +487,16 @@ hframes = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RayCast2D/shoot"]
 autoplay = "idle"
-anims/auto = SubResource( 8 )
-anims/idle = SubResource( 9 )
-anims/visible = SubResource( 10 )
+anims/auto = SubResource( 10 )
+anims/idle = SubResource( 11 )
+anims/visible = SubResource( 12 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2147483661
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 11 )
+shape = SubResource( 13 )
 
 [node name="Rays" type="Node2D" parent="."]
 
