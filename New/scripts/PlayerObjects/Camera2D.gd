@@ -25,3 +25,9 @@ func _physics_process(delta):
 		limit_left = -296
 		limit_right = 78
 		limit_top = -513
+	
+	if G.Level == "Level01":
+		limit_bottom = 56
+		limit_left = -69
+		limit_right = 328
+		limit_top = -456
