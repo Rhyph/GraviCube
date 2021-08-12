@@ -145,7 +145,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 #Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
-	if "TileMapChanging" in body.name || "Door" in body.name && motion.y == 0:
+	if "TileMapChanging" in body.name || "Door" in body.name && is_on_floor():
 		die()
 
 func die():

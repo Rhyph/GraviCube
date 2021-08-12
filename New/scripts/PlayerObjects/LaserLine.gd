@@ -8,9 +8,11 @@ func _ready():
 	$Line2D.points[1] = Vector2.ZERO
 
 func _physics_process(delta):
-	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".ongoing_drag == -1:
+	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".ongoing_drag == -1 \
+	&& $"/root/World/Player".projectile == 1:
 		rotation_degrees = 0
 		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
+			$Line2D.visible = true
 			$shoot/AnimationPlayer.play("visible")
 	
 	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".down == false:

@@ -38,11 +38,14 @@ script/source = "extends Area2D
 
 func _on_1Popup_body_entered(body):
 	if \"Player\" in body.name:
-		G.Popups += 1
-		$\"/root/World/Interface/Popup\".popup()
-		$\"/root/World/Interface/Popup\".open()
-		get_tree().paused = true
-		queue_free()
+		$Timer.start()
+
+func _on_Timer_timeout():
+	G.Popups += 1
+	$\"/root/World/Interface/Popup\".popup()
+	$\"/root/World/Interface/Popup\".open()
+	get_tree().paused = true
+	queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -136,7 +139,7 @@ position = Vector2( 82, -10 )
 script = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Popup"]
-position = Vector2( 2, -10 )
+position = Vector2( -2, -10 )
 shape = SubResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="Popup"]
@@ -144,12 +147,16 @@ position = Vector2( -2, 10 )
 amount = 16
 process_material = SubResource( 9 )
 
+[node name="Timer" type="Timer" parent="Popup"]
+wait_time = 0.5
+one_shot = true
+
 [node name="Popup2" type="Area2D" parent="."]
 position = Vector2( 98, -82 )
 script = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Popup2"]
-position = Vector2( -6, -10 )
+position = Vector2( -2, -10 )
 shape = SubResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="Popup2"]
@@ -157,12 +164,16 @@ position = Vector2( -2, 10 )
 amount = 16
 process_material = SubResource( 9 )
 
+[node name="Timer" type="Timer" parent="Popup2"]
+wait_time = 0.5
+one_shot = true
+
 [node name="Popup3" type="Area2D" parent="."]
 position = Vector2( 130, -202 )
 script = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Popup3"]
-position = Vector2( -6, -10 )
+position = Vector2( -2, -10 )
 shape = SubResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="Popup3"]
@@ -170,6 +181,13 @@ position = Vector2( -2, 10 )
 amount = 16
 process_material = SubResource( 9 )
 
+[node name="Timer" type="Timer" parent="Popup3"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="Popup" to="Popup" method="_on_1Popup_body_entered"]
+[connection signal="timeout" from="Popup/Timer" to="Popup" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Popup2" to="Popup2" method="_on_1Popup_body_entered"]
+[connection signal="timeout" from="Popup2/Timer" to="Popup2" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Popup3" to="Popup3" method="_on_1Popup_body_entered"]
+[connection signal="timeout" from="Popup3/Timer" to="Popup3" method="_on_Timer_timeout"]

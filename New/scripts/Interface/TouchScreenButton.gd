@@ -17,7 +17,7 @@ var hard_func = 0
 var pos_zero
 
 func _physics_process(delta):
-	if slow && inArea && $"/root/World/Player".motion.y != 0:
+	if $"/root/World/Player".projectile == 1 && slow && inArea && $"/root/World/Player".is_on_floor() == false:
 		Engine.time_scale = 0.1
 		slow = false
 	
@@ -52,11 +52,9 @@ func _input(event):
 		if event is InputEventScreenDrag || (event is InputEventScreenTouch && event.is_pressed()):
 			down = false
 			$"/root/World/Player/RayCast2D".enabled = true
-			if hard_func >= 14:
-				$"/root/World/Player/RayCast2D/Line2D".visible = true
-			else:
+			$"/root/World/Player/RayCast2D/Line2D".visible = true
+			if hard_func < 14:
 				$"/root/World/Player/RayCast2D".rotation_degrees = 0
-				$"/root/World/Player/RayCast2D/Line2D".visible = false
 			
 			var event_dist_from_center = (event.position - get_parent().global_position).length()
 			
