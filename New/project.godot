@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GraviCube"
-run/main_scene="res://scenes/levels/Level01.tscn"
+run/main_scene="res://scenes/levels/Level4.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -89,6 +89,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_7="conveer"
 2d_physics/layer_8="Sphere"
 2d_physics/layer_9="Lava"
+2d_physics/layer_10="Spikes"
 
 [rendering]
 

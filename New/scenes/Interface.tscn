@@ -791,9 +791,9 @@ __meta__ = {
 margin_left = 6.0
 margin_top = 37.0
 margin_right = 99.0
-margin_bottom = 129.0
+margin_bottom = 138.0
 custom_fonts/normal_font = ExtResource( 2 )
-text = "If you shoot under yourself, being above the ground, you can climb to a great height"
+text = "If you shoot under yourself in timing, being above the ground, you can climb to a great height"
 __meta__ = {
 "_edit_use_anchors_": false
 }

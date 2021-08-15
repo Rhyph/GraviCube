@@ -1,25 +1,36 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 4.0
+[sub_resource type="GDScript" id=1]
+script/source = "extends StaticBody2D
 
-[sub_resource type="StreamTexture" id=2]
+
+func _physics_process(delta):
+	if $\"/root/World/Player\".position.y + 3 < position.y:
+		$CollisionShape2D.disabled = false
+	else:
+		$CollisionShape2D.disabled = true
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 1 )
+
+[sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/sphereRed.png-74ef9f2baeb3585f5e34658baa64561a.stex"
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.372881, 0.838046 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=8]
 flag_disable_z = true
 spread = 180.0
 flatness = 1.0
@@ -38,24 +49,26 @@ angle = 360.0
 angle_random = 1.0
 scale = 2.0
 scale_random = 1.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
 
 [node name="SphereRed" type="StaticBody2D"]
 z_index = 1
 collision_layer = 130
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+position = Vector2( 0, -1 )
+shape = SubResource( 2 )
 
 [node name="sphereRed" type="Sprite" parent="."]
 modulate = Color( 2, 0, 0, 1 )
 z_index = 1
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 30
-process_material = SubResource( 7 )
+process_material = SubResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }

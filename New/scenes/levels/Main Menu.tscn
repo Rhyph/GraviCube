@@ -174,7 +174,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level0" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level1" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 13.0
 margin_right = 80.0
 margin_bottom = 26.0
@@ -189,13 +189,13 @@ custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
-text = "  level0"
+text = "  1 level"
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Level1" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level2" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 36.0
 margin_right = 80.0
 margin_bottom = 49.0
@@ -211,13 +211,13 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
-text = "  Level1"
+text = "  2 Level"
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Level2" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level3" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 59.0
 margin_right = 80.0
 margin_bottom = 72.0
@@ -233,13 +233,13 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
-text = "  Level2"
+text = "  3 Level"
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Level3" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level4" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 82.0
 margin_right = 80.0
 margin_bottom = 95.0
@@ -255,7 +255,7 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
-text = "  Level3"
+text = "  4 Level"
 align = 0
 __meta__ = {
 "_editor_description_": ""
@@ -272,8 +272,8 @@ position = Vector2( 160, 90 )
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="ColorRect/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level0" to="." method="_on_Level0_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level2_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level3_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level0_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level1_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Level4" to="." method="_on_Level3_pressed"]
 [connection signal="timeout" from="Star" to="." method="_on_Star_timeout"]

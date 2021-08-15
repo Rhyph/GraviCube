@@ -54,7 +54,6 @@ func _physics_process(delta):
 		G.Laved = true
 	else:
 		G.Laved = false
-	
 	if $Rays/ConvCast.is_colliding() || $Rays/ConvCast2.is_colliding():
 		motion.x = clamp(motion.x, -MAX_SPEED + 32, MAX_SPEED + 32)
 		if x_input == 0:
@@ -147,6 +146,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Area2D_body_entered(body):
 	if "TileMapChanging" in body.name || "Door" in body.name && is_on_floor():
 		die()
+func _on_SpikeArea2D_body_entered(body):
+	$AnimationPlayer.play("die")
+	set_physics_process(false)
+	$Timers/Die.start()
 
 func die():
 	$"/root/World/Interface/Control/circlebig".visible = false
@@ -162,6 +165,8 @@ func _on_SlowMo_timeout():
 	if slow == false:
 		SlowMo = true
 		slow = true
+func _on_Die_timeout():
+	die()
 
 #Star inscancing
 const STAR = [preload("res://scenes/Space/Star1.tscn"), \
