@@ -40,8 +40,6 @@ func _ready():
 func ready():
 	if timer.is_stopped():
 		timer.start(.01)
-	#if get_tree().current_scene.name != "Main Menu" && Saved == false:
-	#	PlayerPos = $"/root/World/Player".global_position
 
 func _on_timer_timeout():
 	Secs += .01
