@@ -40,8 +40,8 @@ func _ready():
 func ready():
 	if timer.is_stopped():
 		timer.start(.01)
-	if get_tree().current_scene.name != "Main Menu" && Saved == false:
-		PlayerPos = $"/root/World/Player".global_position
+	#if get_tree().current_scene.name != "Main Menu" && Saved == false:
+	#	PlayerPos = $"/root/World/Player".global_position
 
 func _on_timer_timeout():
 	Secs += .01
@@ -52,6 +52,7 @@ func _on_timer_timeout():
 		Mins += 1
 
 func zero():
+	PlayerPos = Vector2(4, -4)
 	if timer:
 		timer.stop()
 	Deaths = 0
@@ -60,7 +61,6 @@ func zero():
 
 func reload_scene():
 	zero()
-	PlayerPos = Vector2(4, -4)
 	get_tree().reload_current_scene()
 
 func scene(name):
