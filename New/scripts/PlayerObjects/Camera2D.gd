@@ -2,12 +2,6 @@ extends Camera2D
 
 
 func _physics_process(delta):
-	if G.Level == "Level0":
-		limit_bottom = 56
-		limit_left = -69
-		limit_right = 496
-		limit_top = -296
-	
 	if G.Level == "Level1":
 		limit_bottom = 56
 		limit_left = -69
@@ -18,22 +12,10 @@ func _physics_process(delta):
 		limit_bottom = 56
 		limit_left = -69
 		limit_right = 208
-		limit_top = -240
+		limit_top = -480
 	
 	if G.Level == "Level3":
-		limit_bottom = 48
+		limit_bottom = 80
 		limit_left = -69
-		limit_right = 264
-		limit_top = -256
-	
-	if G.Level == "Level4":
-			limit_bottom = 72
-			limit_left = -69
-			limit_right = 488
-			limit_top = -216
-	
-	if G.Level == "Level5":
-		limit_bottom = 37
-		limit_left = -296
-		limit_right = 78
-		limit_top = -513
+		limit_right = 496
+		limit_top = -608

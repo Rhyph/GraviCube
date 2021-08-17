@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/MechanicObjects/sphere.png" type="Texture" id=1]
 
@@ -7,11 +7,43 @@ script/source = "extends StaticBody2D
 
 
 func _physics_process(delta):
-	if $\"/root/World/Player\".position.y + 3 < position.y:
+	if $\"/root/World/Player\".position.y + 4 < $sphere.global_position.y:
 		$CollisionShape2D.disabled = false
 	else:
 		$CollisionShape2D.disabled = true
 "
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode unshaded;
+ 
+uniform float width : hint_range(0.0, 16.0);
+uniform vec4 outline_color : hint_color;
+ 
+void fragment()
+{
+    vec2 size = vec2(width) / vec2(textureSize(TEXTURE, 0));
+   
+    vec4 sprite_color = texture(TEXTURE, UV);
+   
+    float alpha = sprite_color.a;
+    alpha += texture(TEXTURE, UV + vec2(0.0, -size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;
+    alpha += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(0.0, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, 0.0)).a;
+    alpha += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+   
+    vec3 final_color = mix(outline_color.rgb, sprite_color.rgb, sprite_color.a);
+    COLOR = vec4(final_color, clamp(alpha, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/width = 0.2
+shader_param/outline_color = null
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 1 )
@@ -57,6 +89,7 @@ script = SubResource( 7 )
 
 [node name="sphere" type="Sprite" parent="."]
 modulate = Color( 2, 2, 2, 1 )
+material = SubResource( 9 )
 z_index = 1
 texture = ExtResource( 1 )
 

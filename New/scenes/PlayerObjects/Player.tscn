@@ -44,7 +44,7 @@ shader = SubResource( 2 )
 shader_param/width = 0.2
 shader_param/outline_color = null
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=4]
 resource_name = "die"
 length = 0.3
 tracks/0/type = "value"
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=5]
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -100,7 +100,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("player:position")
@@ -153,7 +153,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=7]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -193,7 +193,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=8]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("player:position")
@@ -232,7 +232,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=9]
 length = 100.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("player:position")
@@ -271,7 +271,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=10]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -311,7 +311,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=11]
 length = 0.2
 step = 0.02
 tracks/0/type = "value"
@@ -351,7 +351,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=12]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -378,7 +378,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -442,13 +442,13 @@ script = ExtResource( 4 )
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 16 )
-anims/downFast = SubResource( 17 )
-anims/downFloor = SubResource( 18 )
-anims/downGravi = SubResource( 19 )
-anims/downMiddle = SubResource( 20 )
-anims/idle = SubResource( 21 )
-anims/run = SubResource( 22 )
+anims/die = SubResource( 4 )
+anims/downFast = SubResource( 5 )
+anims/downFloor = SubResource( 6 )
+anims/downGravi = SubResource( 7 )
+anims/downMiddle = SubResource( 8 )
+anims/idle = SubResource( 9 )
+anims/run = SubResource( 10 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -509,9 +509,9 @@ hframes = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RayCast2D/shoot"]
 autoplay = "idle"
-anims/auto = SubResource( 23 )
-anims/idle = SubResource( 24 )
-anims/visible = SubResource( 25 )
+anims/auto = SubResource( 11 )
+anims/idle = SubResource( 12 )
+anims/visible = SubResource( 13 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

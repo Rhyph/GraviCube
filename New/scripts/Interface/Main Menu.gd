@@ -2,15 +2,13 @@ extends Control
 
 
 func _ready():
-	if G.Cur_level != 0:
+	if G.Cur_level != 1:
 		$VBoxContainer/Start.text = "  Continue"
 		$VBoxContainer/Levels.disabled = false
-	if G.Cur_level > 0:
-		$ColorRect/VBoxContainer2/Level2.disabled = false
 	if G.Cur_level > 1:
-		$ColorRect/VBoxContainer2/Level3.disabled = false
+		$ColorRect/VBoxContainer2/Level2.disabled = false
 	if G.Cur_level > 2:
-		$ColorRect/VBoxContainer2/Level4.disabled = false
+		$ColorRect/VBoxContainer2/Level3.disabled = false
 
 func _on_Start_pressed():
 	G.scene("Level" + str(G.Cur_level))
@@ -28,8 +26,6 @@ func _on_Level1_pressed():
 	G.scene("Level2")
 func _on_Level2_pressed():
 	G.scene("Level3")
-func _on_Level3_pressed():
-	G.scene("Level4")
 
 #Star inscancing
 const STAR = [preload("res://scenes/Space/Star1.tscn"), \
