@@ -19,6 +19,7 @@ var idleSwitch = true
 var is_GraviJump = false
 var dropped = false
 var GraviShot = false
+var limit = true
 
 var gravigun
 
@@ -42,7 +43,9 @@ func _physics_process(delta):
 		$player.flip_h = x_input < 0
 	
 	motion.y += GRAVITY * delta
-	motion.y = clamp(motion.y, -114, 384)
+	
+	if limit:
+		motion.y = clamp(motion.y, -114, 384)
 	
 	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
@@ -127,6 +130,10 @@ func animation():
 
 #Вектор направления отталкивая от гравитационного выстрела
 func Vector(k):
+	if k != 40:
+		limit = false
+	else:
+		limit = true
 	is_GraviJump = true
 	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
 	motion.x = 4.5 * graviMotion.x
@@ -167,6 +174,15 @@ func _on_SlowMo_timeout():
 		slow = true
 func _on_Die_timeout():
 	die()
+func _on_Ghost_timeout():
+	if $AnimationPlayer.current_animation == "downGravi" || $AnimationPlayer.current_animation == "downMiddle":
+		var trail = preload("res://scenes/Trail.tscn").instance()
+		trail.global_position = $player.global_position
+		trail.flip_h = $player.flip_h
+		trail.texture = $player.texture
+		trail.frame = $player.frame
+		trail.scale = $player.scale
+		get_tree().get_root().add_child(trail)
 
 #Star inscancing
 const STAR = [preload("res://scenes/Space/Star1.tscn"), \

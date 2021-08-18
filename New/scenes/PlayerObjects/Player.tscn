@@ -477,6 +477,10 @@ autostart = true
 wait_time = 0.4
 one_shot = true
 
+[node name="Ghost" type="Timer" parent="Timers"]
+wait_time = 0.1
+autostart = true
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 z_index = 5
 cast_to = Vector2( 0, 100 )
@@ -583,5 +587,6 @@ volume_db = 5.0
 [connection signal="timeout" from="Timers/SlowMo" to="." method="_on_SlowMo_timeout"]
 [connection signal="timeout" from="Timers/Star" to="." method="_on_Star2Sec_timeout"]
 [connection signal="timeout" from="Timers/Die" to="." method="_on_Die_timeout"]
+[connection signal="timeout" from="Timers/Ghost" to="." method="_on_Ghost_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Rays/SpikeArea2D" to="." method="_on_SpikeArea2D_body_entered"]
