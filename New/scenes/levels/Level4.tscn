@@ -751,7 +751,6 @@ cell_quadrant_size = 8
 collision_layer = 3
 collision_mask = 17
 format = 1
-tile_data = PoolIntArray( 720890, 0, 196608, 720891, 0, 196609, 720892, 0, 196610 )
 
 [node name="TileMapBlue" type="TileMap" parent="Tiles"]
 modulate = Color( 1, 2, 4, 1 )
@@ -782,7 +781,13 @@ position = Vector2( -90, 161 )
 [node name="ice" type="Node2D" parent="Tiles"]
 
 [node name="TileMapIce" parent="Tiles/ice" instance=ExtResource( 8 )]
-position = Vector2( -102, 161 )
+position = Vector2( -196, 84 )
+
+[node name="TileMapIce2" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -204, 84 )
+
+[node name="TileMapIce3" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -188, 84 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 position = Vector2( 248, -80 )
