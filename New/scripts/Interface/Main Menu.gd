@@ -12,6 +12,12 @@ func _ready():
 	if G.Cur_level > 3:
 		$ColorRect/VBoxContainer2/Level4.disabled = false
 
+var a = true
+func _physics_process(delta):
+	if a:
+		instance_snow()
+		a = false
+
 func _on_Start_pressed():
 	G.scene("Level" + str(G.Cur_level))
 func _on_Levels_pressed():
@@ -31,7 +37,7 @@ func _on_Level2_pressed():
 func _on_Level4_pressed():
 	G.scene("Level4")
 
-#Star inscancing
+#Star instancing
 const STAR = [preload("res://scenes/Space/Star1.tscn"), \
 preload("res://scenes/Space/Star2.tscn"), preload("res://scenes/Space/Star3.tscn")]
 
@@ -50,3 +56,15 @@ func instance_star():
 	star[rand] = STAR[rand].instance()
 	get_parent().add_child(star[rand])
 	star[rand].position = $Position2D.global_position
+
+#Snow instancing
+const SNOW = preload("res://scenes/Snow.tscn")
+const BIGSNOW = preload("res://scenes/BigSnow.tscn")
+
+func instance_snow():
+	var snow = SNOW.instance()
+	get_parent().add_child(snow)
+	snow.position = $Position2D2.global_position
+	var bigsnow = BIGSNOW.instance()
+	get_parent().add_child(bigsnow)
+	bigsnow.position = $Position2D2.global_position

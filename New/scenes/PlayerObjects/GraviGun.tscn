@@ -64,34 +64,34 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.025, 0.125, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.025, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("demo:frame")
+tracks/4/path = NodePath("Trail:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.025, 0.05, 0.075, 0.1, 0.125 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 2, 4, 1 ), Color( 1, 2, 4, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Trail:modulate")
+tracks/5/path = NodePath("demo:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 2, 4, 1 ), Color( 1, 2, 4, 0 ) ]
+"times": PoolRealArray( 0, 0.05, 0.1, 0.125, 0.15, 0.175 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [sub_resource type="CircleShape2D" id=5]
@@ -148,6 +148,7 @@ texture = ExtResource( 3 )
 
 [node name="demo" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
+rotation = 4.71239
 texture = ExtResource( 4 )
 hframes = 6
 

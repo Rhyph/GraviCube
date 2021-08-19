@@ -268,6 +268,9 @@ autostart = true
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 160, 90 )
 
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 160, 0 )
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
