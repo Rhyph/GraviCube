@@ -758,7 +758,7 @@ cell_quadrant_size = 8
 collision_layer = 4
 collision_mask = 17
 format = 1
-tile_data = PoolIntArray( -327684, 3, 0, -131093, 2, 0, 65506, 1, 0, 65507, 1, 0, 65508, 0, 0 )
+tile_data = PoolIntArray( -327684, 3, 0, -131093, 2, 0, 65506, 1, 0, 65507, 1, 0, 65508, 0, 0, 131046, 0, 0 )
 
 [node name="DarkMap" type="TileMap" parent="Tiles"]
 position = Vector2( -152, 48 )
@@ -949,7 +949,7 @@ position = Vector2( -212, 20 )
 position = Vector2( 248, -80 )
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 11 )]
-position = Vector2( -264, 8 )
+position = Vector2( -260, 8 )
 
 [node name="Objects" type="Node2D" parent="."]
 

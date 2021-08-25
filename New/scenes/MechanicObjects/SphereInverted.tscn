@@ -7,7 +7,7 @@ script/source = "extends StaticBody2D
 
 
 func _physics_process(delta):
-	if $\"/root/World/Player\".position.y + 3 < position.y:
+	if $\"/root/World/Player\".position.y + 3 < $sphereInverted.global_position.y:
 		$CollisionShape2D.disabled = false
 	else:
 		$CollisionShape2D.disabled = true
