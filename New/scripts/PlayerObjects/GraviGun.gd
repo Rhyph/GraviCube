@@ -6,6 +6,7 @@ const PARTICLES = preload("res://scenes/PlayerObjects/BulletParticles.tscn")
 var speed = 400
 var k = 40
 var i = 0
+var j = 0
 
 var motion = Vector2()
 
@@ -77,6 +78,9 @@ func _on_Area2D2_body_entered(body):
 	motion.y *= -1
 	point = $Trail.points[0]
 	i += 1
+
+func _on_Area2D2_body_exited(body):
+	i = 0
 
 func _on_Timer2_timeout():
 	if fast:
