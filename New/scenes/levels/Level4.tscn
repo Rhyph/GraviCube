@@ -744,13 +744,14 @@ position = Vector2( 4, -4 )
 position = Vector2( 200, -80 )
 
 [node name="TileMap" type="TileMap" parent="Tiles"]
-position = Vector2( -160, 0 )
+position = Vector2( -160, -16 )
 tile_set = ExtResource( 9 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
 collision_layer = 3
 collision_mask = 17
 format = 1
+tile_data = PoolIntArray( 18, 0, 196608, 19, 0, 196609, 20, 0, 196610 )
 
 [node name="TileMapBlue" type="TileMap" parent="Tiles"]
 modulate = Color( 1, 2, 4, 1 )
@@ -760,9 +761,10 @@ cell_quadrant_size = 8
 collision_layer = 4
 collision_mask = 17
 format = 1
+tile_data = PoolIntArray( -65541, 2, 0 )
 
 [node name="DarkMap" type="TileMap" parent="Tiles"]
-position = Vector2( -160, 48 )
+position = Vector2( -152, 48 )
 tile_set = SubResource( 105 )
 cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
@@ -776,7 +778,22 @@ __meta__ = {
 [node name="1ways" type="Node2D" parent="Tiles"]
 
 [node name="1wayblock" parent="Tiles/1ways" instance=ExtResource( 4 )]
-position = Vector2( -90, 161 )
+position = Vector2( -68, 68 )
+
+[node name="1wayblock2" parent="Tiles/1ways" instance=ExtResource( 4 )]
+position = Vector2( -60, 68 )
+
+[node name="1wayblock3" parent="Tiles/1ways" instance=ExtResource( 4 )]
+position = Vector2( -228, 68 )
+
+[node name="1wayblock4" parent="Tiles/1ways" instance=ExtResource( 4 )]
+position = Vector2( -220, 68 )
+
+[node name="1wayblock5" parent="Tiles/1ways" instance=ExtResource( 4 )]
+position = Vector2( -228, 52 )
+
+[node name="1wayblock6" parent="Tiles/1ways" instance=ExtResource( 4 )]
+position = Vector2( -220, 52 )
 
 [node name="ice" type="Node2D" parent="Tiles"]
 
@@ -784,36 +801,186 @@ position = Vector2( -90, 161 )
 position = Vector2( -196, 84 )
 
 [node name="TileMapIce2" parent="Tiles/ice" instance=ExtResource( 8 )]
-position = Vector2( -204, 84 )
+position = Vector2( -188, 84 )
 
 [node name="TileMapIce3" parent="Tiles/ice" instance=ExtResource( 8 )]
-position = Vector2( -188, 84 )
+position = Vector2( -180, 84 )
+
+[node name="TileMapIce4" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -172, 84 )
+
+[node name="TileMapIce5" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -164, 84 )
+
+[node name="TileMapIce6" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -156, 84 )
+
+[node name="TileMapIce7" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -148, 84 )
+
+[node name="TileMapIce8" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -140, 84 )
+
+[node name="TileMapIce9" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -132, 84 )
+
+[node name="TileMapIce10" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -124, 84 )
+
+[node name="TileMapIce16" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -148, 52 )
+
+[node name="TileMapIce17" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -140, 52 )
+
+[node name="TileMapIce18" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -132, 52 )
+
+[node name="TileMapIce26" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -172, 52 )
+
+[node name="TileMapIce29" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -180, 52 )
+
+[node name="TileMapIce27" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -164, 52 )
+
+[node name="TileMapIce30" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -220, 84 )
+
+[node name="TileMapIce33" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -212, 36 )
+
+[node name="TileMapIce31" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -228, 84 )
+
+[node name="TileMapIce32" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -212, 84 )
+
+[node name="TileMapIce28" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -156, 52 )
+
+[node name="TileMapIce36" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -116, -4 )
+
+[node name="TileMapIce37" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -108, -4 )
+
+[node name="TileMapIce38" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -140, -4 )
+
+[node name="TileMapIce39" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -148, -4 )
+
+[node name="TileMapIce40" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -132, -4 )
+
+[node name="TileMapIce41" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -124, -4 )
+
+[node name="TileMapIce42" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -36, -4 )
+
+[node name="TileMapIce43" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -60, -4 )
+
+[node name="TileMapIce44" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -68, -4 )
+
+[node name="TileMapIce45" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -52, -4 )
+
+[node name="TileMapIce46" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -44, -4 )
+
+[node name="TileMapIce19" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -124, 52 )
+
+[node name="TileMapIce20" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -116, 52 )
+
+[node name="TileMapIce21" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -108, 52 )
+
+[node name="TileMapIce22" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -100, 52 )
+
+[node name="TileMapIce23" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -92, 52 )
+
+[node name="TileMapIce24" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -84, 52 )
+
+[node name="TileMapIce25" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -76, 52 )
+
+[node name="TileMapIce11" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -100, 84 )
+
+[node name="TileMapIce12" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -92, 84 )
+
+[node name="TileMapIce13" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -84, 84 )
+
+[node name="TileMapIce14" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -76, 84 )
+
+[node name="TileMapIce15" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -68, 84 )
+
+[node name="TileMapIce34" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -188, 28 )
+
+[node name="TileMapIce35" parent="Tiles/ice" instance=ExtResource( 8 )]
+position = Vector2( -172, 12 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 position = Vector2( 248, -80 )
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 11 )]
-position = Vector2( -111, 158 )
+position = Vector2( 56, -17 )
 
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="PortalLevel1" parent="Objects" instance=ExtResource( 2 )]
-position = Vector2( 124, 78 )
+position = Vector2( 196, -105 )
 next_scene = ExtResource( 6 )
 
 [node name="Door" parent="Objects" instance=ExtResource( 15 )]
-position = Vector2( 150, 86 )
+position = Vector2( 317, -89 )
 
 [node name="Key" parent="Objects" instance=ExtResource( 16 )]
-position = Vector2( 168, 76 )
+position = Vector2( 335, -99 )
 
 [node name="Key2" parent="Objects" instance=ExtResource( 17 )]
-position = Vector2( 160, 76 )
+position = Vector2( 327, -99 )
 
 [node name="Spheres" type="Node2D" parent="."]
 
 [node name="Sphere" parent="Spheres" instance=ExtResource( 3 )]
-position = Vector2( 177, 74 )
+position = Vector2( 84, 2 )
+
+[node name="Sphere7" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( 92, -86 )
+
+[node name="Sphere8" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( 152, -86 )
+
+[node name="Sphere3" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( -28, 2 )
+
+[node name="Sphere4" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( -12, -46 )
+
+[node name="Sphere2" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( 132, 2 )
+
+[node name="Sphere5" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( 12, -54 )
+
+[node name="Sphere6" parent="Spheres" instance=ExtResource( 3 )]
+position = Vector2( 28, -70 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 106 )

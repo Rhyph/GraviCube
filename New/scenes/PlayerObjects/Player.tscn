@@ -441,6 +441,12 @@ script = ExtResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="."]
 
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 0, -90 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 0, 4 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 4 )
 anims/downFast = SubResource( 5 )
@@ -472,6 +478,9 @@ one_shot = true
 [node name="Star" type="Timer" parent="Timers"]
 wait_time = 0.2
 autostart = true
+
+[node name="Snow" type="Timer" parent="Timers"]
+wait_time = 0.2
 
 [node name="Die" type="Timer" parent="Timers"]
 wait_time = 0.4
@@ -586,6 +595,7 @@ volume_db = 5.0
 [connection signal="timeout" from="Timers/Dropped" to="." method="_on_Dropped_timeout"]
 [connection signal="timeout" from="Timers/SlowMo" to="." method="_on_SlowMo_timeout"]
 [connection signal="timeout" from="Timers/Star" to="." method="_on_Star2Sec_timeout"]
+[connection signal="timeout" from="Timers/Snow" to="." method="_on_Snow_timeout"]
 [connection signal="timeout" from="Timers/Die" to="." method="_on_Die_timeout"]
 [connection signal="timeout" from="Timers/Ghost" to="." method="_on_Ghost_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

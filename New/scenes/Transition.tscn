@@ -5,15 +5,12 @@ script/source = "extends CanvasLayer
 
 
 func _ready():
-	if G.Fade_out:
-		$AnimationPlayer.play(\"Fade_out\")
-		G.Fade_out = false
+	$AnimationPlayer.play(\"Fade_out\")
 
 func _physics_process(delta):
 	if G.TP:
 		$AnimationPlayer.play(\"Fade_in\")
 		yield($AnimationPlayer,\"animation_finished\")
-		G.Fade_out = true
 "
 
 [sub_resource type="Animation" id=2]
@@ -44,7 +41,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-length = 0.5
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -52,10 +49,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ColorRect:visible")
@@ -64,7 +61,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]

@@ -11,11 +11,9 @@
 script/source = "extends Node2D
 
 func _ready():
+	G.Popups = 0
 	G.Level = \"Level1\"
 	G.ready()
-	
-	$\"/root/World/Interface/Control/Labels/Keys_count\".visible = false
-	$\"/root/World/Interface/Control/key\".visible = false
 	
 	if G.Popups == 1:
 		$Popup.queue_free()

@@ -111,12 +111,6 @@ enabled = true
 cast_to = Vector2( 320, 0 )
 collision_mask = 16
 
-[node name="RayCastIce" type="RayCast2D" parent="."]
-z_index = -1
-enabled = true
-cast_to = Vector2( 320, 0 )
-collision_mask = 8
-
 [node name="CastingParticles" type="Particles2D" parent="."]
 material = SubResource( 1 )
 scale = Vector2( 0.1, 0.1 )

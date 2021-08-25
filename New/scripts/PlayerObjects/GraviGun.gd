@@ -14,8 +14,12 @@ var fast = true
 var part = true
 
 var particles
+var point
 
 func _physics_process(delta):
+	if point:
+		$bullet.look_at(point)
+	
 	if i == 2:
 		i = 0
 		motion.y *= -1
@@ -71,6 +75,7 @@ func _on_Timer_timeout():
 
 func _on_Area2D2_body_entered(body):
 	motion.y *= -1
+	point = $Trail.points[0]
 	i += 1
 
 func _on_Timer2_timeout():

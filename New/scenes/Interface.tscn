@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://sprites/Buttons/ButtonRight2.png" type="Texture" id=5]
 [ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
-[ext_resource path="res://sprites/Objects/key.png" type="Texture" id=8]
 [ext_resource path="res://scripts/Interface/Menus.gd" type="Script" id=9]
 [ext_resource path="res://scripts/Interface/Control.gd" type="Script" id=10]
 [ext_resource path="res://sprites/PopUps/popup1.png" type="Texture" id=11]
@@ -165,7 +164,7 @@ __meta__ = {
 
 [node name="circlebig" type="Sprite" parent="Control"]
 pause_mode = 1
-position = Vector2( 272, 132 )
+position = Vector2( 264, 124 )
 texture = ExtResource( 15 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control/circlebig"]
@@ -223,41 +222,26 @@ position = Vector2( 48, 0 )
 normal = ExtResource( 3 )
 pressed = ExtResource( 5 )
 
-[node name="key" type="Sprite" parent="Control"]
-position = Vector2( 299, 17 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
-
 [node name="Labels" type="Node2D" parent="Control"]
 
 [node name="Timer" type="Label" parent="Control/Labels"]
-margin_top = 166.0
-margin_right = 70.0
-margin_bottom = 180.0
+margin_left = 1.0
+margin_top = 168.0
+margin_right = 71.0
+margin_bottom = 182.0
 theme = SubResource( 4 )
-text = "Timer: "
+text = "Time: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Death_count" type="Label" parent="Control/Labels"]
-margin_left = 82.0
-margin_top = 166.0
-margin_right = 152.0
-margin_bottom = 180.0
+margin_left = 83.0
+margin_top = 168.0
+margin_right = 153.0
+margin_bottom = 182.0
 theme = SubResource( 4 )
-text = "Death count: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Keys_count" type="Label" parent="Control/Labels"]
-margin_left = 303.0
-margin_top = 8.0
-margin_right = 320.0
-margin_bottom = 22.0
-theme = SubResource( 4 )
-text = "2/2"
+text = "Deaths: "
 __meta__ = {
 "_edit_use_anchors_": false
 }

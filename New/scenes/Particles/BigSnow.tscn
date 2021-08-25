@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -15,12 +15,23 @@ linear_accel_random = 1.0
 scale = 4.0
 scale_random = 1.0
 
+[sub_resource type="GDScript" id=2]
+script/source = "extends Particles2D
+
+
+func _ready():
+	emitting = true
+"
+
 [node name="BigSnow" type="Particles2D"]
 position = Vector2( 0, -100 )
-z_index = 2
-amount = 100
+z_index = 4
+emitting = false
+amount = 5
 lifetime = 4.0
+one_shot = true
 process_material = SubResource( 1 )
+script = SubResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }

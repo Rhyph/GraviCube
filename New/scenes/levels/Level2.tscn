@@ -17,9 +17,6 @@ script/source = "extends Node2D
 func _ready():
 	G.Level = \"Level2\"
 	G.ready()
-	
-	$\"/root/World/Interface/Control/Labels/Keys_count\".visible = false
-	$\"/root/World/Interface/Control/key\".visible = false
 "
 
 [sub_resource type="OccluderPolygon2D" id=2]

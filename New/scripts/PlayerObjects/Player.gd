@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 
 const GRAVIGUN = preload("res://scenes/PlayerObjects/GraviGun.tscn")
+const RUNPART = preload("res://scenes/Particles/RunParticles.tscn")
+const JUMPPART = preload("res://scenes/Particles/JumpParticles.tscn")
 
 const AIR_RESISTANCE = .04
 const MAX_SPEED = 64
@@ -9,7 +11,7 @@ const JUMP_FORCE = 72
 const GRAVITY = 400
 
 var acceleration = 384
-var friction = .4
+var friction = .5
 var projectile = 1
 var keys = 2
 
@@ -27,6 +29,10 @@ var LinePos = Vector2()
 var motion = Vector2.ZERO
 
 func _ready():
+	if int(G.Level.substr(5)) > 3:
+		$Timers/Snow.start()
+		$Timers/Star.stop()
+	
 	keys = 2
 	Input.action_release("ui_left")
 	Input.action_release("ui_right")
@@ -45,7 +51,10 @@ func _physics_process(delta):
 	motion.y += GRAVITY * delta
 	
 	if limit:
-		motion.y = clamp(motion.y, -114, 384)
+		if is_on_floor():
+			motion.y = clamp(motion.y, -114, 384)
+		else:
+			motion.y = clamp(motion.y, -106, 384)
 	
 	if $Rays/IceCast.is_colliding() || $Rays/IceCast2.is_colliding():
 		friction = .02
@@ -70,6 +79,13 @@ func _physics_process(delta):
 				$AnimationPlayer.play("idle")
 			else:
 				$AnimationPlayer.play("run")
+				var runpart = RUNPART.instance()
+				get_parent().add_child(runpart)
+				runpart.position = $Position2D3.global_position
+				if $player.flip_h:
+					runpart.scale.y = -1
+				else:
+					runpart.scale.y = 1
 		
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, friction)
@@ -138,6 +154,10 @@ func Vector(k):
 	var graviMotion = k * ((global_position - gravigun.global_position).normalized())
 	motion.x = 4.5 * graviMotion.x
 	motion.y = 3.5 * graviMotion.y
+	if is_on_floor():
+		var jumppart = JUMPPART.instance()
+		get_parent().add_child(jumppart)
+		jumppart.position = $Position2D3.global_position
 
 #Для анимации приземления
 func return_drop():
@@ -176,7 +196,7 @@ func _on_Die_timeout():
 	die()
 func _on_Ghost_timeout():
 	if $AnimationPlayer.current_animation == "downGravi" || $AnimationPlayer.current_animation == "downMiddle":
-		var trail = preload("res://scenes/Trail.tscn").instance()
+		var trail = preload("res://scenes/PlayerObjects/Trail.tscn").instance()
 		trail.global_position = $player.global_position
 		trail.flip_h = $player.flip_h
 		trail.texture = $player.texture
@@ -185,8 +205,8 @@ func _on_Ghost_timeout():
 		get_tree().get_root().add_child(trail)
 
 #Star inscancing
-const STAR = [preload("res://scenes/Space/Star1.tscn"), \
-preload("res://scenes/Space/Star2.tscn"), preload("res://scenes/Space/Star3.tscn")]
+const STAR = [preload("res://scenes/Particles/Star1.tscn"), \
+preload("res://scenes/Particles/Star2.tscn"), preload("res://scenes/Particles/Star3.tscn")]
 
 var star = [0, 1, 2]
 
@@ -203,3 +223,19 @@ func instance_star():
 	star[rand] = STAR[rand].instance()
 	get_parent().add_child(star[rand])
 	star[rand].position = $Position2D.global_position
+
+#Snow instancing
+const SNOW = preload("res://scenes/Particles/Snow.tscn")
+const BIGSNOW = preload("res://scenes/Particles/BigSnow.tscn")
+
+func _on_Snow_timeout():
+	$Timers/Snow.start()
+	instance_snow()
+
+func instance_snow():
+	var snow = SNOW.instance()
+	get_parent().add_child(snow)
+	snow.position = $Position2D2.global_position
+	var bigsnow = BIGSNOW.instance()
+	get_parent().add_child(bigsnow)
+	bigsnow.position = $Position2D2.global_position

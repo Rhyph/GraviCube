@@ -7,15 +7,15 @@ var Can = true
 var Laved = false
 var Saved = false
 var TP = false
-var Fade_out = false
 
 var Popups = 0
 var Deaths = 0
 var Mins = 0
 var Secs = 0.0
+var Cur_level = 0
 
-var Cur_level = 1
-var Level
+var Level = "Level0"
+
 var timer
 
 var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99"]

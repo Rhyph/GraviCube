@@ -25,9 +25,6 @@ func _physics_process(delta):
 	$RayCastPlayer.cast_to.x = cast_point.length()
 	if $RayCastPlayer.is_colliding():
 		$"/root/World/Player".die()
-	$RayCastIce.cast_to.x = cast_point.length()
-	if $RayCastIce.is_colliding():
-		$"/root/World/Tiles/Ice/TileMapIce"._Laser()
 
 func set_is_casting(cast):
 	is_casting = cast
@@ -49,7 +46,6 @@ func appear():
 
 func disappear():
 	$RayCastPlayer.enabled = false
-	$RayCastIce.enabled = false
 	$Tween.stop_all()
 	$Tween.interpolate_property($Line2D, "width", 1.0, 0, 0.1)
 	$Tween.start()
@@ -62,4 +58,3 @@ func _on_TimerRelax_timeout():
 	$TimerLaser.start()
 func _on_appear_timeout():
 	$RayCastPlayer.enabled = true
-	$RayCastIce.enabled = true
