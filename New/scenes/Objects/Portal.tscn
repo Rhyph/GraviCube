@@ -48,10 +48,10 @@ anims/idle = SubResource( 2 )
 wait_time = 0.5
 one_shot = true
 
-[node name="Transition" type="Timer" parent="."]
-wait_time = 0.5
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.001
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="Transition" to="." method="_on_Transition_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

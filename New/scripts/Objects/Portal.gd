@@ -14,13 +14,8 @@ func _on_Area2D_body_entered(body):
 func _on_Timer_timeout():
 	G.Can = false
 	$"/root/World/Interface/Menus".open2()
+	get_tree().paused = true
+	$Timer2.start()
 
-func _physics_process(delta):
-	if G.TP:
-		$Transition.start()
-		G.TP = false
-
-func _on_Transition_timeout():
-	G.PlayerPos = Vector2(4, -4)
-	$"/root/World/Interface/Menus".close2()
+func _on_Timer2_timeout():
 	get_tree().change_scene_to(next_scene)

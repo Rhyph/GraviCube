@@ -6,7 +6,6 @@ var PlayerPos = Vector2(4, -4)
 var Can = true
 var Laved = false
 var Saved = false
-var TP = false
 
 var Popups = 0
 var Deaths = 0

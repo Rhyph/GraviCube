@@ -262,11 +262,11 @@ __meta__ = {
 }
 
 [node name="Star" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.4
 autostart = true
 
 [node name="Snow" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.4
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 160, 90 )

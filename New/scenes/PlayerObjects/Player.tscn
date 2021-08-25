@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/PlayerObjects/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/PlayerObjects/player.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://sprites/PlayerObjects/shield.png" type="Texture" id=5]
 [ext_resource path="res://sprites/PlayerObjects/shoot.png" type="Texture" id=6]
 [ext_resource path="res://sounds/shoot.wav" type="AudioStream" id=7]
-[ext_resource path="res://scenes/Transition.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 3.6 )
@@ -476,11 +475,11 @@ wait_time = 0.075
 one_shot = true
 
 [node name="Star" type="Timer" parent="Timers"]
-wait_time = 0.2
+wait_time = 0.4
 autostart = true
 
 [node name="Snow" type="Timer" parent="Timers"]
-wait_time = 0.2
+wait_time = 0.4
 
 [node name="Die" type="Timer" parent="Timers"]
 wait_time = 0.4
@@ -488,6 +487,11 @@ one_shot = true
 
 [node name="Ghost" type="Timer" parent="Timers"]
 wait_time = 0.1
+autostart = true
+
+[node name="Waiter" type="Timer" parent="Timers"]
+wait_time = 0.01
+one_shot = true
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -588,8 +592,6 @@ shape = SubResource( 15 )
 stream = ExtResource( 7 )
 volume_db = 5.0
 
-[node name="Transition" parent="." instance=ExtResource( 8 )]
-
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timers/idleSwitch" to="." method="_on_idleSwitch_timeout"]
 [connection signal="timeout" from="Timers/Dropped" to="." method="_on_Dropped_timeout"]
@@ -598,5 +600,6 @@ volume_db = 5.0
 [connection signal="timeout" from="Timers/Snow" to="." method="_on_Snow_timeout"]
 [connection signal="timeout" from="Timers/Die" to="." method="_on_Die_timeout"]
 [connection signal="timeout" from="Timers/Ghost" to="." method="_on_Ghost_timeout"]
+[connection signal="timeout" from="Timers/Waiter" to="." method="_on_Waiter_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Rays/SpikeArea2D" to="." method="_on_SpikeArea2D_body_entered"]

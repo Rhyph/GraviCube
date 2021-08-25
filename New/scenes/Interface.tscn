@@ -110,34 +110,35 @@ func _ready():
 
 func _input(event):
 	if event is InputEventScreenTouch && event.is_pressed():
-		if G.Popups == 1:
-			if $ColorRect/Popup1/popup2.visible == false:
-				$ColorRect/Popup1/popup2.visible = true
-				$ColorRect/Popup1/RichTextLabel2.visible = true
-				$ColorRect/Popup1/ColorRect2.visible = true
-				$ColorRect/Popup1/ColorRect.visible = false
-			else:
-				$ColorRect/Popup1.visible = false
-				$ColorRect/Popup2.visible = true
+		if visible:
+			if G.Popups == 1:
+				if $ColorRect/Popup1/popup2.visible == false:
+					$ColorRect/Popup1/popup2.visible = true
+					$ColorRect/Popup1/RichTextLabel2.visible = true
+					$ColorRect/Popup1/ColorRect2.visible = true
+					$ColorRect/Popup1/ColorRect.visible = false
+				else:
+					$ColorRect/Popup1.visible = false
+					$ColorRect/Popup2.visible = true
+					close()
+			if G.Popups == 2:
+				if $ColorRect/Popup2/popup2.visible == false:
+					$ColorRect/Popup2/popup2.visible = true
+					$ColorRect/Popup2/RichTextLabel2.visible = true
+					$ColorRect/Popup2/ColorRect2.visible = true
+					$ColorRect/Popup2/ColorRect.visible = false
+				elif $ColorRect/Popup2/popup3.visible == false:
+					$ColorRect/Popup2/popup3.visible = true
+					$ColorRect/Popup2/RichTextLabel3.visible = true
+					$ColorRect/Popup2/ColorRect3.visible = true
+					$ColorRect/Popup2/ColorRect2.visible = false
+				else:
+					$ColorRect/Popup2.visible = false
+					$ColorRect/Popup3.visible = true
+					close()
+			if G.Popups == 3:
+				$ColorRect/Popup3.visible = false
 				close()
-		if G.Popups == 2:
-			if $ColorRect/Popup2/popup2.visible == false:
-				$ColorRect/Popup2/popup2.visible = true
-				$ColorRect/Popup2/RichTextLabel2.visible = true
-				$ColorRect/Popup2/ColorRect2.visible = true
-				$ColorRect/Popup2/ColorRect.visible = false
-			elif $ColorRect/Popup2/popup3.visible == false:
-				$ColorRect/Popup2/popup3.visible = true
-				$ColorRect/Popup2/RichTextLabel3.visible = true
-				$ColorRect/Popup2/ColorRect3.visible = true
-				$ColorRect/Popup2/ColorRect2.visible = false
-			else:
-				$ColorRect/Popup2.visible = false
-				$ColorRect/Popup3.visible = true
-				close()
-		if G.Popups == 3:
-			$ColorRect/Popup3.visible = false
-			close()
 
 func open():
 	$\"/root/World/Interface/Control\".visible = false
@@ -777,7 +778,7 @@ margin_top = 37.0
 margin_right = 99.0
 margin_bottom = 138.0
 custom_fonts/normal_font = ExtResource( 2 )
-text = "If you shoot under yourself in timing, being above the ground, you can climb to a great height"
+text = "If you shoot under yourself in air, being above the ground, you can climb to a great height"
 __meta__ = {
 "_edit_use_anchors_": false
 }

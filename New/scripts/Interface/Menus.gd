@@ -33,8 +33,6 @@ func close():
 
 #End-level menu
 func open2():
-	get_tree().paused = true
-	
 	G.Cur_level = max(G.Cur_level, int(G.Level.substr(5)) + 1)
 	
 	FS.save_data({
@@ -52,10 +50,8 @@ func _on_Restart2_pressed():
 	G.Can = false
 	G.reload_scene()
 func _on_Next2_pressed():
-	get_tree().paused = false
-	$ColorRect2.visible = false
+	close2()
 	G.zero()
-	G.TP = true
 
 func close2():
 	get_tree().paused = false

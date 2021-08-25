@@ -29,10 +29,6 @@ var LinePos = Vector2()
 var motion = Vector2.ZERO
 
 func _ready():
-	if int(G.Level.substr(5)) > 3:
-		$Timers/Snow.start()
-		$Timers/Star.stop()
-	
 	keys = 2
 	Input.action_release("ui_left")
 	Input.action_release("ui_right")
@@ -239,3 +235,8 @@ func instance_snow():
 	var bigsnow = BIGSNOW.instance()
 	get_parent().add_child(bigsnow)
 	bigsnow.position = $Position2D2.global_position
+
+func _on_Waiter_timeout():
+	if int(G.Level.substr(5)) > 3:
+		$Timers/Snow.start()
+		$Timers/Star.stop()
