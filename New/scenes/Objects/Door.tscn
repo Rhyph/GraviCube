@@ -35,7 +35,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "opening"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("door:position")
 tracks/0/interp = 1
@@ -43,7 +43,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 5.09824, 3.13834 ),
 "update": 0,
 "values": [ Vector2( 0, -8 ), Vector2( 0, -24 ) ]
@@ -55,14 +55,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 5.09824, 3.13834 ),
 "update": 0,
 "values": [ Vector2( 0, -8 ), Vector2( 0, -24 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 8 )
+extents = Vector2( 1, 8 )
 
 [node name="Door" type="StaticBody2D"]
 z_index = -1
@@ -89,7 +89,7 @@ z_index = -1
 shape = SubResource( 4 )
 
 [node name="ToOpen" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="ToClose" type="Timer" parent="."]
