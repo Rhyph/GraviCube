@@ -1,6 +1,8 @@
 extends Area2D
 
 
+var actived = true
+
 func _ready():
 	if G.PlayerPos == global_position:
 		$checkpoint/AnimationPlayer.play("activated")
@@ -12,8 +14,10 @@ func _physics_process(delta):
 		$checkpoint/AnimationPlayer.play("nonactivated")
 
 func _on_Checkpoint_body_entered(body):
-	if "Player" in body.name:
-		if G.PlayerPos != global_position:
-			$checkpoint/AnimationPlayer.play("pick")
-		G.PlayerPos = global_position
-		G.Saved = true
+	if actived:
+		if "Player" in body.name:
+			actived = false
+			if G.PlayerPos != global_position:
+				$checkpoint/AnimationPlayer.play("pick")
+			G.PlayerPos = global_position
+			G.Saved = true

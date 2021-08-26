@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends StaticBody2D
@@ -52,6 +52,9 @@ scale_random = 1.0
 scale_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
 
+[sub_resource type="StreamTexture" id=9]
+load_path = "res://.import/Light24.png-c46515aa44e8336f61aa6779afe90908.stex"
+
 [node name="SphereRed" type="StaticBody2D"]
 z_index = 1
 collision_layer = 130
@@ -69,6 +72,13 @@ texture = SubResource( 3 )
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 30
 process_material = SubResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = SubResource( 9 )
+range_item_cull_mask = 3
 __meta__ = {
 "_editor_description_": ""
 }

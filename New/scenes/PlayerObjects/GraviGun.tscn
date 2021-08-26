@@ -1,22 +1,26 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/PlayerObjects/GraviGun.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerObjects/BulletTrail.gd" type="Script" id=2]
 [ext_resource path="res://sprites/PlayerObjects/bullet.png" type="Texture" id=3]
 [ext_resource path="res://sprites/PlayerObjects/demo.png" type="Texture" id=4]
 [ext_resource path="res://sounds/Explosion170.wav" type="AudioStream" id=5]
+[ext_resource path="res://sprites/Particles/Light64.png" type="Texture" id=6]
 
-[sub_resource type="Curve" id=1]
+[sub_resource type="CanvasItemMaterial" id=9]
+light_mode = 1
+
+[sub_resource type="Curve" id=10]
 min_value = 0.3
 _data = [ Vector2( 0, 0.3 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=11]
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=13]
 length = 0.3
 step = 0.025
 tracks/0/type = "value"
@@ -93,15 +97,27 @@ tracks/5/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Light2D:energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=14]
 resource_local_to_scene = true
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 resource_local_to_scene = true
 radius = 5.0
 
@@ -130,17 +146,18 @@ collision_mask = 227
 
 [node name="Trail" type="Line2D" parent="."]
 modulate = Color( 1, 2, 4, 1 )
+material = SubResource( 9 )
 rotation = -1.5708
 width = 3.0
-width_curve = SubResource( 1 )
+width_curve = SubResource( 10 )
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 2 )
+gradient = SubResource( 11 )
 end_cap_mode = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 12 )
 
 [node name="bullet" type="Sprite" parent="."]
 modulate = Color( 1, 2, 4, 1 )
@@ -153,7 +170,7 @@ texture = ExtResource( 4 )
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/shot = SubResource( 4 )
+anims/shot = SubResource( 13 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -164,7 +181,7 @@ collision_layer = 0
 collision_mask = 48
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -172,7 +189,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource( 6 )
+shape = SubResource( 15 )
 
 [node name="Area2D3" type="Area2D" parent="."]
 collision_layer = 0
@@ -180,13 +197,20 @@ collision_mask = 128
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Position2D" type="Position2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -12.0
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 6 )
+range_item_cull_mask = 3
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="body_entered" from="." to="." method="_on_GraviGun_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

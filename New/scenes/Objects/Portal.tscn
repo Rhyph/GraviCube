@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Objects/Portal.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Objects/portal.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Particles/light.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
 height = 7.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
+
+[sub_resource type="Animation" id=3]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -37,12 +40,15 @@ position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 
 [node name="portal" type="Sprite" parent="."]
+modulate = Color( 2, 1, 2, 1 )
+light_mask = 2
+material = SubResource( 2 )
 texture = ExtResource( 2 )
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="portal"]
 autoplay = "idle"
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -51,6 +57,10 @@ one_shot = true
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.001
 one_shot = true
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+range_item_cull_mask = 3
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

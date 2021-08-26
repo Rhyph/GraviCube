@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/block.png-721dbeb4fccbd378f5e4b13fa7d21853.stex"
+path="res://.import/snowwayblock.png-16a399693073316e95947d98e4c9f5d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tiles/block.png"
-dest_files=[ "res://.import/block.png-721dbeb4fccbd378f5e4b13fa7d21853.stex" ]
+source_file="res://sprites/Tiles/snowwayblock.png"
+dest_files=[ "res://.import/snowwayblock.png-16a399693073316e95947d98e4c9f5d4.stex" ]
 
 [params]
 

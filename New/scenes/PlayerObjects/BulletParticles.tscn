@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -14,8 +17,7 @@ radial_accel_random = 1.0
 damping = 5.0
 damping_random = 1.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -42,9 +44,10 @@ tracks/1/keys = {
 }
 
 [node name="Particles2D" type="Particles2D"]
+material = SubResource( 1 )
 amount = 3
-process_material = SubResource( 1 )
+process_material = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 3 )

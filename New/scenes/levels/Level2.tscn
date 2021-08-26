@@ -1501,7 +1501,7 @@ texture = ExtResource( 2 )
 
 [node name="Objects" type="Node2D" parent="."]
 
-[node name="PortalLevel03" parent="Objects" instance=ExtResource( 4 )]
+[node name="PortalLevel3" parent="Objects" instance=ExtResource( 4 )]
 position = Vector2( 140, -417 )
 next_scene = ExtResource( 7 )
 
@@ -1521,3 +1521,9 @@ position = Vector2( 108, -40 )
 environment = SubResource( 240 )
 
 [node name="Interface" parent="." instance=ExtResource( 5 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.392157, 0.392157, 0.392157, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
