@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -18,55 +18,60 @@
 [ext_resource path="res://sprites/PopUps/popup4.png" type="Texture" id=17]
 [ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
 
-[sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/circle.png-917a9bdc8b13880bb59c8f9707e123fb.stex"
+[sub_resource type="CircleShape2D" id=1]
+radius = 45.0444
 
 [sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/circle.png-917a9bdc8b13880bb59c8f9707e123fb.stex"
+
+[sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/circlegrey.png-60d35f55e7ee28a2c25f25b7df9d7335.stex"
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 13.0
 
-[sub_resource type="Theme" id=4]
+[sub_resource type="Theme" id=5]
 default_font = ExtResource( 2 )
 
-[sub_resource type="StyleBoxLine" id=5]
+[sub_resource type="Theme" id=6]
+default_font = ExtResource( 2 )
+
+[sub_resource type="StyleBoxLine" id=7]
 color = Color( 1, 1, 1, 1 )
 grow_begin = -1.0
 grow_end = -1.0
 vertical = true
-
-[sub_resource type="StyleBoxLine" id=6]
-color = Color( 1, 1, 1, 1 )
-grow_begin = -1.0
-grow_end = -1.0
-vertical = true
-
-[sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxLine" id=8]
+color = Color( 1, 1, 1, 1 )
+grow_begin = -1.0
+grow_end = -1.0
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxLine" id=10]
 color = Color( 0.784314, 0.823529, 0.862745, 1 )
 grow_begin = -1.0
 grow_end = -1.0
 vertical = true
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=11]
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0, 0.552941, 1, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=11]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=15]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=14]
-resource_name = "idle"
+[sub_resource type="Animation" id=16]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect2:modulate")
@@ -101,7 +106,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="GDScript" id=15]
+[sub_resource type="GDScript" id=17]
 script/source = "extends Popup
 
 
@@ -158,6 +163,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,11 +174,16 @@ pause_mode = 1
 position = Vector2( 264, 124 )
 texture = ExtResource( 15 )
 
+[node name="Area2D" type="Area2D" parent="Control/circlebig"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/circlebig/Area2D"]
+shape = SubResource( 1 )
+
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control/circlebig"]
 pause_mode = 1
-normal = SubResource( 1 )
-pressed = SubResource( 2 )
-shape = SubResource( 3 )
+normal = SubResource( 2 )
+pressed = SubResource( 3 )
+shape = SubResource( 4 )
 script = ExtResource( 19 )
 
 [node name="Node2D" type="Node2D" parent="Control/circlebig/TouchScreenButton"]
@@ -226,31 +237,44 @@ pressed = ExtResource( 5 )
 [node name="Labels" type="Node2D" parent="Control"]
 
 [node name="Timer" type="Label" parent="Control/Labels"]
-margin_left = 1.0
-margin_top = 168.0
-margin_right = 71.0
-margin_bottom = 182.0
-theme = SubResource( 4 )
+margin_left = 2.0
+margin_top = 167.0
+margin_right = 72.0
+margin_bottom = 181.0
+theme = SubResource( 5 )
 text = "Time: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Death_count" type="Label" parent="Control/Labels"]
-margin_left = 83.0
-margin_top = 168.0
-margin_right = 153.0
-margin_bottom = 182.0
-theme = SubResource( 4 )
+margin_left = 84.0
+margin_top = 167.0
+margin_right = 154.0
+margin_bottom = 181.0
+theme = SubResource( 5 )
 text = "Deaths: "
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="fps" type="Label" parent="Control/Labels"]
+margin_left = 270.0
+margin_top = -2.0
+margin_right = 319.0
+margin_bottom = 12.0
+theme = SubResource( 6 )
+text = "Fps:"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Menus" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -261,11 +285,11 @@ margin_top = -1.0
 margin_right = 28.0
 margin_bottom = 25.0
 focus_mode = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/disabled = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
-custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -316,11 +340,11 @@ margin_top = 13.0
 margin_right = 92.0
 margin_bottom = 26.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -337,11 +361,11 @@ margin_top = 36.0
 margin_right = 92.0
 margin_bottom = 49.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -358,11 +382,11 @@ margin_top = 59.0
 margin_right = 92.0
 margin_bottom = 72.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -379,11 +403,11 @@ margin_top = 82.0
 margin_right = 92.0
 margin_bottom = 95.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -396,7 +420,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Menus"]
-anims/idle = SubResource( 14 )
+anims/idle = SubResource( 16 )
 
 [node name="ColorRect2" type="ColorRect" parent="Menus"]
 visible = false
@@ -530,11 +554,11 @@ __meta__ = {
 margin_right = 63.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -551,11 +575,11 @@ margin_left = 78.0
 margin_right = 137.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -572,11 +596,11 @@ margin_left = 152.0
 margin_right = 224.0
 margin_bottom = 13.0
 focus_mode = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -591,7 +615,7 @@ __meta__ = {
 [node name="Popup" type="Popup" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = SubResource( 15 )
+script = SubResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -803,6 +827,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="input_event" from="Control/circlebig/Area2D" to="Control/circlebig/TouchScreenButton" method="_on_Area2D_input_event"]
 [connection signal="pressed" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
 [connection signal="timeout" from="Control/circlebig/TouchScreenButton/Timer" to="Control/circlebig/TouchScreenButton" method="_on_Timer_timeout"]

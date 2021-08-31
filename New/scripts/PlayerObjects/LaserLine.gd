@@ -1,7 +1,6 @@
 extends RayCast2D
 
 
-var switch = false
 var down = false
 
 func _ready():
@@ -11,24 +10,11 @@ func _physics_process(delta):
 	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".ongoing_drag == -1 \
 	&& $"/root/World/Player".projectile == 1:
 		rotation_degrees = 0
-		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
-			$Line2D.visible = true
-			$shoot/AnimationPlayer.play("visible")
 	
 	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".down == false:
 		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".hard_func >= 14:
 			if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
 				rotation_degrees = $"/root/World/Interface/Control/circlebig/Line2D".rotation_degrees - 90
-				$shoot/AnimationPlayer.play("visible")
-				switch = true
-			else:
-				if switch:
-					$shoot/AnimationPlayer.play("auto")
-				switch = false
-		else:
-			rotation_degrees = 0
-			if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
-				$shoot/AnimationPlayer.play("visible")
 	
 	var cast_point = cast_to
 	
@@ -46,5 +32,9 @@ func _physics_process(delta):
 func under():
 	rotation_degrees = 0
 	if down:
-		$shoot/AnimationPlayer.play("auto")
 		down = false
+
+func auto():
+	$shoot/AnimationPlayer.play("auto")
+func visible():
+	$shoot/AnimationPlayer.play("visible")
