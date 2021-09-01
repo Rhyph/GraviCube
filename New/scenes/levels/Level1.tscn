@@ -795,8 +795,6 @@ position = Vector2( -76, -156 )
 position = Vector2( 236, -433 )
 next_scene = ExtResource( 6 )
 
-[node name="Interface" parent="." instance=ExtResource( 3 )]
-
 [node name="Popup" type="Area2D" parent="."]
 position = Vector2( 82, -10 )
 script = SubResource( 100 )
@@ -868,6 +866,8 @@ texture = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Interface" parent="." instance=ExtResource( 3 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 107 )

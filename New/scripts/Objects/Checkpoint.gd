@@ -12,6 +12,8 @@ func _ready():
 func _physics_process(delta):
 	if G.PlayerPos != global_position:
 		$checkpoint/AnimationPlayer.play("nonactivated")
+		if actived == false:
+			queue_free()
 
 func _on_Checkpoint_body_entered(body):
 	if actived:

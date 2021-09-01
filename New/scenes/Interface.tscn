@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -17,9 +17,6 @@
 [ext_resource path="res://sprites/PopUps/popup3-3.png" type="Texture" id=16]
 [ext_resource path="res://sprites/PopUps/popup4.png" type="Texture" id=17]
 [ext_resource path="res://scripts/Interface/TouchScreenButton.gd" type="Script" id=19]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 45.0444
 
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/circle.png-917a9bdc8b13880bb59c8f9707e123fb.stex"
@@ -173,11 +170,6 @@ __meta__ = {
 pause_mode = 1
 position = Vector2( 264, 124 )
 texture = ExtResource( 15 )
-
-[node name="Area2D" type="Area2D" parent="Control/circlebig"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/circlebig/Area2D"]
-shape = SubResource( 1 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control/circlebig"]
 pause_mode = 1
@@ -827,7 +819,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="input_event" from="Control/circlebig/Area2D" to="Control/circlebig/TouchScreenButton" method="_on_Area2D_input_event"]
 [connection signal="pressed" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="Control/circlebig/TouchScreenButton" to="Control/circlebig/TouchScreenButton" method="_on_TouchScreenButton_released"]
 [connection signal="timeout" from="Control/circlebig/TouchScreenButton/Timer" to="Control/circlebig/TouchScreenButton" method="_on_Timer_timeout"]
