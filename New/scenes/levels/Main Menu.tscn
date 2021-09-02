@@ -259,19 +259,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Star" type="Timer" parent="."]
-wait_time = 0.4
-autostart = true
-
-[node name="Snow" type="Timer" parent="."]
-wait_time = 0.4
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 160, 90 )
-
-[node name="Position2D2" type="Position2D" parent="."]
-position = Vector2( 160, 0 )
-
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
@@ -280,5 +267,3 @@ position = Vector2( 160, 0 )
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level1_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level2_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level4" to="." method="_on_Level4_pressed"]
-[connection signal="timeout" from="Star" to="." method="_on_Star_timeout"]
-[connection signal="timeout" from="Snow" to="." method="_on_Snow_timeout"]

@@ -77,7 +77,7 @@ func _physics_process(delta):
 				$AnimationPlayer.play("run")
 				var runpart = RUNPART.instance()
 				get_parent().add_child(runpart)
-				runpart.position = $Position2D3.global_position
+				runpart.position = $Position2D2.global_position
 				if $player.flip_h:
 					runpart.scale.y = -1
 				else:
@@ -153,7 +153,7 @@ func Vector(k):
 	if is_on_floor():
 		var jumppart = JUMPPART.instance()
 		get_parent().add_child(jumppart)
-		jumppart.position = $Position2D3.global_position
+		jumppart.position = $Position2D2.global_position
 
 #Для анимации приземления
 func return_drop():
@@ -199,44 +199,3 @@ func _on_Ghost_timeout():
 		trail.frame = $player.frame
 		trail.scale = $player.scale
 		get_tree().get_root().add_child(trail)
-
-#Star inscancing
-const STAR = [preload("res://scenes/Particles/Star1.tscn"), \
-preload("res://scenes/Particles/Star2.tscn"), preload("res://scenes/Particles/Star3.tscn")]
-
-var star = [0, 1, 2]
-
-var rng = RandomNumberGenerator.new()
-var rand
-
-func _on_Star2Sec_timeout():
-	$Timers/Star.start()
-	rng.randomize()
-	rand = rng.randi_range(0, 2)
-	instance_star()
-
-func instance_star():
-	star[rand] = STAR[rand].instance()
-	get_parent().add_child(star[rand])
-	star[rand].position = $Position2D.global_position
-
-#Snow instancing
-const SNOW = preload("res://scenes/Particles/Snow.tscn")
-const BIGSNOW = preload("res://scenes/Particles/BigSnow.tscn")
-
-func _on_Snow_timeout():
-	$Timers/Snow.start()
-	instance_snow()
-
-func instance_snow():
-	var snow = SNOW.instance()
-	get_parent().add_child(snow)
-	snow.position = $Position2D2.global_position
-	var bigsnow = BIGSNOW.instance()
-	get_parent().add_child(bigsnow)
-	bigsnow.position = $Position2D2.global_position
-
-func _on_Waiter_timeout():
-	if int(G.Level.substr(5)) > 3:
-		$Timers/Snow.start()
-		$Timers/Star.stop()
