@@ -478,6 +478,9 @@ one_shot = true
 wait_time = 0.1
 autostart = true
 
+[node name="Timer" type="Timer" parent="Timers"]
+wait_time = 0.1
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 material = SubResource( 11 )
 z_index = 5
@@ -487,6 +490,7 @@ script = ExtResource( 3 )
 
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
 visible = false
+modulate = Color( 1.8, 1.8, 1.8, 1 )
 use_parent_material = true
 position = Vector2( 0, 8 )
 z_as_relative = false
@@ -600,5 +604,6 @@ position = Vector2( 0, 4 )
 [connection signal="timeout" from="Timers/SlowMo" to="." method="_on_SlowMo_timeout"]
 [connection signal="timeout" from="Timers/Die" to="." method="_on_Die_timeout"]
 [connection signal="timeout" from="Timers/Ghost" to="." method="_on_Ghost_timeout"]
+[connection signal="timeout" from="Timers/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Rays/SpikeArea2D" to="." method="_on_SpikeArea2D_body_entered"]

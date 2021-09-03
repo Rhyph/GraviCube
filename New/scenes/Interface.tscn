@@ -262,6 +262,16 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Text" type="Label" parent="Control/Labels"]
+margin_top = 24.0
+margin_right = 49.0
+margin_bottom = 38.0
+theme = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
 [node name="Menus" type="Control" parent="."]
 visible = false
 anchor_right = 1.0

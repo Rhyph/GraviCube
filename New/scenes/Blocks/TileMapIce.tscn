@@ -2,10 +2,10 @@
 
 [ext_resource path="res://sprites/Tiles/ice.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, 0, 8, 0, 8, -8, 0, -8 )
 
 [node name="TileMapIce" type="StaticBody2D"]
@@ -17,11 +17,11 @@ collision_mask = 17
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2( -4, 4 )
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }

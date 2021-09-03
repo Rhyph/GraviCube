@@ -75,13 +75,8 @@ func _physics_process(delta):
 				$AnimationPlayer.play("idle")
 			else:
 				$AnimationPlayer.play("run")
-				var runpart = RUNPART.instance()
-				get_parent().add_child(runpart)
-				runpart.position = $Position2D2.global_position
-				if $player.flip_h:
-					runpart.scale.y = -1
-				else:
-					runpart.scale.y = 1
+				if $Timers/Timer.is_stopped():
+					$Timers/Timer.start()
 		
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, friction)
@@ -199,3 +194,13 @@ func _on_Ghost_timeout():
 		trail.frame = $player.frame
 		trail.scale = $player.scale
 		get_tree().get_root().add_child(trail)
+
+func _on_Timer_timeout():
+	if $AnimationPlayer.current_animation == "run":
+		var runpart = RUNPART.instance()
+		get_parent().add_child(runpart)
+		runpart.position = $Position2D2.global_position
+		if $player.flip_h:
+			runpart.scale.y = -1
+		else:
+			runpart.scale.y = 1
