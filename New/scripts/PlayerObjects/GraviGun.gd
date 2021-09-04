@@ -50,12 +50,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 		fast = false
 	queue_free()
 
-func _on_GraviGun_body_entered(body):
-	sig = true
-	part = false
-	speed = 0
-	$AnimationPlayer.play('shot')
-
 func _on_Area2D3_body_entered(body):
 	k = 40
 	if "Red" in body.name:

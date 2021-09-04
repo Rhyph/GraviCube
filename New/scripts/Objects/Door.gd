@@ -11,13 +11,13 @@ func _physics_process(delta):
 		once = 0
 		$AnimationPlayer.play("closing")
 
-func _on_Area2D_body_entered(body):
-	if "Player" in body.name:
-		$"/root/World/Player".keys = 2
-
 func _on_ToOpen_timeout():
 	$AnimationPlayer.play("opening")
 	$ToClose.start()
 
 func _on_ToClose_timeout():
 	once = 2
+
+func _on_Area2D_body_exited(body):
+	if "Player" in body.name:
+		$"/root/World/Player".keys = 2

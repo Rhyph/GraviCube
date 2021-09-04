@@ -62,7 +62,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 1, 8 )
+extents = Vector2( 4, 8 )
 
 [node name="Door" type="StaticBody2D"]
 z_index = -1
@@ -96,6 +96,6 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="timeout" from="ToOpen" to="." method="_on_ToOpen_timeout"]
 [connection signal="timeout" from="ToClose" to="." method="_on_ToClose_timeout"]

@@ -139,7 +139,7 @@ autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -3, 1.23978e-05 )
-rotation = 4.71239
+rotation = -1.5708
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 227
@@ -165,7 +165,7 @@ texture = ExtResource( 3 )
 
 [node name="demo" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-rotation = 4.71239
+rotation = -1.5708
 texture = ExtResource( 4 )
 hframes = 6
 
