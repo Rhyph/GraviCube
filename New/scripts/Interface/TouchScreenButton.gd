@@ -23,10 +23,8 @@ func _physics_process(delta):
 		$"/root/World/Player/RayCast2D".enabled = false
 		$"/root/World/Player/RayCast2D/Line2D".visible = false
 		shot = false
-		$"/root/World/Interface/Control/Labels/Text".text += "1"
 		if down:
 			$"/root/World/Player/RayCast2D".under()
-			$"/root/World/Interface/Control/Labels/Text".text += "2"
 	
 	if $"/root/World/Player".projectile == 1 && slow && inArea:
 		Engine.time_scale = 0.1
@@ -87,7 +85,6 @@ func _input(event):
 					$"/root/World/Player/".GraviShot = true
 					$"/root/World/Player/RayCast2D".enabled = false
 					$"/root/World/Player/RayCast2D/Line2D".visible = false
-					$"/root/World/Interface/Control/Labels/Text".text += "3"
 				else:
 					shot = true
 
@@ -107,7 +104,6 @@ func _on_TouchScreenButton_released():
 			$"/root/World/Player/".GraviShot = true
 			$"/root/World/Player/RayCast2D".enabled = false
 			$"/root/World/Player/RayCast2D/Line2D".visible = false
-			$"/root/World/Interface/Control/Labels/Text".text += "4"
 		else:
 			shot = true
 	$Timer.start()

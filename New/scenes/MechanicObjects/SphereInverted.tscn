@@ -13,10 +13,10 @@ func _physics_process(delta):
 		$CollisionShape2D.disabled = true
 "
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 1 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 0 )
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
 render_mode unshaded;
  
@@ -44,7 +44,7 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+shader = SubResource( 10 )
 shader_param/width = 0.2
 shader_param/outline_color = null
 
@@ -85,11 +85,15 @@ load_path = "res://.import/Light24.png-c46515aa44e8336f61aa6779afe90908.stex"
 [node name="SphereInverted" type="StaticBody2D"]
 z_index = 1
 collision_layer = 130
+collision_mask = 0
 script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -1 )
-shape = SubResource( 2 )
+position = Vector2( 0, -2 )
+shape = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="sphereInverted" type="Sprite" parent="."]
 modulate = Color( 1, 2, 4, 1 )
