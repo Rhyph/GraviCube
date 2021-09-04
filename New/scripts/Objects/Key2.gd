@@ -15,5 +15,5 @@ func _on_Key_body_entered(body):
 	if "Player" in body.name:
 		if picked == false:
 			$AnimationPlayer.play("picked")
-			G.keys -= 1
+			G.keys -= 2
 		picked = true

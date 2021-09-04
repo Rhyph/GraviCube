@@ -13,7 +13,6 @@ const GRAVITY = 400
 var acceleration = 384
 var friction = .5
 var projectile = 1
-var keys = 2
 
 var slow = false
 var SlowMo = false
@@ -29,7 +28,6 @@ var LinePos = Vector2()
 var motion = Vector2.ZERO
 
 func _ready():
-	keys = 2
 	Input.action_release("ui_left")
 	Input.action_release("ui_right")
 	Input.action_release("ui_up")

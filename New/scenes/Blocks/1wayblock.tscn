@@ -17,7 +17,7 @@ script/source = "extends StaticBody2D
 extents = Vector2( 4, 4 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4, 0.8 )
+extents = Vector2( 4, 1 )
 
 [node name="1wayblock" type="StaticBody2D"]
 position = Vector2( 4, -4 )
@@ -38,7 +38,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 0, 0.8 )
+position = Vector2( 0, 1 )
 shape = SubResource( 3 )
 __meta__ = {
 "_editor_description_": ""

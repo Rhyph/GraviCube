@@ -4,10 +4,10 @@ extends StaticBody2D
 var once = 0
 
 func _physics_process(delta):
-	if once == 0 && $"/root/World/Player".keys == 0:
+	if once == 0 && G.keys == 0:
 		once = 1
 		$ToOpen.start()
-	if once == 2 && $"/root/World/Player".keys == 2:
+	if once == 2 && G.keys == 3:
 		once = 0
 		$AnimationPlayer.play("closing")
 
@@ -20,4 +20,4 @@ func _on_ToClose_timeout():
 
 func _on_Area2D_body_exited(body):
 	if "Player" in body.name:
-		$"/root/World/Player".keys = 2
+		G.keys = 3
