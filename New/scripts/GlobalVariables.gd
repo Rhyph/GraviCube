@@ -17,9 +17,9 @@ var Level = "Level0"
 
 var timer
 
-var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99"]
-var Scores_t = [600,600,600,600]
-var Scores_d = [99,99,99,99]
+var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
+var Scores_t = [600,600,600,600,600]
+var Scores_d = [99,99,99,99,99]
 
 func _ready():
 	var data = FS.load_data()

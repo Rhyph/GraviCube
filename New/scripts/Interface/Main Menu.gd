@@ -33,3 +33,5 @@ func _on_Level2_pressed():
 	G.scene("Level3")
 func _on_Level4_pressed():
 	G.scene("Level4")
+func _on_Level5_pressed():
+	G.scene("Level5")

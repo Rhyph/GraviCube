@@ -119,7 +119,7 @@ extents = Vector2( 2, 2 )
 
 [sub_resource type="CircleShape2D" id=8]
 resource_local_to_scene = true
-radius = 5.0
+radius = 3.0
 
 [node name="GraviGun" type="Area2D"]
 rotation = 1.5708

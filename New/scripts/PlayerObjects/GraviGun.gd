@@ -53,9 +53,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Area2D3_body_entered(body):
 	k = 40
 	if "Red" in body.name:
-		k *= 1.5
+		k *= 1.35
 	if "Inverted" in body.name:
-		k *= -1.5
+		k *= -1.35
 
 #Тело находится в радиусе взрыва
 func _on_Area2D_body_entered(body):

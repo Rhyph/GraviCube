@@ -173,7 +173,8 @@ func die():
 	position = G.PlayerPos
 	motion = Vector2.ZERO
 	set_physics_process(true)
-	$AnimationPlayer.play("idle")
+	$player.frame = 0
+	$player.self_modulate = Color(1, 1, 1, 1)
 
 #Timers
 func _on_idleSwitch_timeout():
@@ -196,7 +197,6 @@ func _on_Ghost_timeout():
 		trail.frame = $player.frame
 		trail.scale = $player.scale
 		get_tree().get_root().add_child(trail)
-
 func _on_Timer_timeout():
 	if $AnimationPlayer.current_animation == "run":
 		var runpart = RUNPART.instance()
