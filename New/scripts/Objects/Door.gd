@@ -1,23 +1,12 @@
 extends StaticBody2D
 
 
-var once = 0
+var once = true
 
 func _physics_process(delta):
-	if once == 0 && G.keys == 0:
-		once = 1
+	if once && $"/root/World/Player".keys == 0:
 		$ToOpen.start()
-	if once == 2 && G.keys == 3:
-		once = 0
-		$AnimationPlayer.play("closing")
+		once = false
 
 func _on_ToOpen_timeout():
 	$AnimationPlayer.play("opening")
-	$ToClose.start()
-
-func _on_ToClose_timeout():
-	once = 2
-
-func _on_Area2D_body_exited(body):
-	if "Player" in body.name:
-		G.keys = 3

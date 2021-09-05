@@ -13,6 +13,7 @@ const GRAVITY = 400
 var acceleration = 384
 var friction = .5
 var projectile = 1
+var keys = 2
 
 var slow = false
 var SlowMo = false
@@ -156,7 +157,8 @@ func return_drop():
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.Can:
 		G.Deaths += 1
-		get_tree().reload_current_scene()
+		position = G.PlayerPos
+		$AnimationPlayer.play("idle")
 
 #Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
@@ -168,8 +170,10 @@ func _on_SpikeArea2D_body_entered(body):
 	$Timers/Die.start()
 
 func die():
-	$"/root/World/Interface/Control/circlebig".visible = false
-	get_tree().reload_current_scene()
+	position = G.PlayerPos
+	motion = Vector2.ZERO
+	set_physics_process(true)
+	$AnimationPlayer.play("idle")
 
 #Timers
 func _on_idleSwitch_timeout():

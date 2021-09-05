@@ -39,38 +39,38 @@ shader_param/outline_color = null
 radius = 2.0
 height = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=17]
+[sub_resource type="CanvasItemMaterial" id=4]
 light_mode = 1
 
-[sub_resource type="Gradient" id=18]
+[sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0, 0.803711, 1, 1, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=19]
-gradient = SubResource( 18 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="Curve" id=20]
+[sub_resource type="Curve" id=7]
 min_value = -50.0
 max_value = 50.0
 _data = [ Vector2( 0, 50 ), 0.0, 0.0, 0, 0, Vector2( 1, -50 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=21]
-curve = SubResource( 20 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="Curve" id=22]
+[sub_resource type="Curve" id=9]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=23]
-curve = SubResource( 22 )
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
 
-[sub_resource type="Curve" id=24]
+[sub_resource type="Curve" id=11]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=25]
-curve = SubResource( 24 )
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=26]
+[sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 1
 emission_sphere_radius = 3.0
 flag_disable_z = true
@@ -79,18 +79,18 @@ flatness = 1.0
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel_curve = SubResource( 21 )
+linear_accel_curve = SubResource( 8 )
 radial_accel = -100.0
 radial_accel_random = 1.0
-radial_accel_curve = SubResource( 23 )
+radial_accel_curve = SubResource( 10 )
 damping = 100.0
 damping_random = 1.0
-scale_curve = SubResource( 25 )
-color_ramp = SubResource( 19 )
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 6 )
 hue_variation = 0.05
 hue_variation_random = 1.0
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=14]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("key:self_modulate")
@@ -131,7 +131,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=28]
+[sub_resource type="CanvasItemMaterial" id=15]
 light_mode = 1
 
 [sub_resource type="StreamTexture" id=16]
@@ -154,17 +154,17 @@ shape = SubResource( 3 )
 [node name="Particles2D" type="Particles2D" parent="."]
 self_modulate = Color( 1, 1, 1, 0.9 )
 show_behind_parent = true
-material = SubResource( 17 )
+material = SubResource( 4 )
 position = Vector2( 0, -2.5 )
 amount = 16
-process_material = SubResource( 26 )
+process_material = SubResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/picked = SubResource( 27 )
+anims/picked = SubResource( 14 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
-material = SubResource( 28 )
+material = SubResource( 15 )
 texture = SubResource( 16 )
 range_item_cull_mask = 3
 shadow_gradient_length = 1.3

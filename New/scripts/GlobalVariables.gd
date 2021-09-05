@@ -12,7 +12,6 @@ var Deaths = 0
 var Mins = 0
 var Secs = 0.0
 var Cur_level = 0
-var keys = 3
 
 var Level = "Level0"
 
@@ -56,7 +55,6 @@ func zero():
 	Deaths = 0
 	Secs = 0
 	Mins = 0
-	keys = 3
 
 func reload_scene():
 	zero()

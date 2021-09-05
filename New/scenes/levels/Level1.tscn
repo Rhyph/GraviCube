@@ -20,13 +20,6 @@ func _ready():
 	G.Popups = 0
 	G.Level = \"Level1\"
 	G.ready()
-	
-	if G.Popups == 1:
-		$Popup.queue_free()
-	if G.Popups == 2:
-		$Popup2.queue_free()
-	if G.Popups == 3:
-		$Popup3.queue_free()
 "
 
 [sub_resource type="OccluderPolygon2D" id=2]
