@@ -3,6 +3,9 @@ extends Area2D
 
 var picked = false
 
+func _ready():
+	$Particles2D.process_material.gravity = Vector3(0, 0, 0)
+
 func _physics_process(delta):
 	if picked:
 		$Particles2D.process_material.gravity.x = ($"/root/World/Player".global_position.x - global_position.x) * 20

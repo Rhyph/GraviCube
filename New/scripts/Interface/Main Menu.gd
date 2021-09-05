@@ -12,6 +12,8 @@ func _ready():
 	if G.Cur_level > 3:
 		$ColorRect/VBoxContainer2/Level4.disabled = false
 	if G.Cur_level > 4:
+		$ColorRect/VBoxContainer2/Level5.disabled = false
+	if G.Cur_level > 5:
 		$VBoxContainer/Start.text = "  New game"
 		$VBoxContainer/Start.disabled = true
 
