@@ -416,7 +416,7 @@ anims/idle = SubResource( 15 )
 
 [node name="ColorRect2" type="ColorRect" parent="Menus"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.75 )
 self_modulate = Color( 1, 1, 1, 0.607843 )
 anchor_left = 0.5
 anchor_top = 0.5

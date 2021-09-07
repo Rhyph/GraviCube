@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=2]
+[gd_scene load_steps=125 format=2]
 
 [ext_resource path="res://sprites/Tiles/halfblock.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://sprites/Tiles/DarkTile.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Objects/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Blocks/1wayblue.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sounds/ES_Ancient Druidic Spells (of Power) - Bitwraith.mp3" type="AudioStream" id=13]
 [ext_resource path="res://scenes/Objects/Door.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Objects/Key.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Objects/Key2.tscn" type="PackedScene" id=17]
@@ -1008,3 +1009,11 @@ rotation = 4.71239
 [node name="1wayblue11" parent="." instance=ExtResource( 12 )]
 position = Vector2( 420, -268 )
 rotation = 4.71239
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -5.0
+autoplay = true
+__meta__ = {
+"_editor_description_": ""
+}

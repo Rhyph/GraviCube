@@ -2,11 +2,10 @@ extends Control
 
 
 func _ready():
-	if G.Cur_level != 1:
-		$VBoxContainer/Start.text = "  Continue"
-		$VBoxContainer/Levels.disabled = false
 	if G.Cur_level > 1:
 		$ColorRect/VBoxContainer2/Level2.disabled = false
+		$VBoxContainer/Start.text = "  Continue"
+		$VBoxContainer/Levels.disabled = false
 	if G.Cur_level > 2:
 		$ColorRect/VBoxContainer2/Level3.disabled = false
 	if G.Cur_level > 3:
