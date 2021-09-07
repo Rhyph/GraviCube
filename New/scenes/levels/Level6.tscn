@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=2]
+[gd_scene load_steps=222 format=2]
 
 [ext_resource path="res://sprites/Tiles/halfblock.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -22,7 +22,7 @@
 script/source = "extends Node2D
 
 func _ready():
-	G.Level = \"Level1\"
+	G.Level = \"Level6\"
 	G.ready()
 "
 
@@ -1355,6 +1355,22 @@ glow_intensity = 0.1
 glow_strength = 0.7
 glow_blend_mode = 0
 
+[sub_resource type="Animation" id=204]
+resource_name = "collapse"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.392157, 0.392157, 0.392157, 1 ) ]
+}
+
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 
@@ -1437,7 +1453,7 @@ position = Vector2( -132, 64 )
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="PortalLevel5" parent="Objects" instance=ExtResource( 2 )]
-position = Vector2( 124, -16 )
+position = Vector2( 4, -20 )
 next_scene = ExtResource( 6 )
 
 [node name="Door" parent="Objects" instance=ExtResource( 15 )]
@@ -1471,3 +1487,6 @@ environment = SubResource( 203 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/collapse = SubResource( 204 )

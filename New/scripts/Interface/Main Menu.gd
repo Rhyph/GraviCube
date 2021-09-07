@@ -2,6 +2,11 @@ extends Control
 
 
 func _ready():
+	if len(G.Records_t) < G.Level_count:
+		G.Records_t.append("9:59.99")
+		G.Scores_t.append(600)
+		G.Scores_d.append(99)
+	
 	if G.Cur_level > 1:
 		$ColorRect/VBoxContainer2/Level2.disabled = false
 		$VBoxContainer/Start.text = "  Continue"
@@ -13,6 +18,8 @@ func _ready():
 	if G.Cur_level > 4:
 		$ColorRect/VBoxContainer2/Level5.disabled = false
 	if G.Cur_level > 5:
+		$ColorRect/VBoxContainer2/Level6.disabled = false
+	if G.Cur_level > 6:
 		$VBoxContainer/Start.text = "  New game"
 		$VBoxContainer/Start.disabled = true
 
@@ -36,3 +43,5 @@ func _on_Level4_pressed():
 	G.scene("Level4")
 func _on_Level5_pressed():
 	G.scene("Level5")
+func _on_Level6_pressed():
+	G.scene("Level6")

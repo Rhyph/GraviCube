@@ -18,6 +18,10 @@ var particles
 var point
 
 func _physics_process(delta):
+	if j > 6 && speed != 0:
+		$AnimationPlayer.play("fade")
+		j = -1
+	
 	if point:
 		$bullet.look_at(point)
 	
@@ -40,7 +44,7 @@ func _physics_process(delta):
 		sig = true
 		part = false
 		speed = 0
-		$AnimationPlayer.play('shot')
+		$AnimationPlayer.play("shot")
 
 #Удаляет узел, если пуля вышла за камеру
 func _on_VisibilityNotifier2D_screen_exited():
@@ -72,6 +76,8 @@ func _on_Area2D2_body_entered(body):
 	motion.y *= -1
 	point = $Trail.points[0]
 	i += 1
+	if j != -1:
+		j += 1
 
 func _on_Area2D2_body_exited(body):
 	i = 0

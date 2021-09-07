@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/PlayerObjects/GraviGun.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerObjects/BulletTrail.gd" type="Script" id=2]
@@ -21,6 +21,36 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
 extents = Vector2( 2, 2 )
 
 [sub_resource type="Animation" id=5]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 0.3
 step = 0.025
 tracks/0/type = "value"
@@ -110,14 +140,14 @@ tracks/6/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 resource_local_to_scene = true
 radius = 17.0
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=9]
 resource_local_to_scene = true
 radius = 3.0
 
@@ -170,7 +200,8 @@ texture = ExtResource( 4 )
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/shot = SubResource( 5 )
+anims/fade = SubResource( 5 )
+anims/shot = SubResource( 6 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -181,7 +212,7 @@ collision_layer = 0
 collision_mask = 48
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -189,7 +220,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Area2D3" type="Area2D" parent="."]
 collision_layer = 0
@@ -197,7 +228,7 @@ collision_mask = 128
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
 visible = false
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Position2D" type="Position2D" parent="."]
 

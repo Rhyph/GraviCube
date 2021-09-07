@@ -12,14 +12,15 @@ var Deaths = 0
 var Mins = 0
 var Secs = 0.0
 var Cur_level = 0
+var Level_count = 6
 
 var Level = "Level0"
 
 var timer
 
-var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
-var Scores_t = [600,600,600,600,600]
-var Scores_d = [99,99,99,99,99]
+var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
+var Scores_t = [600,600,600,600,600,600]
+var Scores_d = [99,99,99,99,99,99]
 
 func _ready():
 	var data = FS.load_data()
@@ -39,6 +40,8 @@ func _ready():
 func ready():
 	if timer.is_stopped():
 		timer.start(.01)
+	else:
+		timer.stop()
 
 func _on_timer_timeout():
 	Secs += .01
