@@ -11,7 +11,7 @@ var Popups = 0
 var Deaths = 0
 var Mins = 0
 var Secs = 0.0
-var Cur_level = 0
+var Cur_level = 1
 var Level_count = 6
 
 var Level = "Level0"

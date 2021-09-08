@@ -40,7 +40,7 @@ func _physics_process(delta):
 	
 	$RayCast2D.force_raycast_update()
 	
-	if $RayCast2D.is_colliding():
+	if speed != 0 && $RayCast2D.is_colliding():
 		sig = true
 		part = false
 		speed = 0
@@ -86,3 +86,10 @@ func _on_Timer2_timeout():
 	if fast:
 		$"/root/World/Player".projectile = 1
 		fast = false
+
+func _on_GraviGun_body_entered(body):
+	if speed != 0 && not "wayblock" in body.name:
+		sig = true
+		part = false
+		speed = 0
+		$AnimationPlayer.play("shot")

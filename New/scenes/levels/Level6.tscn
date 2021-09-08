@@ -1,4 +1,4 @@
-[gd_scene load_steps=222 format=2]
+[gd_scene load_steps=223 format=2]
 
 [ext_resource path="res://sprites/Tiles/halfblock.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -12,11 +12,12 @@
 [ext_resource path="res://sprites/Tiles/DarkTile.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Objects/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://sprites/Tiles/snowtile2.png" type="Texture" id=12]
-[ext_resource path="res://scenes/Blocks/1wayblue.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Blocks/wayblue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Objects/Key.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Objects/Door.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Objects/Key2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/MechanicObjects/SphereRed.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/MechanicObjects/SphereInverted.tscn" type="PackedScene" id=18]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -1453,7 +1454,7 @@ position = Vector2( -132, 64 )
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="PortalLevel5" parent="Objects" instance=ExtResource( 2 )]
-position = Vector2( 4, -20 )
+position = Vector2( 4, -73 )
 next_scene = ExtResource( 6 )
 
 [node name="Door" parent="Objects" instance=ExtResource( 15 )]
@@ -1476,6 +1477,11 @@ position = Vector2( 132, -14 )
 
 [node name="SphereRed" parent="Spheres/Red" instance=ExtResource( 17 )]
 position = Vector2( 132, -22 )
+
+[node name="Blue" type="Node2D" parent="Spheres"]
+
+[node name="SphereInverted" parent="Spheres/Blue" instance=ExtResource( 18 )]
+position = Vector2( 4, -46 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.392157, 0.392157, 0.392157, 1 )
