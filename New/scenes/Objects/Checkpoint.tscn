@@ -4,10 +4,10 @@
 [ext_resource path="res://scripts/Objects/Checkpoint.gd" type="Script" id=2]
 [ext_resource path="res://sounds/sound.wav" type="AudioStream" id=3]
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 8 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=2]
 resource_name = "activated"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=3]
 resource_name = "nonactivated"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -61,7 +61,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=4]
 length = 0.9
 step = 0.05
 tracks/0/type = "value"
@@ -115,16 +115,16 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.35 )
 }
 
-[sub_resource type="CanvasItemMaterial" id=24]
+[sub_resource type="CanvasItemMaterial" id=5]
 light_mode = 1
 
-[sub_resource type="Curve" id=21]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=22]
-curve = SubResource( 21 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=23]
+[sub_resource type="ParticlesMaterial" id=8]
 trail_divisor = 2
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
@@ -143,7 +143,7 @@ damping = 15.0
 damping_random = 1.0
 angle = 360.0
 angle_random = 1.0
-scale_curve = SubResource( 22 )
+scale_curve = SubResource( 7 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
@@ -152,27 +152,28 @@ position = Vector2( 0, -8 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 17 )
+shape = SubResource( 1 )
 
 [node name="checkpoint" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="checkpoint"]
-anims/activated = SubResource( 18 )
-anims/nonactivated = SubResource( 19 )
-anims/pick = SubResource( 20 )
+anims/activated = SubResource( 2 )
+anims/nonactivated = SubResource( 3 )
+anims/pick = SubResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-material = SubResource( 24 )
+material = SubResource( 5 )
 position = Vector2( 2, -6 )
 emitting = false
 amount = 24
 one_shot = true
-process_material = SubResource( 23 )
+process_material = SubResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -10.0
+bus = "FX"
 
 [connection signal="body_entered" from="." to="." method="_on_Checkpoint_body_entered"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Interface/Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://sprites/Tiles/snowwayblock.png" type="Texture" id=4]
 [ext_resource path="res://sprites/Tiles/1wayblock.png" type="Texture" id=5]
+[ext_resource path="res://sounds/ES_Ancient Druidic Spells (of Power) - Bitwraith.mp3" type="AudioStream" id=6]
+[ext_resource path="res://scenes/SoundMute.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.552941, 1, 1 )
@@ -335,6 +337,14 @@ texture = ExtResource( 4 )
 margin_top = 138.0
 margin_right = 80.0
 margin_bottom = 138.0
+
+[node name="HBoxContainer" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]

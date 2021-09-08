@@ -67,3 +67,9 @@ func scene(name):
 	Can = false
 	zero()
 	get_tree().change_scene("res://scenes/levels/"+name+".tscn")
+
+func music_mute():
+	AudioServer.set_bus_mute(1, not AudioServer.is_bus_mute(1))
+
+func FX_mute():
+	AudioServer.set_bus_mute(2, not AudioServer.is_bus_mute(2))

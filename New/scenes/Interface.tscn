@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://m5x7.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/Buttons/ButtonRight2.png" type="Texture" id=5]
 [ext_resource path="res://sprites/Buttons/ButtonLeft2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Interface/Buttons.gd" type="Script" id=7]
+[ext_resource path="res://scenes/SoundMute.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/Interface/Menus.gd" type="Script" id=9]
 [ext_resource path="res://scripts/Interface/Control.gd" type="Script" id=10]
 [ext_resource path="res://sprites/PopUps/popup1.png" type="Texture" id=11]
@@ -310,6 +311,8 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="HBoxContainer" parent="Menus/ColorRect" instance=ExtResource( 8 )]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menus/ColorRect"]
 pause_mode = 2

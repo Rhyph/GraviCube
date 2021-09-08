@@ -6,6 +6,7 @@ func _ready():
 
 func _on_Pause_pressed():
 	get_tree().paused = true
+	$"/root/World/AudioStreamPlayer".volume_db = -10
 	$"/root/World/Interface/Control".visible = false
 	$Pause.visible = false
 	$ColorRect.visible = true
@@ -26,6 +27,7 @@ func _on_Menu_pressed():
 
 func close():
 	get_tree().paused = false
+	$"/root/World/AudioStreamPlayer".volume_db = -5
 	$"/root/World/Interface/Control".visible = true
 	$Pause.visible = true
 	$ColorRect.visible = false
@@ -33,6 +35,7 @@ func close():
 
 #End-level menu
 func open2():
+	$"/root/World/AudioStreamPlayer".volume_db = -10
 	G.Cur_level = max(G.Cur_level, int(G.Level.substr(5)) + 1)
 	
 	FS.save_data({
@@ -55,6 +58,7 @@ func _on_Next2_pressed():
 
 func close2():
 	get_tree().paused = false
+	$"/root/World/AudioStreamPlayer".volume_db = -5
 	$"/root/World/Interface/Control".visible = true
 	$Pause.visible = true
 	$ColorRect2.visible = false
