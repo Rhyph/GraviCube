@@ -10,18 +10,17 @@
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=3]
 min_value = 0.3
 _data = [ Vector2( 0, 0.3 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "fade"
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -50,7 +49,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.3
 step = 0.025
 tracks/0/type = "value"
@@ -140,18 +139,19 @@ tracks/6/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 resource_local_to_scene = true
 radius = 17.0
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=10]
 resource_local_to_scene = true
 radius = 3.0
 
 [node name="GraviGun" type="Area2D"]
+material = SubResource( 1 )
 rotation = 1.5708
 collision_layer = 0
 collision_mask = 2147483651
@@ -176,32 +176,34 @@ collision_mask = 131
 
 [node name="Trail" type="Line2D" parent="."]
 modulate = Color( 1, 2, 4, 1 )
-material = SubResource( 1 )
+use_parent_material = true
 rotation = -1.5708
 width = 3.0
-width_curve = SubResource( 2 )
+width_curve = SubResource( 3 )
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 3 )
+gradient = SubResource( 4 )
 end_cap_mode = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="bullet" type="Sprite" parent="."]
 modulate = Color( 1, 2, 4, 1 )
+use_parent_material = true
 texture = ExtResource( 3 )
 
 [node name="demo" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
+use_parent_material = true
 rotation = -1.5708
 texture = ExtResource( 4 )
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade = SubResource( 5 )
-anims/shot = SubResource( 6 )
+anims/fade = SubResource( 6 )
+anims/shot = SubResource( 7 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -212,7 +214,7 @@ collision_layer = 0
 collision_mask = 48
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -220,7 +222,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Area2D3" type="Area2D" parent="."]
 collision_layer = 0
@@ -228,7 +230,7 @@ collision_mask = 128
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
 visible = false
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Position2D" type="Position2D" parent="."]
 

@@ -20,7 +20,7 @@ var timer
 var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
 var Scores_t = [600,600,600,600,600,600]
 
-var UIsound = preload("res://scenes/UIsound.tscn")
+var UI_sound = preload("res://scenes/UIsound.tscn")
 
 func _ready():
 	var data = FS.load_data()
@@ -73,5 +73,5 @@ func FX_mute():
 	AudioServer.set_bus_mute(2, not AudioServer.is_bus_mute(2))
 
 func UIsound():
-	var sound = UIsound.instance()
+	var sound = UI_sound.instance()
 	get_parent().add_child(sound)

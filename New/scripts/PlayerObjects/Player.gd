@@ -14,7 +14,6 @@ var acceleration = 384
 var friction = .5
 var projectile = 1
 var keys = 2
-var k = 0
 var deaths
 
 var slow = false
@@ -24,7 +23,6 @@ var is_GraviJump = false
 var dropped = false
 var GraviShot = false
 var limit = true
-var move = false
 
 var gravigun
 
@@ -73,7 +71,7 @@ func _physics_process(delta):
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 	
 	if is_on_floor():
-		if move == false && idleSwitch:
+		if idleSwitch:
 			if x_input == 0:
 				$AnimationPlayer.play("idle")
 			else:
@@ -115,16 +113,6 @@ func _physics_process(delta):
 		else:
 			SlowMo = false
 	
-	if move:
-		motion = Vector2.ZERO
-		$Camera2D.position += global_position / 10000
-		k += 1
-		if k > 100:
-			k = 0
-			move = false
-			$Camera2D.position = Vector2.ZERO
-			$Camera2D.smoothing_enabled = false
-	
 	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".inArea:
 		if $RayCast2D/Line2D/Node2D.global_position.x - global_position.x > 0:
 			$player.set_flip_h(false)
@@ -136,20 +124,17 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP)
 
 func animation():
-	if move:
-		$AnimationPlayer.play("freeze")
-	else:
-		if motion.y < -72:
-			$AnimationPlayer.play("downGravi")
-		if motion.y == -72 || (is_GraviJump == false && motion.y > 7 && motion.y < 14):
-			$AnimationPlayer.play("downFast")
-		if dropped:
-			idleSwitch = false
-			$Timers/idleSwitch.start()
-			$AnimationPlayer.play("downFloor")
-			is_GraviJump = false
-		if not is_on_floor() && motion.y > -12 && motion.y < 12 && is_GraviJump:
-			$AnimationPlayer.play("downMiddle")
+	if motion.y < -72:
+		$AnimationPlayer.play("downGravi")
+	if motion.y == -72 || (is_GraviJump == false && motion.y > 7 && motion.y < 14):
+		$AnimationPlayer.play("downFast")
+	if dropped:
+		idleSwitch = false
+		$Timers/idleSwitch.start()
+		$AnimationPlayer.play("downFloor")
+		is_GraviJump = false
+	if not is_on_floor() && motion.y > -12 && motion.y < 12 && is_GraviJump:
+		$AnimationPlayer.play("downMiddle")
 
 #Вектор направления отталкивая от гравитационного выстрела
 func Vector(k):
@@ -174,10 +159,7 @@ func return_drop():
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.Can:
 		deaths += 1
-		$Camera2D.smoothing_enabled = true
-		move = true
 		G.ready()
-		$"/root/World/AnimationPlayer".play("collapse")
 		motion = Vector2.ZERO
 		position = G.PlayerPos
 
@@ -192,10 +174,8 @@ func _on_SpikeArea2D_body_entered(body):
 
 func die():
 	set_physics_process(true)
-	$Camera2D.smoothing_enabled = true
-	move = true
 	G.ready()
-	$"/root/World/AnimationPlayer".play("collapse")
+	$player.self_modulate = Color(1, 1, 1, 1)
 	motion = Vector2.ZERO
 	position = G.PlayerPos
 

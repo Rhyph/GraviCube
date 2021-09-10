@@ -80,6 +80,7 @@ autoplay = "idle"
 anims/idle = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 5 )
 bus = "FX"
 
