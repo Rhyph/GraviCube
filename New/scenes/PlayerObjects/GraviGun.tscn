@@ -154,7 +154,7 @@ radius = 3.0
 [node name="GraviGun" type="Area2D"]
 rotation = 1.5708
 collision_layer = 0
-collision_mask = 2147483650
+collision_mask = 2147483651
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -172,7 +172,7 @@ position = Vector2( -3, 1.23978e-05 )
 rotation = -1.5708
 enabled = true
 cast_to = Vector2( 0, 5 )
-collision_mask = 227
+collision_mask = 131
 
 [node name="Trail" type="Line2D" parent="."]
 modulate = Color( 1, 2, 4, 1 )
