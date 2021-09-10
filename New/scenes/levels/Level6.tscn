@@ -1455,7 +1455,7 @@ position = Vector2( -132, 64 )
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="PortalLevel5" parent="Objects" instance=ExtResource( 2 )]
-position = Vector2( 4, -73 )
+position = Vector2( 4, -69 )
 next_scene = ExtResource( 6 )
 
 [node name="Door" parent="Objects" instance=ExtResource( 15 )]
@@ -1496,6 +1496,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 19 )
 volume_db = -5.0
 autoplay = true

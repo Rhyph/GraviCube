@@ -191,14 +191,19 @@ custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 enabled_focus_mode = 0
 text = "  1 level"
+icon = ExtResource( 5 )
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="1wayblock3" type="Sprite" parent="ColorRect/VBoxContainer2/Level1"]
-position = Vector2( 74, 6 )
-texture = ExtResource( 5 )
+[node name="Time1" type="Label" parent="ColorRect/VBoxContainer2/Level1"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Level2" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 23.0
@@ -217,14 +222,19 @@ custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
 text = "  2 Level"
+icon = ExtResource( 5 )
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="1wayblock2" type="Sprite" parent="ColorRect/VBoxContainer2/Level2"]
-position = Vector2( 74, 6 )
-texture = ExtResource( 5 )
+[node name="Time2" type="Label" parent="ColorRect/VBoxContainer2/Level2"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Level3" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 46.0
@@ -243,14 +253,19 @@ custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
 text = "  3 Level"
+icon = ExtResource( 5 )
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="1wayblock" type="Sprite" parent="ColorRect/VBoxContainer2/Level3"]
-position = Vector2( 74, 6 )
-texture = ExtResource( 5 )
+[node name="Time3" type="Label" parent="ColorRect/VBoxContainer2/Level3"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Level4" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 69.0
@@ -269,15 +284,19 @@ custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
 text = "  4 Level"
+icon = ExtResource( 4 )
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="snowwayblock3" type="Sprite" parent="ColorRect/VBoxContainer2/Level4"]
-position = Vector2( 74, 6 )
-z_index = 1
-texture = ExtResource( 4 )
+[node name="Time4" type="Label" parent="ColorRect/VBoxContainer2/Level4"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Level5" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 92.0
@@ -296,15 +315,19 @@ custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
 text = "  5 Level"
+icon = ExtResource( 4 )
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="snowwayblock2" type="Sprite" parent="ColorRect/VBoxContainer2/Level5"]
-position = Vector2( 74, 6 )
-z_index = 1
-texture = ExtResource( 4 )
+[node name="Time5" type="Label" parent="ColorRect/VBoxContainer2/Level5"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Level6" type="Button" parent="ColorRect/VBoxContainer2"]
 margin_top = 115.0
@@ -323,15 +346,19 @@ custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
 text = "  6 Level"
+icon = ExtResource( 4 )
 align = 0
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="snowwayblock" type="Sprite" parent="ColorRect/VBoxContainer2/Level6"]
-position = Vector2( 74, 6 )
-z_index = 1
-texture = ExtResource( 4 )
+[node name="Time6" type="Label" parent="ColorRect/VBoxContainer2/Level6"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer2"]
 margin_top = 138.0
@@ -341,6 +368,7 @@ margin_bottom = 138.0
 [node name="HBoxContainer" parent="." instance=ExtResource( 7 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 6 )
 volume_db = -5.0
 autoplay = true

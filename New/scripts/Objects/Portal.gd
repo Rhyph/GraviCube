@@ -9,6 +9,7 @@ func _on_Area2D_body_entered(body):
 		$"/root/World/Interface/Menus/AnimationPlayer".play("idle")
 		$"/root/World/Interface/Control".visible = false
 		$"/root/World/Interface/Menus/Pause".visible = false
+		$AudioStreamPlayer.play()
 		$Timer.start()
 
 func _on_Timer_timeout():

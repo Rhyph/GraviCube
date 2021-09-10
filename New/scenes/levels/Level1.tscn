@@ -792,7 +792,7 @@ texture = ExtResource( 12 )
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="PortalLevel2" parent="Objects" instance=ExtResource( 2 )]
-position = Vector2( 244, -433 )
+position = Vector2( 244, -436 )
 next_scene = ExtResource( 6 )
 
 [node name="Door" parent="Objects" instance=ExtResource( 10 )]

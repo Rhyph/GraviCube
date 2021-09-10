@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_cartoon_eat_crunch_bite_sinlge_mid_pitched_69411.mp3-678afceedc9347ab847716024e30ce34.mp3str"
+
+[deps]
+
+source_file="res://sounds/FX/zapsplat_cartoon_eat_crunch_bite_sinlge_mid_pitched_69411.mp3"
+dest_files=[ "res://.import/zapsplat_cartoon_eat_crunch_bite_sinlge_mid_pitched_69411.mp3-678afceedc9347ab847716024e30ce34.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

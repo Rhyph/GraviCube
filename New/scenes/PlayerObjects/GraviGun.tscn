@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/PlayerObjects/BulletTrail.gd" type="Script" id=2]
 [ext_resource path="res://sprites/PlayerObjects/bullet.png" type="Texture" id=3]
 [ext_resource path="res://sprites/PlayerObjects/demo.png" type="Texture" id=4]
-[ext_resource path="res://sounds/Explosion170.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/FX/Explosion170.wav" type="AudioStream" id=5]
 [ext_resource path="res://sprites/Particles/Light64.png" type="Texture" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]

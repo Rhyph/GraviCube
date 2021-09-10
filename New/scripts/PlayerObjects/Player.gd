@@ -15,6 +15,7 @@ var friction = .5
 var projectile = 1
 var keys = 2
 var k = 0
+var deaths
 
 var slow = false
 var SlowMo = false
@@ -35,6 +36,7 @@ func _ready():
 	Input.action_release("ui_right")
 	Input.action_release("ui_up")
 	G.Can = true
+	deaths = 0
 	position = G.PlayerPos
 	Engine.time_scale = 1
 
@@ -171,7 +173,7 @@ func return_drop():
 #Рестартает сцену, если игрок вышел за лимит камеры
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.Can:
-		G.Deaths += 1
+		deaths += 1
 		$Camera2D.smoothing_enabled = true
 		move = true
 		G.ready()

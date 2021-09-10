@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portal.png-48c966ab664a7bd192c4ce16df062bbe.stex"
+path="res://.import/timer.png-68c31acec3c13372b04bfccdcee28b4b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Objects/portal.png"
-dest_files=[ "res://.import/portal.png-48c966ab664a7bd192c4ce16df062bbe.stex" ]
+source_file="res://sprites/Icons/timer.png"
+dest_files=[ "res://.import/timer.png-68c31acec3c13372b04bfccdcee28b4b.stex" ]
 
 [params]
 
