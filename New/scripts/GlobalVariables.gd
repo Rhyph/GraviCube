@@ -10,7 +10,7 @@ var Saved = false
 var Popups = 0
 var Mins = 0
 var Secs = 0.0
-var Cur_level = 1
+var Cur_level = 7
 var Level_count = 6
 
 var Level = "Level0"
@@ -39,8 +39,6 @@ func _ready():
 func ready():
 	if timer.is_stopped():
 		timer.start(.01)
-	else:
-		timer.stop()
 
 func _on_timer_timeout():
 	Secs += .01

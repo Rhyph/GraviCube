@@ -69,9 +69,6 @@ func _on_Area2D_body_entered(body):
 	if "Player" in body.name:
 		body.Vector(k)
 
-func _on_Timer_timeout():
-	set_collision_mask(3)
-
 func _on_Area2D2_body_entered(body):
 	motion.y *= -1
 	point = $Trail.points[0]

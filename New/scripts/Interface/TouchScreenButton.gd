@@ -89,12 +89,14 @@ func _input(event):
 					shot = true
 
 func _on_TouchScreenButton_pressed():
+	$"/root/World/Interface/Control/circlebig".modulate = Color(1, 1, 1, 1)
 	inArea = true
 	once = true
 	$"/root/World/Player/RayCast2D".visible()
 	$"/root/World/Player/RayCast2D".enabled = true
 
 func _on_TouchScreenButton_released():
+	$"/root/World/Interface/Control/circlebig".modulate = Color(1, 1, 1, .5)
 	inArea = false
 	once = false
 	$"/root/World/Player/RayCast2D".auto()
@@ -108,6 +110,7 @@ func _on_TouchScreenButton_released():
 			shot = true
 	$Timer.start()
 	Engine.time_scale = 1
+	down = true
 
 func Touched():
 	$Timer.stop()

@@ -173,7 +173,7 @@ process_material = SubResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+volume_db = -5.0
 bus = "FX"
 
 [connection signal="body_entered" from="." to="." method="_on_Checkpoint_body_entered"]

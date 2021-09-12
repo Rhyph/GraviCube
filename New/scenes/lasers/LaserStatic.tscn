@@ -131,6 +131,7 @@ rotation = -1.5708
 texture = ExtResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( 2, -7.21216e-06 )
 texture = ExtResource( 4 )
 color = Color( 1, 0.282353, 0, 1 )

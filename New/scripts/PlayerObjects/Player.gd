@@ -159,23 +159,19 @@ func return_drop():
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.Can:
 		deaths += 1
-		G.ready()
-		motion = Vector2.ZERO
-		position = G.PlayerPos
+		die()
 
 #Убивает игрока, если в нём есть колайдер
 func _on_Area2D_body_entered(body):
 	if "TileMapChanging" in body.name || "Door" in body.name && is_on_floor():
 		die()
 func _on_SpikeArea2D_body_entered(body):
-	$AnimationPlayer.play("die")
-	set_physics_process(false)
-	$Timers/Die.start()
+	die()
 
 func die():
+	set_physics_process(false)
+	yield(get_tree().create_timer(.2), "timeout")
 	set_physics_process(true)
-	G.ready()
-	$player.self_modulate = Color(1, 1, 1, 1)
 	motion = Vector2.ZERO
 	position = G.PlayerPos
 
@@ -189,8 +185,6 @@ func _on_SlowMo_timeout():
 	if slow == false:
 		SlowMo = true
 		slow = true
-func _on_Die_timeout():
-	die()
 func _on_Ghost_timeout():
 	if $AnimationPlayer.current_animation == "downGravi" || $AnimationPlayer.current_animation == "downMiddle":
 		var trail = preload("res://scenes/PlayerObjects/Trail.tscn").instance()

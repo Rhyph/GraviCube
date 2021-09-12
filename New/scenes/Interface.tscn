@@ -170,6 +170,7 @@ __meta__ = {
 
 [node name="circlebig" type="Sprite" parent="Control"]
 pause_mode = 1
+modulate = Color( 1, 1, 1, 0.5 )
 position = Vector2( 264, 124 )
 texture = ExtResource( 15 )
 
@@ -242,10 +243,9 @@ __meta__ = {
 }
 
 [node name="fps" type="Label" parent="Control/Labels"]
-visible = false
-margin_left = 306.0
+margin_left = 296.0
 margin_top = -2.0
-margin_right = 324.0
+margin_right = 320.0
 margin_bottom = 12.0
 theme = SubResource( 5 )
 __meta__ = {

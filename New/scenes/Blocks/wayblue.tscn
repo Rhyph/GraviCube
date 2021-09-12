@@ -6,12 +6,14 @@
 extents = Vector2( 4, 4 )
 
 [node name="wayblue" type="StaticBody2D"]
+light_mask = 0
 position = Vector2( 4, -4 )
 collision_layer = 0
 collision_mask = 16
 
 [node name="1wayblue" type="Sprite" parent="."]
 modulate = Color( 1, 2, 4, 1 )
+light_mask = 2
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
