@@ -5,9 +5,15 @@ func _ready():
 	$Line2D.points[1] = Vector2.ZERO
 
 func _physics_process(delta):
-	if $"/root/World/Interface/Control/circlebig/TouchScreenButton".down == false:
-		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".hard_func >= 14:
+	if enabled:
+		if $"/root/World/Interface/Control/circlebig/TouchScreenButton".hard_func >= 10:
+			$Line2D.visible = true
 			rotation_degrees = $"/root/World/Interface/Control/circlebig/Line2D".rotation_degrees - 90
+		else:
+			$Line2D.visible = false
+			rotation_degrees = 0
+	else:
+		$Line2D.visible = false
 	
 	var cast_point = cast_to
 	

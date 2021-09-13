@@ -31,7 +31,7 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/width = 0.2
+shader_param/width = 0.3
 shader_param/outline_color = null
 
 [sub_resource type="RectangleShape2D" id=3]

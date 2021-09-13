@@ -19,12 +19,12 @@ var pos_zero
 
 func _physics_process(delta):
 	if shot && $"/root/World/Player".projectile == 1:
-		$"/root/World/Player/".GraviShot = true
-		$"/root/World/Player/RayCast2D".enabled = false
-		$"/root/World/Player/RayCast2D/Line2D".visible = false
-		shot = false
 		if down:
 			$"/root/World/Player/RayCast2D".under()
+		$"/root/World/Player/RayCast2D".auto()
+		$"/root/World/Player/".GraviShot = true
+		$"/root/World/Player/RayCast2D".enabled = false
+		shot = false
 	
 	if $"/root/World/Player".projectile == 1 && slow && inArea:
 		Engine.time_scale = 0.1
@@ -60,11 +60,6 @@ func _input(event):
 		hard_func = sqrt(pos_zero.x * pos_zero.x + pos_zero.y * pos_zero.y)
 		if event is InputEventScreenDrag || (event is InputEventScreenTouch && event.is_pressed()):
 			down = false
-			if hard_func < 14:
-				$"/root/World/Player/RayCast2D".rotation_degrees = 0
-				$"/root/World/Player/RayCast2D/Line2D".visible = false
-			elif $"/root/World/Player/RayCast2D".rotation_degrees != 0:
-				$"/root/World/Player/RayCast2D/Line2D".visible = true
 			
 			var event_dist_from_center = (event.position - get_parent().global_position).length()
 			
@@ -78,13 +73,13 @@ func _input(event):
 			down = true
 		if event is InputEventScreenTouch && not event.is_pressed() && event.get_index() == ongoing_drag:
 			ongoing_drag = -1
-			if hard_func < 14:
+			if hard_func < 10:
 				down = true
 			else:
 				if $"/root/World/Player".projectile == 1:
+					$"/root/World/Player/RayCast2D".auto()
 					$"/root/World/Player/".GraviShot = true
 					$"/root/World/Player/RayCast2D".enabled = false
-					$"/root/World/Player/RayCast2D/Line2D".visible = false
 				else:
 					shot = true
 
@@ -99,18 +94,16 @@ func _on_TouchScreenButton_released():
 	$"/root/World/Interface/Control/circlebig".modulate = Color(1, 1, 1, .5)
 	inArea = false
 	once = false
-	$"/root/World/Player/RayCast2D".auto()
 	if down:
 		if $"/root/World/Player".projectile == 1:
 			$"/root/World/Player/RayCast2D".under()
+			$"/root/World/Player/RayCast2D".auto()
 			$"/root/World/Player/".GraviShot = true
 			$"/root/World/Player/RayCast2D".enabled = false
-			$"/root/World/Player/RayCast2D/Line2D".visible = false
 		else:
 			shot = true
 	$Timer.start()
 	Engine.time_scale = 1
-	down = true
 
 func Touched():
 	$Timer.stop()
