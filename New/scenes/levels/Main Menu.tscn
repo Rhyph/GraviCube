@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://m5x7.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Interface/Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://sprites/Tiles/snowwayblock.png" type="Texture" id=4]
@@ -18,13 +17,12 @@ bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
 bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
 
 [sub_resource type="DynamicFont" id=4]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0.552941, 1, 1 )
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0.552941, 1, 1 )
@@ -33,9 +31,6 @@ bg_color = Color( 0, 0.552941, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0, 0.552941, 1, 1 )
@@ -56,9 +51,9 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = -40.5
+margin_top = -40.0
 margin_right = 80.0
-margin_bottom = 40.5
+margin_bottom = 41.0
 custom_constants/separation = 10
 alignment = 1
 __meta__ = {
@@ -75,7 +70,7 @@ custom_styles/pressed = SubResource( 1 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -95,8 +90,8 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 5 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -117,8 +112,8 @@ custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -148,8 +143,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 12 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -184,8 +179,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 12 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -214,8 +209,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -245,8 +240,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -276,8 +271,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -307,8 +302,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -338,8 +333,8 @@ custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 13 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )

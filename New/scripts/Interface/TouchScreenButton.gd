@@ -85,6 +85,7 @@ func _input(event):
 
 func _on_TouchScreenButton_pressed():
 	$"/root/World/Interface/Control/circlebig".modulate = Color(1, 1, 1, 1)
+	$"/root/World/Interface/Control/circlebig/DarkArea".visible = true
 	inArea = true
 	once = true
 	$"/root/World/Player/RayCast2D".visible()
@@ -92,6 +93,7 @@ func _on_TouchScreenButton_pressed():
 
 func _on_TouchScreenButton_released():
 	$"/root/World/Interface/Control/circlebig".modulate = Color(1, 1, 1, .5)
+	$"/root/World/Interface/Control/circlebig/DarkArea".visible = false
 	inArea = false
 	once = false
 	if down:
