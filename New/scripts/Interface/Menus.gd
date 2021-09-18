@@ -8,8 +8,9 @@ func _on_Pause_pressed():
 	G.UIsound()
 	get_tree().paused = true
 	$"/root/World/AudioStreamPlayer".volume_db = -10
-	$"/root/World/Interface/Control".visible = false
-	$Pause.visible = false
+	$"/root/World/Interface/Control/circlebig".visible = false
+	$"/root/World/Interface/Control/Node2D".visible = false
+	$Pause.disabled = true
 	$ColorRect.visible = true
 
 #In-game menu
@@ -25,6 +26,22 @@ func _on_Restart_pressed():
 	close()
 	G.Can = false
 	G.reload_scene()
+func _on_Tips_pressed():
+	G.UIsound()
+	$ColorRect/VBoxContainer/Tips.self_modulate = Color(1, 1, 1, 0)
+	$ColorRect/VBoxContainer/Tips/HBoxContainer.visible = true
+func _on_Button_pressed():
+	G.UIsound()
+	$"/root/World/Interface/Menus".visible = false
+	$"/root/World/Interface/Popup".tip1()
+func _on_Button2_pressed():
+	G.UIsound()
+	$"/root/World/Interface/Menus".visible = false
+	$"/root/World/Interface/Popup".tip2()
+func _on_Button3_pressed():
+	G.UIsound()
+	$"/root/World/Interface/Menus".visible = false
+	$"/root/World/Interface/Popup".tip3()
 func _on_Menu_pressed():
 	G.UIsound()
 	close()
@@ -33,8 +50,9 @@ func _on_Menu_pressed():
 func close():
 	get_tree().paused = false
 	$"/root/World/AudioStreamPlayer".volume_db = -5
-	$"/root/World/Interface/Control".visible = true
-	$Pause.visible = true
+	$"/root/World/Interface/Control/circlebig".visible = true
+	$"/root/World/Interface/Control/Node2D".visible = true
+	$Pause.disabled = false
 	$ColorRect.visible = false
 
 
@@ -66,8 +84,9 @@ func _on_Next2_pressed():
 func close2():
 	get_tree().paused = false
 	$"/root/World/AudioStreamPlayer".volume_db = -5
-	$"/root/World/Interface/Control".visible = true
-	$Pause.visible = true
+	$"/root/World/Interface/Control/circlebig".visible = true
+	$"/root/World/Interface/Control/Node2D".visible = true
+	$Pause.disabled = false
 	$ColorRect2.visible = false
 	$ColorRect2/Best_time.visible = true
 
