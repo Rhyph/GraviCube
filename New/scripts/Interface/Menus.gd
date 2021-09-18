@@ -38,10 +38,6 @@ func _on_Button2_pressed():
 	G.UIsound()
 	$"/root/World/Interface/Menus".visible = false
 	$"/root/World/Interface/Popup".tip2()
-func _on_Button3_pressed():
-	G.UIsound()
-	$"/root/World/Interface/Menus".visible = false
-	$"/root/World/Interface/Popup".tip3()
 func _on_Menu_pressed():
 	G.UIsound()
 	close()
