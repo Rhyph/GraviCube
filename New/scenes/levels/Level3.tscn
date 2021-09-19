@@ -22,7 +22,7 @@
 script/source = "extends Node2D
 
 func _ready():
-	G.Level = \"Level3\"
+	G.Level = \"Level 3\"
 	G.ready()
 "
 

@@ -20,7 +20,7 @@ script/source = "extends Node2D
 
 func _ready():
 	G.Popups = 0
-	G.Level = \"Level1\"
+	G.Level = \"Level 1\"
 	G.ready()
 "
 

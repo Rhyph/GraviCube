@@ -13,7 +13,7 @@ var Secs = 0.0
 var Cur_level = 7
 var Level_count = 6
 
-var Level = "Level0"
+var Level = "Level 0"
 
 var timer
 

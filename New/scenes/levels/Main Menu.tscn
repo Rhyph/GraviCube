@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
+[ext_resource path="res://sprites/Icons/next part.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Interface/Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://m5x7.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://sprites/Tiles/snowwayblock.png" type="Texture" id=4]
 [ext_resource path="res://sprites/Tiles/1wayblock.png" type="Texture" id=5]
 [ext_resource path="res://sounds/ES_Ancient Druidic Spells (of Power) - Bitwraith.mp3" type="AudioStream" id=6]
 [ext_resource path="res://scenes/SoundMute.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/Icons/prev part.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.552941, 1, 1 )
@@ -31,6 +33,88 @@ bg_color = Color( 0, 0.552941, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.141176, 0.219608, 0.321569, 1 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "World1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/VBoxContainer2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 120, 60.5 ), Vector2( 320, 60.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/VBoxContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 120, 180 ), Vector2( 120, 60.5 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "World1"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "World2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/VBoxContainer2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 320, 60.5 ), Vector2( 120, 60.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/VBoxContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 120, 60.5 ), Vector2( 120, 180 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "World2"
+} ]
+}
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0.552941, 1, 1 )
@@ -124,6 +208,10 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/World1 = SubResource( 13 )
+anims/World2 = SubResource( 12 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.607843 )
@@ -156,28 +244,90 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
+[node name="NextWorld" type="Button" parent="ColorRect"]
+margin_left = 200.0
+margin_top = 33.0
+margin_right = 224.0
+margin_bottom = 57.0
+focus_mode = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+icon = ExtResource( 1 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="PrevWorld" type="Button" parent="ColorRect"]
+visible = false
+margin_left = 96.0
+margin_top = 33.0
+margin_right = 120.0
+margin_bottom = 57.0
+focus_mode = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+icon = ExtResource( 8 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="World" type="Label" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.5
+margin_top = -52.5
+margin_right = 19.5
+margin_bottom = -39.5
+custom_fonts/font = SubResource( 4 )
+text = "World 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -40.0
-margin_top = -64.0
+margin_top = -29.5
 margin_right = 40.0
-margin_bottom = 74.0
+margin_bottom = 29.5
 custom_constants/separation = 10
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level1" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level1" type="Button" parent="ColorRect/VBoxContainer"]
 margin_right = 80.0
 margin_bottom = 13.0
 focus_mode = 0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 11 )
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -192,15 +342,16 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Time1" type="Label" parent="ColorRect/VBoxContainer2/Level1"]
+[node name="Time1" type="Label" parent="ColorRect/VBoxContainer/Level1"]
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level2" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level2" type="Button" parent="ColorRect/VBoxContainer"]
 margin_top = 23.0
 margin_right = 80.0
 margin_bottom = 36.0
@@ -223,15 +374,16 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Time2" type="Label" parent="ColorRect/VBoxContainer2/Level2"]
+[node name="Time2" type="Label" parent="ColorRect/VBoxContainer/Level2"]
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level3" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="Level3" type="Button" parent="ColorRect/VBoxContainer"]
 margin_top = 46.0
 margin_right = 80.0
 margin_bottom = 59.0
@@ -254,18 +406,34 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Time3" type="Label" parent="ColorRect/VBoxContainer2/Level3"]
+[node name="Time3" type="Label" parent="ColorRect/VBoxContainer/Level3"]
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 160.0
+margin_top = -29.5
+margin_right = 240.0
+margin_bottom = 29.5
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
 [node name="Level4" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 69.0
 margin_right = 80.0
-margin_bottom = 82.0
+margin_bottom = 13.0
 focus_mode = 0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
@@ -289,14 +457,15 @@ __meta__ = {
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Level5" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 92.0
+margin_top = 23.0
 margin_right = 80.0
-margin_bottom = 105.0
+margin_bottom = 36.0
 focus_mode = 0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
@@ -320,14 +489,15 @@ __meta__ = {
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Level6" type="Button" parent="ColorRect/VBoxContainer2"]
-margin_top = 115.0
+margin_top = 46.0
 margin_right = 80.0
-margin_bottom = 128.0
+margin_bottom = 59.0
 focus_mode = 0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
@@ -351,14 +521,10 @@ __meta__ = {
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer2"]
-margin_top = 138.0
-margin_right = 80.0
-margin_bottom = 138.0
 
 [node name="HBoxContainer" parent="." instance=ExtResource( 7 )]
 
@@ -373,9 +539,11 @@ bus = "Music"
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="ColorRect/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level1" to="." method="_on_Level0_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level2" to="." method="_on_Level1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Level3" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="ColorRect/NextWorld" to="." method="_on_NextWorld_pressed"]
+[connection signal="pressed" from="ColorRect/PrevWorld" to="." method="_on_PrevWorld_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Level1" to="." method="_on_Level0_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Level2" to="." method="_on_Level1_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Level3" to="." method="_on_Level2_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level4" to="." method="_on_Level4_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level5" to="." method="_on_Level5_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level6" to="." method="_on_Level6_pressed"]
