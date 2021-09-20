@@ -26,18 +26,6 @@ func _on_Restart_pressed():
 	close()
 	G.Can = false
 	G.reload_scene()
-func _on_Tips_pressed():
-	G.UIsound()
-	$ColorRect/VBoxContainer/Tips.self_modulate = Color(1, 1, 1, 0)
-	$ColorRect/VBoxContainer/Tips/HBoxContainer.visible = true
-func _on_Button_pressed():
-	G.UIsound()
-	$"/root/World/Interface/Menus".visible = false
-	$"/root/World/Interface/Popup".tip1()
-func _on_Button2_pressed():
-	G.UIsound()
-	$"/root/World/Interface/Menus".visible = false
-	$"/root/World/Interface/Popup".tip2()
 func _on_Menu_pressed():
 	G.UIsound()
 	close()
@@ -102,6 +90,5 @@ func time():
 func death():
 	$ColorRect2/Deaths.text = "Deaths: " + str($"/root/World/Player".deaths)
 	$ColorRect2/Deaths.visible = true
-
 func HBox():
 	$ColorRect2/HBoxContainer.visible = true

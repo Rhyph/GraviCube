@@ -37,7 +37,10 @@ func _ready():
 
 func _on_Start_pressed():
 	G.UIsound()
-	G.scene("Level" + str(G.Cur_level))
+	if G.Cur_level == 0:
+		G.scene("Tutorial 1")
+	else:
+		G.scene("Level" + str(G.Cur_level))
 func _on_Levels_pressed():
 	G.UIsound()
 	$ColorRect.visible = true
@@ -49,10 +52,29 @@ func _on_Back_pressed():
 	G.UIsound()
 	$ColorRect.visible = false
 func _on_PrevWorld_pressed():
-	$AnimationPlayer.play("World1")
+	G.UIsound()
+	world()
+	if $ColorRect/World.text == "World 1":
+		world0()
+	else:
+		world1()
 func _on_NextWorld_pressed():
-	$AnimationPlayer.play("World2")
+	G.UIsound()
+	world()
+	if $ColorRect/World.text == "Tutorials":
+		world1()
+	else:
+		world2()
 
+func _on_Level01_pressed():
+	G.UIsound()
+	G.scene("Level01")
+func _on_Level02_pressed():
+	G.UIsound()
+	G.scene("Level02")
+func _on_Level03_pressed():
+	G.UIsound()
+	G.scene("Level03")
 func _on_Level0_pressed():
 	G.UIsound()
 	G.scene("Level1")
@@ -72,24 +94,20 @@ func _on_Level6_pressed():
 	G.UIsound()
 	G.scene("Level6")
 
-func World1():
-	$ColorRect/World.text = "World 1"
-	$ColorRect/NextWorld.visible = true
+func world():
+	$ColorRect/VBoxContainer3.visible = false
+	$ColorRect/VBoxContainer.visible = false
+	$ColorRect/VBoxContainer2.visible = false
+func world0():
+	$ColorRect/World.text = "Tutorials"
+	$ColorRect/VBoxContainer3.visible = true
 	$ColorRect/PrevWorld.visible = false
-	$ColorRect/VBoxContainer/Level1.disabled = false
-	$ColorRect/VBoxContainer/Level2.disabled = false
-	$ColorRect/VBoxContainer/Level3.disabled = false
-	$ColorRect/VBoxContainer2/Level4.disabled = true
-	$ColorRect/VBoxContainer2/Level5.disabled = true
-	$ColorRect/VBoxContainer2/Level6.disabled = true
-
-func World2():
-	$ColorRect/World.text = "World 2"
-	$ColorRect/NextWorld.visible = false
+func world1():
+	$ColorRect/World.text = "World 1"
+	$ColorRect/VBoxContainer.visible = true
+	$ColorRect/NextWorld.visible = true
 	$ColorRect/PrevWorld.visible = true
-	$ColorRect/VBoxContainer/Level1.disabled = true
-	$ColorRect/VBoxContainer/Level2.disabled = true
-	$ColorRect/VBoxContainer/Level3.disabled = true
-	$ColorRect/VBoxContainer2/Level4.disabled = false
-	$ColorRect/VBoxContainer2/Level5.disabled = false
-	$ColorRect/VBoxContainer2/Level6.disabled = false
+func world2():
+	$ColorRect/World.text = "World 2"
+	$ColorRect/VBoxContainer2.visible = true
+	$ColorRect/NextWorld.visible = false
