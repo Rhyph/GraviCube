@@ -34,7 +34,7 @@ func _ready():
 		limit_right = 352
 		limit_top = -504
 	if G.Level == "Level 6":
-		limit_bottom = 38
-		limit_left = -690
-		limit_right = 3520
-		limit_top = -5040
+		limit_bottom = 48
+		limit_left = -384
+		limit_right = 140
+		limit_top = -640

@@ -14,8 +14,10 @@ var acceleration = 384
 var friction = .5
 var projectile = 1
 var keys = 2
-var deaths
+var deaths = 0
 
+var SlowArea = false
+var die = false
 var slow = false
 var SlowMo = false
 var idleSwitch = true
@@ -107,7 +109,7 @@ func _physics_process(delta):
 	if slow:
 		$Timers/SlowMo.start()
 		slow = false
-	if SlowMo:
+	if SlowMo && SlowArea == false:
 		if Engine.time_scale <= .975:
 			Engine.time_scale += .025
 		else:
@@ -118,6 +120,9 @@ func _physics_process(delta):
 			$player.set_flip_h(false)
 		elif $RayCast2D/Line2D/Node2D.global_position.x - global_position.x != 0:
 			$player.set_flip_h(true)
+	
+	if die:
+		motion = Vector2.ZERO
 	
 	animation()
 	
@@ -167,12 +172,17 @@ func _on_Area2D_body_entered(body):
 		die()
 func _on_SpikeArea2D_body_entered(body):
 	die()
+func _on_SlowArea2D_body_entered(body):
+	SlowArea = true
+	Engine.time_scale = .2
+func _on_SlowArea2D_body_exited(body):
+	SlowArea = false
+	Engine.time_scale = 1
 
 func die():
-	set_physics_process(false)
+	die = true
 	yield(get_tree().create_timer(.2), "timeout")
-	set_physics_process(true)
-	motion = Vector2.ZERO
+	die = false
 	position = G.PlayerPos
 
 #Timers

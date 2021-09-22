@@ -26,7 +26,7 @@ func _physics_process(delta):
 		$"/root/World/Player/RayCast2D".enabled = false
 		shot = false
 	
-	if $"/root/World/Player".projectile == 1 && slow && inArea:
+	if $"/root/World/Player".projectile == 1 && slow && inArea && $"/root/World/Player".SlowArea == false:
 		Engine.time_scale = 0.1
 		slow = false
 	
@@ -105,7 +105,8 @@ func _on_TouchScreenButton_released():
 		else:
 			shot = true
 	$Timer.start()
-	Engine.time_scale = 1
+	if $"/root/World/Player".SlowArea == false:
+		Engine.time_scale = 1
 
 func Touched():
 	$Timer.stop()

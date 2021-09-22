@@ -405,7 +405,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 2.5, 3.5 )
+extents = Vector2( 3, 3.6 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 1.1, 1.6 )
@@ -527,6 +527,14 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeArea2D"]
 shape = SubResource( 15 )
 
+[node name="SlowArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowArea2D"]
+position = Vector2( 0, 0.4 )
+shape = SubResource( 1 )
+
 [node name="Rays" type="Node2D" parent="."]
 
 [node name="IceCast" type="RayCast2D" parent="Rays"]
@@ -599,3 +607,5 @@ position = Vector2( 0, 4 )
 [connection signal="timeout" from="Timers/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_SpikeArea2D_body_entered"]
+[connection signal="body_entered" from="SlowArea2D" to="." method="_on_SlowArea2D_body_entered"]
+[connection signal="body_exited" from="SlowArea2D" to="." method="_on_SlowArea2D_body_exited"]
