@@ -17,7 +17,7 @@ var keys = 2
 var deaths = 0
 
 var SlowArea = false
-var die = false
+var died = false
 var slow = false
 var SlowMo = false
 var idleSwitch = true
@@ -26,6 +26,7 @@ var dropped = false
 var GraviShot = false
 var limit = true
 
+var xLimit
 var gravigun
 
 var LinePos = Vector2()
@@ -41,6 +42,7 @@ func _ready():
 	Engine.time_scale = 1
 
 func _physics_process(delta):
+	xLimit = max(64, abs(motion.x))
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	if x_input != 0:
@@ -61,16 +63,17 @@ func _physics_process(delta):
 	else:
 		friction = .4
 		acceleration = 384
-	if $Rays/LavaCast.is_colliding() || $Rays/LavaCast2.is_colliding():
-		G.Laved = true
-	else:
-		G.Laved = false
 	if $Rays/ConvCast.is_colliding() || $Rays/ConvCast2.is_colliding():
 		motion.x = clamp(motion.x, -MAX_SPEED + 32, MAX_SPEED + 32)
 		if x_input == 0:
 			motion.x = 32
 	elif x_input != 0:
-		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+		if is_on_floor():
+			motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+		else:
+			if xLimit > 72:
+				xLimit -= 8
+			motion.x = clamp(motion.x, -xLimit, xLimit)
 	
 	if is_on_floor():
 		if idleSwitch:
@@ -121,7 +124,7 @@ func _physics_process(delta):
 		elif $RayCast2D/Line2D/Node2D.global_position.x - global_position.x != 0:
 			$player.set_flip_h(true)
 	
-	if die:
+	if died:
 		motion = Vector2.ZERO
 	
 	animation()
@@ -163,13 +166,8 @@ func return_drop():
 #Рестартает сцену, если игрок вышел за лимит камеры
 func _on_VisibilityNotifier2D_screen_exited():
 	if G.Can:
-		deaths += 1
 		die()
 
-#Убивает игрока, если в нём есть колайдер
-func _on_Area2D_body_entered(body):
-	if "TileMapChanging" in body.name || "Door" in body.name && is_on_floor():
-		die()
 func _on_SpikeArea2D_body_entered(body):
 	die()
 func _on_SlowArea2D_body_entered(body):
@@ -180,9 +178,10 @@ func _on_SlowArea2D_body_exited(body):
 	Engine.time_scale = 1
 
 func die():
-	die = true
+	deaths += 1
+	died = true
 	yield(get_tree().create_timer(.2), "timeout")
-	die = false
+	died = false
 	position = G.PlayerPos
 
 #Timers

@@ -75,6 +75,9 @@ func close2():
 	$ColorRect2/Best_time.visible = true
 
 func time():
+	if len(G.Records_t) < G.Level_count:
+		G.Records_t.append("9:59.99")
+		G.Scores_t.append(600)
 	$ColorRect2/Time.text = "Time: " + str(G.Mins) + ":" + str(G.Secs)
 	$ColorRect2/Time.visible = true
 	var score = 60 * G.Mins + G.Secs

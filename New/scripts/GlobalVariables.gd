@@ -4,23 +4,22 @@ extends Node2D
 var PlayerPos = Vector2(4, -4)
 
 var Can = true
-var Laved = false
 var Saved = false
 
 var Popups = 0
 var Mins = 0
 var Secs = 0.0
 var Cur_level = 7
-var Level_count = 6
+var Level_count = 7
 
-var Level = "Level 0"
+var Level = "Tutorial 1"
 
 var timer
 
-var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
-var Scores_t = [600,600,600,600,600,600]
+var Records_t = ["9:59.99","9:59.99","9:59.99","9:59.99","9:59.99","9:59.99","9:59.99"]
+var Scores_t = [600,600,600,600,600,600,600]
 
-var UI_sound = preload("res://scenes/UIsound.tscn")
+var UI_sound = preload("res://scenes/UI/UIsound.tscn")
 
 func _ready():
 	var data = FS.load_data()
@@ -66,10 +65,8 @@ func scene(name):
 
 func music_mute():
 	AudioServer.set_bus_mute(1, not AudioServer.is_bus_mute(1))
-
 func FX_mute():
 	AudioServer.set_bus_mute(2, not AudioServer.is_bus_mute(2))
-
 func UIsound():
 	var sound = UI_sound.instance()
 	get_parent().add_child(sound)

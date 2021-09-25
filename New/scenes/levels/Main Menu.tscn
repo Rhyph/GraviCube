@@ -6,9 +6,9 @@
 [ext_resource path="res://sprites/Tiles/snowwayblock.png" type="Texture" id=4]
 [ext_resource path="res://sprites/Tiles/1wayblock.png" type="Texture" id=5]
 [ext_resource path="res://sounds/ES_Ancient Druidic Spells (of Power) - Bitwraith.mp3" type="AudioStream" id=6]
-[ext_resource path="res://scenes/SoundMute.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/UI/SoundMute.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/Icons/prev part.png" type="Texture" id=8]
-[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ParallaxBG/ParallaxBackground.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.552941, 1, 1 )
@@ -217,84 +217,6 @@ custom_fonts/font = SubResource( 4 )
 text = "World 1"
 __meta__ = {
 "_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="ColorRect"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -29.0
-margin_right = 40.0
-margin_bottom = 30.0
-custom_constants/separation = 10
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Level01" type="Button" parent="ColorRect/VBoxContainer3"]
-margin_right = 80.0
-margin_bottom = 13.0
-focus_mode = 0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
-custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-enabled_focus_mode = 0
-text = "  Tutorial 1"
-icon = ExtResource( 5 )
-align = 0
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Level02" type="Button" parent="ColorRect/VBoxContainer3"]
-margin_top = 23.0
-margin_right = 80.0
-margin_bottom = 36.0
-focus_mode = 0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
-custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-enabled_focus_mode = 0
-text = "  Tutorial 2"
-icon = ExtResource( 5 )
-align = 0
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Level03" type="Button" parent="ColorRect/VBoxContainer3"]
-margin_top = 46.0
-margin_right = 80.0
-margin_bottom = 59.0
-focus_mode = 0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 11 )
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
-custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-enabled_focus_mode = 0
-text = "  Tutorial 3"
-icon = ExtResource( 5 )
-align = 0
-__meta__ = {
-"_editor_description_": ""
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
@@ -518,6 +440,84 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="ColorRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -29.0
+margin_right = 40.0
+margin_bottom = 30.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level01" type="Button" parent="ColorRect/VBoxContainer3"]
+margin_right = 80.0
+margin_bottom = 13.0
+focus_mode = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "  Tutorial 1"
+icon = ExtResource( 5 )
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Level02" type="Button" parent="ColorRect/VBoxContainer3"]
+margin_top = 23.0
+margin_right = 80.0
+margin_bottom = 36.0
+focus_mode = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "  Tutorial 2"
+icon = ExtResource( 5 )
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Level03" type="Button" parent="ColorRect/VBoxContainer3"]
+margin_top = 46.0
+margin_right = 80.0
+margin_bottom = 59.0
+focus_mode = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "  Tutorial 3"
+icon = ExtResource( 5 )
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="HBoxContainer" parent="." instance=ExtResource( 7 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -537,12 +537,12 @@ transform = Transform2D( 1, 0, 0, 1, 160, 80 )
 [connection signal="pressed" from="ColorRect/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="ColorRect/NextWorld" to="." method="_on_NextWorld_pressed"]
 [connection signal="pressed" from="ColorRect/PrevWorld" to="." method="_on_PrevWorld_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer3/Level01" to="." method="_on_Level01_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer3/Level02" to="." method="_on_Level02_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer3/Level03" to="." method="_on_Level03_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Level1" to="." method="_on_Level0_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Level2" to="." method="_on_Level1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Level3" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Level1" to="." method="_on_Level1_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Level3" to="." method="_on_Level3_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level4" to="." method="_on_Level4_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level5" to="." method="_on_Level5_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Level6" to="." method="_on_Level6_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer3/Level01" to="." method="_on_Level01_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer3/Level02" to="." method="_on_Level02_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer3/Level03" to="." method="_on_Level03_pressed"]

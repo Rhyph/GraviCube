@@ -2,6 +2,14 @@ extends Control
 
 
 func _ready():
+	if G.Level != "Tutorial 1" || G.Cur_level != 0:
+		$VBoxContainer/Start.text = "  Continue"
+		$VBoxContainer/Levels.disabled = false
+	
+	if G.Cur_level > G.Level_count:
+		$VBoxContainer/Start.disabled = true
+		$VBoxContainer/Start.text = "  No more"
+	
 	if G.Records_t[0] != "9:59.99":
 		$ColorRect/VBoxContainer/Level1/Time1.text = G.Records_t[0]
 	if G.Records_t[1] != "9:59.99":
@@ -15,32 +23,25 @@ func _ready():
 	if G.Records_t[5] != "9:59.99":
 		$ColorRect/VBoxContainer2/Level6/Time6.text = G.Records_t[5]
 	
-	if len(G.Records_t) < G.Level_count:
-		G.Records_t.append("9:59.99")
-		G.Scores_t.append(600)
-	
 	if G.Cur_level > 1:
 		$ColorRect/VBoxContainer/Level2.disabled = false
-		$VBoxContainer/Start.text = "  Continue"
-		$VBoxContainer/Levels.disabled = false
-	if G.Cur_level > 2:
-		$ColorRect/VBoxContainer/Level3.disabled = false
-	if G.Cur_level > 3:
-		$ColorRect/VBoxContainer2/Level4.disabled = false
-	if G.Cur_level > 4:
-		$ColorRect/VBoxContainer2/Level5.disabled = false
-	if G.Cur_level > 5:
-		$ColorRect/VBoxContainer2/Level6.disabled = false
-	if G.Cur_level > 6:
-		$VBoxContainer/Start.text = "  New game"
-		$VBoxContainer/Start.disabled = true
+		if G.Cur_level > 2:
+			$ColorRect/VBoxContainer/Level3.disabled = false
+			if G.Cur_level > 3:
+				world2()
+				$ColorRect/VBoxContainer2/Level4.disabled = false
+				if G.Cur_level > 4:
+					$ColorRect/VBoxContainer2/Level5.disabled = false
+					if G.Cur_level > 5:
+						$ColorRect/VBoxContainer2/Level6.disabled = false
 
 func _on_Start_pressed():
 	G.UIsound()
 	if G.Cur_level == 0:
-		G.scene("Tutorial 1")
+		G.scene(str(G.Level))
 	else:
-		G.scene("Level" + str(G.Cur_level))
+		G.scene("Level " + str(G.Cur_level))
+
 func _on_Levels_pressed():
 	G.UIsound()
 	$ColorRect.visible = true
@@ -68,31 +69,31 @@ func _on_NextWorld_pressed():
 
 func _on_Level01_pressed():
 	G.UIsound()
-	G.scene("Level01")
+	G.scene("Tutorial 1")
 func _on_Level02_pressed():
 	G.UIsound()
-	G.scene("Level02")
+	G.scene("Tutorial 2")
 func _on_Level03_pressed():
 	G.UIsound()
-	G.scene("Level03")
-func _on_Level0_pressed():
-	G.UIsound()
-	G.scene("Level1")
+	G.scene("Tutorial 3")
 func _on_Level1_pressed():
 	G.UIsound()
-	G.scene("Level2")
+	G.scene("Level 1")
 func _on_Level2_pressed():
 	G.UIsound()
-	G.scene("Level3")
+	G.scene("Level 2")
+func _on_Level3_pressed():
+	G.UIsound()
+	G.scene("Level 3")
 func _on_Level4_pressed():
 	G.UIsound()
-	G.scene("Level4")
+	G.scene("Level 4")
 func _on_Level5_pressed():
 	G.UIsound()
-	G.scene("Level5")
+	G.scene("Level 5")
 func _on_Level6_pressed():
 	G.UIsound()
-	G.scene("Level6")
+	G.scene("Level 6")
 
 func world():
 	$ColorRect/VBoxContainer3.visible = false
