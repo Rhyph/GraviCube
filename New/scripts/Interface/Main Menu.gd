@@ -22,6 +22,8 @@ func _ready():
 		$ColorRect/VBoxContainer2/Level5/Time5.text = G.Records_t[4]
 	if G.Records_t[5] != "9:59.99":
 		$ColorRect/VBoxContainer2/Level6/Time6.text = G.Records_t[5]
+	if G.Records_t[6] != "9:59.99":
+		$ColorRect/VBoxContainer4/Level7/Time7.text = G.Records_t[6]
 	
 	if G.Cur_level > 1:
 		$ColorRect/VBoxContainer/Level2.disabled = false
@@ -29,11 +31,13 @@ func _ready():
 			$ColorRect/VBoxContainer/Level3.disabled = false
 			if G.Cur_level > 3:
 				world2()
-				$ColorRect/VBoxContainer2/Level4.disabled = false
 				if G.Cur_level > 4:
 					$ColorRect/VBoxContainer2/Level5.disabled = false
 					if G.Cur_level > 5:
 						$ColorRect/VBoxContainer2/Level6.disabled = false
+						if G.Cur_level > 6:
+							world()
+							world3()
 
 func _on_Start_pressed():
 	G.UIsound()
@@ -55,17 +59,21 @@ func _on_Back_pressed():
 func _on_PrevWorld_pressed():
 	G.UIsound()
 	world()
-	if $ColorRect/World.text == "World 1":
-		world0()
-	else:
+	if $ColorRect/World.text == "World 3":
+		world2()
+	elif $ColorRect/World.text == "World 2":
 		world1()
+	else:
+		world0()
 func _on_NextWorld_pressed():
 	G.UIsound()
 	world()
 	if $ColorRect/World.text == "Tutorials":
 		world1()
-	else:
+	elif $ColorRect/World.text == "World 1":
 		world2()
+	else:
+		world3()
 
 func _on_Level01_pressed():
 	G.UIsound()
@@ -94,11 +102,15 @@ func _on_Level5_pressed():
 func _on_Level6_pressed():
 	G.UIsound()
 	G.scene("Level 6")
+func _on_Level7_pressed():
+	G.UIsound()
+	G.scene("Level 7")
 
 func world():
 	$ColorRect/VBoxContainer3.visible = false
 	$ColorRect/VBoxContainer.visible = false
 	$ColorRect/VBoxContainer2.visible = false
+	$ColorRect/VBoxContainer4.visible = false
 func world0():
 	$ColorRect/World.text = "Tutorials"
 	$ColorRect/VBoxContainer3.visible = true
@@ -111,4 +123,9 @@ func world1():
 func world2():
 	$ColorRect/World.text = "World 2"
 	$ColorRect/VBoxContainer2.visible = true
+	$ColorRect/NextWorld.visible = true
+	$ColorRect/PrevWorld.visible = true
+func world3():
+	$ColorRect/World.text = "World 3"
+	$ColorRect/VBoxContainer4.visible = true
 	$ColorRect/NextWorld.visible = false

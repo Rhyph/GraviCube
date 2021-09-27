@@ -14,7 +14,7 @@ func _physics_process(delta):
 	$ParallaxLayer4.motion_offset.x -= .2
 "
 
-[node name="ParallaxBackground" type="ParallaxBackground"]
+[node name="ParallaxBackground2" type="ParallaxBackground"]
 scroll_ignore_camera_zoom = true
 script = SubResource( 1 )
 

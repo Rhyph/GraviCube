@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/Objects/Door.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Objects/Key2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/MechanicObjects/SphereRed.tscn" type="PackedScene" id=17]
-[ext_resource path="res://sounds/ES_Glitching Through the Sky - William Benckert.mp3" type="AudioStream" id=18]
+[ext_resource path="res://sounds/ES_Hummingbird - Yi Nantiro.mp3" type="AudioStream" id=18]
 [ext_resource path="res://scenes/ParallaxBG/ParallaxBackground2.tscn" type="PackedScene" id=19]
 
 [sub_resource type="GDScript" id=1]

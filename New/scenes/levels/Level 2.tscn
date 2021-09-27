@@ -12,10 +12,10 @@
 [ext_resource path="res://sprites/Tiles/DarkTile.png" type="Texture" id=10]
 [ext_resource path="res://sprites/Tiles/backtile2.png" type="Texture" id=11]
 [ext_resource path="res://sprites/marks/mark3.png" type="Texture" id=12]
+[ext_resource path="res://sounds/ES_Ancient Druidic Spells (of Power) - Bitwraith.mp3" type="AudioStream" id=13]
 [ext_resource path="res://scenes/Objects/Door.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Objects/Key2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Objects/Key.tscn" type="PackedScene" id=16]
-[ext_resource path="res://sounds/ES_Hummingbird - Yi Nantiro.mp3" type="AudioStream" id=17]
 [ext_resource path="res://scenes/ParallaxBG/ParallaxBackground.tscn" type="PackedScene" id=18]
 
 [sub_resource type="GDScript" id=1]
@@ -1398,7 +1398,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-stream = ExtResource( 17 )
+stream = ExtResource( 13 )
 volume_db = -5.0
 autoplay = true
 bus = "Music"

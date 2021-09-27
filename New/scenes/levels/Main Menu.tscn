@@ -358,7 +358,6 @@ custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
 custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-disabled = true
 enabled_focus_mode = 0
 text = "  Level 4"
 icon = ExtResource( 4 )
@@ -518,6 +517,54 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="VBoxContainer4" type="VBoxContainer" parent="ColorRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -29.0
+margin_right = 40.0
+margin_bottom = 30.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Level7" type="Button" parent="ColorRect/VBoxContainer4"]
+margin_top = 23.0
+margin_right = 80.0
+margin_bottom = 36.0
+focus_mode = 0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.196078, 0.196078, 0.196078, 1 )
+custom_colors/font_color = Color( 0.784314, 0.823529, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "  Level 7"
+icon = ExtResource( 4 )
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Time7" type="Label" parent="ColorRect/VBoxContainer4/Level7"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer" parent="." instance=ExtResource( 7 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -546,3 +593,4 @@ transform = Transform2D( 1, 0, 0, 1, 160, 80 )
 [connection signal="pressed" from="ColorRect/VBoxContainer3/Level01" to="." method="_on_Level01_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer3/Level02" to="." method="_on_Level02_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer3/Level03" to="." method="_on_Level03_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer4/Level7" to="." method="_on_Level7_pressed"]
