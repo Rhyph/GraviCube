@@ -4,10 +4,10 @@ extends Camera2D
 func _ready():
 	yield(get_tree().create_timer(.1), "timeout")
 	if "Tutorial" in G.Level:
-		limit_bottom = 400
-		limit_left = -880
-		limit_right = 880
-		limit_top = -1340
+		limit_bottom = 40
+		limit_left = -88
+		limit_right = 88
+		limit_top = -134
 	if G.Level == "Level 1":
 		limit_bottom = 56
 		limit_left = -69
@@ -43,8 +43,3 @@ func _ready():
 		limit_left = -136
 		limit_right = 280
 		limit_top = -832
-	if G.Level == "Hi youtube!":
-		limit_bottom = 40
-		limit_left = -1000
-		limit_right = 1000
-		limit_top = -1000

@@ -482,7 +482,6 @@ visible = false
 modulate = Color( 1.8, 1.8, 1.8, 1 )
 use_parent_material = true
 position = Vector2( 0, 8 )
-z_index = 1
 z_as_relative = false
 points = PoolVector2Array( 0, 0, 0, 92 )
 width = 1.0
