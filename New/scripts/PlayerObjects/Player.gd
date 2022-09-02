@@ -42,7 +42,9 @@ func _ready():
 	Engine.time_scale = 1
 
 func _physics_process(delta):
+	
 	xLimit = max(64, abs(motion.x))
+	
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	if x_input != 0:
@@ -63,6 +65,7 @@ func _physics_process(delta):
 	else:
 		friction = .4
 		acceleration = 384
+	
 	if $Rays/ConvCast.is_colliding() || $Rays/ConvCast2.is_colliding():
 		motion.x = clamp(motion.x, -MAX_SPEED + 32, MAX_SPEED + 32)
 		if x_input == 0:

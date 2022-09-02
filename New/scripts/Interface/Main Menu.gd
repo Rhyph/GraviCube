@@ -129,3 +129,8 @@ func world3():
 	$ColorRect/World.text = "World 3"
 	$ColorRect/VBoxContainer4.visible = true
 	$ColorRect/NextWorld.visible = false
+
+
+func _on_Button_pressed():
+	G.UIsound()
+	G.scene("TVideo")
