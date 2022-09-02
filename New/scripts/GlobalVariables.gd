@@ -9,7 +9,7 @@ var Saved = false
 var Popups = 0
 var Mins = 0
 var Secs = 0.0
-var Cur_level = 7
+var Cur_level = 0
 var Level_count = 7
 
 var Level = "Tutorial 1"

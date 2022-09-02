@@ -43,7 +43,10 @@ func close():
 #End-level menu
 func open2():
 	$"/root/World/AudioStreamPlayer".volume_db = -10
-	G.Cur_level = max(G.Cur_level, int(G.Level.substr(5)) + 1)
+	if not "Tutorial" in G.Level:
+		G.Cur_level = max(G.Cur_level, int(G.Level.substr(5)) + 1)
+	elif G.Level == "Tutorial 3":
+		G.Cur_level = 1
 	
 	FS.save_data({
 		"Current Level" : G.Cur_level,

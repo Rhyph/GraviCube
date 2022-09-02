@@ -4,6 +4,8 @@ extends Control
 func _ready():
 	if G.Level != "Tutorial 1" || G.Cur_level != 0:
 		$VBoxContainer/Start.text = "  Continue"
+	
+	if G.Cur_level >= 1:
 		$VBoxContainer/Levels.disabled = false
 	
 	if G.Cur_level > G.Level_count:

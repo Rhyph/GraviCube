@@ -17,6 +17,8 @@
 script/source = "extends Node2D
 
 func _ready():
+	G.Mins = 0
+	G.Secs = 0.0
 	G.Popups = 0
 	G.Level = \"Level 1\"
 	if G.Cur_level == 0:
