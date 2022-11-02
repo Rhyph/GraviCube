@@ -1,8 +1,8 @@
 ## GraviCube
  
-Progress: 85%. 
+Progress: 85%
 
-Status: заброшено. 
+Status: Abandoned
 
 A game that I developed for android using the Godot Engine (and GDScript there).
 
