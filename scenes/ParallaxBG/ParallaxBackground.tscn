@@ -20,7 +20,7 @@ scroll_ignore_camera_zoom = true
 script = SubResource( 1 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-position = Vector2( -160, -114 )
+position = Vector2( 0, -24 )
 motion_scale = Vector2( 0.1, 0.02 )
 motion_mirroring = Vector2( 320, 0 )
 
@@ -29,7 +29,7 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-position = Vector2( -160, -114 )
+position = Vector2( 0, -24 )
 motion_scale = Vector2( 0.2, 0.04 )
 motion_mirroring = Vector2( 320, 0 )
 
@@ -38,7 +38,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
-position = Vector2( -160, -114 )
+position = Vector2( 0, -24 )
 motion_scale = Vector2( 0.4, 0.08 )
 motion_mirroring = Vector2( 320, 0 )
 
@@ -47,7 +47,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
-position = Vector2( -160, -114 )
+position = Vector2( 0, -24 )
 motion_scale = Vector2( 0.6, 0.16 )
 motion_mirroring = Vector2( 320, 0 )
 

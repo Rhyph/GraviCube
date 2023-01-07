@@ -5,7 +5,7 @@
 [ext_resource path="res://sounds/FX/sound.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 8 )
+extents = Vector2( 4, 9 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "activated"
@@ -152,6 +152,7 @@ position = Vector2( 0, -8 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="checkpoint" type="Sprite" parent="."]

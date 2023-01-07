@@ -6,7 +6,7 @@
 [ext_resource path="res://sounds/FX/zapsplat_cartoon_eat_crunch_bite_sinlge_mid_pitched_69411.mp3" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
+radius = 6.0
 height = 0.0
 
 [sub_resource type="CanvasItemMaterial" id=2]

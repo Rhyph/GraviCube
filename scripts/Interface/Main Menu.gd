@@ -32,12 +32,14 @@ func _ready():
 		if G.Cur_level > 2:
 			$ColorRect/VBoxContainer/Level3.disabled = false
 			if G.Cur_level > 3:
+				$ColorRect/VBoxContainer2/Level4.disabled = false
 				world2()
 				if G.Cur_level > 4:
 					$ColorRect/VBoxContainer2/Level5.disabled = false
 					if G.Cur_level > 5:
 						$ColorRect/VBoxContainer2/Level6.disabled = false
 						if G.Cur_level > 6:
+							$ColorRect/VBoxContainer4/Level7.disabled = false
 							world()
 							world3()
 

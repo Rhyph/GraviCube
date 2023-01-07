@@ -575,8 +575,6 @@ autoplay = true
 bus = "Music"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 9 )]
-offset = Vector2( 160, 80 )
-transform = Transform2D( 1, 0, 0, 1, 160, 80 )
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_Levels_pressed"]

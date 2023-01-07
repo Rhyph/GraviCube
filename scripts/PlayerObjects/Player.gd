@@ -172,7 +172,7 @@ func _on_SpikeArea2D_body_entered(body):
 	die()
 func _on_SlowArea2D_body_entered(body):
 	SlowArea = true
-	Engine.time_scale = .2
+	Engine.time_scale = .15
 func _on_SlowArea2D_body_exited(body):
 	SlowArea = false
 	Engine.time_scale = 1
