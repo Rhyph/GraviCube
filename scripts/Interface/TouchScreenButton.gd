@@ -32,17 +32,10 @@ func _physics_process(delta):
 	
 	pos_zero = (Vector2(0,0) - radius) - position
 	
-	$Label.text = str(ms)
-	
 	$"/root/World/Interface/Control/circlebig/Line2D".look_at($Node2D.global_position)
 	
 	if $"/root/World/Player".projectile == 1:
 		ms = 350
-	
-	if ms == 350 || ms == 0:
-		$Label.visible = false
-	else:
-		$Label.visible = true
 	
 	if ongoing_drag == -1:
 		var pos_difference = (Vector2(0,0) - radius) - position

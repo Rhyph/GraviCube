@@ -113,8 +113,8 @@ func _physics_process(delta):
 		$Timers/SlowMo.start()
 		slow = false
 	if SlowMo && SlowArea == false:
-		if Engine.time_scale <= .975:
-			Engine.time_scale += .025
+		if Engine.time_scale <= .985:
+			Engine.time_scale += .015
 		else:
 			SlowMo = false
 	

@@ -157,20 +157,6 @@ script = ExtResource( 19 )
 [node name="Node2D" type="Node2D" parent="Control/circlebig/TouchScreenButton"]
 position = Vector2( 16, 16 )
 
-[node name="Label" type="Label" parent="Control/circlebig/TouchScreenButton"]
-visible = false
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 36.0
-margin_bottom = 22.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 0
-custom_fonts/font = SubResource( 4 )
-text = "400"
-align = 1
-valign = 1
-
 [node name="Timer" type="Timer" parent="Control/circlebig/TouchScreenButton"]
 wait_time = 0.01
 one_shot = true

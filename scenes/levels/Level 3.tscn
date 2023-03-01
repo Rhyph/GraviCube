@@ -809,6 +809,9 @@ position = Vector2( 196, 76 )
 [node name="1wayblock17" parent="Tiles/1ways" instance=ExtResource( 4 )]
 position = Vector2( 188, -36 )
 
+[node name="1wayblock19" parent="Tiles/1ways" instance=ExtResource( 4 )]
+position = Vector2( 116, 0 )
+
 [node name="1wayblock18" parent="Tiles/1ways" instance=ExtResource( 4 )]
 position = Vector2( 68, -172 )
 
@@ -868,16 +871,16 @@ position = Vector2( 148, -18 )
 position = Vector2( 404, -32 )
 
 [node name="Sphere3" parent="Spheres" instance=ExtResource( 3 )]
-position = Vector2( 348, -42 )
+position = Vector2( 352, -42 )
 
 [node name="Sphere6" parent="Spheres" instance=ExtResource( 3 )]
-position = Vector2( 300, -78 )
+position = Vector2( 296, -74 )
 
 [node name="Sphere11" parent="Spheres" instance=ExtResource( 3 )]
 position = Vector2( 292, -54 )
 
 [node name="Sphere7" parent="Spheres" instance=ExtResource( 3 )]
-position = Vector2( 396, -82 )
+position = Vector2( 392, -82 )
 
 [node name="Sphere9" parent="Spheres" instance=ExtResource( 3 )]
 position = Vector2( 396, -106 )
@@ -914,7 +917,7 @@ position = Vector2( 322, -68 )
 rotation = 4.71239
 
 [node name="Sphere8" parent="Spheres" instance=ExtResource( 3 )]
-position = Vector2( 308, -46 )
+position = Vector2( 312, -42 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 98 )
